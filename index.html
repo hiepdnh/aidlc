@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agentic Development Lifecycle — VTI SDLC Skill Framework</title>
+  <meta name="description" content="26 slash commands covering the full SDLC — for teams building software with AI assistance. A Claude Code skill pack by VTI Software." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cyan: #22d3ee;
+      --cyan-dim: #0891b2;
+      --purple: #a855f7;
+      --purple-dim: #7c3aed;
+      --pink: #ec4899;
+      --green: #10b981;
+      --amber: #f59e0b;
+      --blue: #3b82f6;
+      --red: #ef4444;
+      --bg: #030712;
+      --bg2: #0a0f1e;
+      --bg3: #0f172a;
+      --surface: rgba(15,23,42,0.7);
+      --border: rgba(148,163,184,0.1);
+      --border-bright: rgba(148,163,184,0.2);
+      --text: #f1f5f9;
+      --text-dim: #94a3b8;
+      --text-dimmer: #475569;
+      --radius: 12px;
+      --radius-lg: 20px;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 99px; }
+
+    /* ── Background ── */
+    .bg-grid {
+      position: fixed; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(34,211,238,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34,211,238,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+    .bg-glow {
+      position: fixed; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 20% 10%, rgba(168,85,247,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(34,211,238,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* ── Layout ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    section { position: relative; z-index: 1; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(3,7,18,0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 24px; max-width: 1200px; margin: 0 auto;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 1rem; color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 800; color: #000;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-dim); text-decoration: none; font-size: 0.875rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      padding: 8px 18px;
+      background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
+      border-radius: 8px; color: #fff !important;
+      font-weight: 600 !important; font-size: 0.875rem !important;
+      transition: opacity 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 160px 0 100px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px;
+      background: rgba(34,211,238,0.1);
+      border: 1px solid rgba(34,211,238,0.25);
+      border-radius: 999px;
+      font-size: 0.8rem; font-weight: 600; color: var(--cyan);
+      margin-bottom: 28px;
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      background: var(--cyan);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+    .hero h1 .grad {
+      background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 60%, var(--pink) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-tagline {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--text-dim);
+      max-width: 600px; margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+    .hero-stats {
+      display: flex; justify-content: center; gap: 48px;
+      margin-bottom: 48px; flex-wrap: wrap;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat-num {
+      font-size: 2rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-stat-label { font-size: 0.8rem; color: var(--text-dim); font-weight: 500; }
+
+    /* ── Install block ── */
+    .install-block {
+      background: rgba(15,23,42,0.8);
+      border: 1px solid var(--border-bright);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      max-width: 680px; margin: 0 auto 20px;
+      backdrop-filter: blur(10px);
+      position: relative; overflow: hidden;
+    }
+    .install-block::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    }
+    .install-tabs {
+      display: flex; gap: 4px; margin-bottom: 16px;
+    }
+    .install-tab {
+      padding: 5px 14px;
+      border-radius: 6px; border: 1px solid transparent;
+      font-size: 0.75rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+      color: var(--text-dim);
+      background: transparent;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .install-tab.active {
+      background: rgba(34,211,238,0.15);
+      border-color: rgba(34,211,238,0.3);
+      color: var(--cyan);
+    }
+    .install-content { display: none; }
+    .install-content.active { display: block; }
+    .install-cmd {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      line-height: 1.8;
+    }
+    .install-cmd .comment { color: var(--text-dimmer); }
+    .install-cmd .cmd-keyword { color: var(--cyan); }
+    .copy-btn {
+      position: absolute; top: 16px; right: 16px;
+      padding: 5px 12px;
+      background: rgba(34,211,238,0.1);
+      border: 1px solid rgba(34,211,238,0.2);
+      border-radius: 6px;
+      color: var(--cyan); font-size: 0.75rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .copy-btn:hover { background: rgba(34,211,238,0.2); }
+    .copy-btn.copied { color: var(--green); border-color: rgba(16,185,129,0.3); }
+
+    .hero-actions {
+      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
+      border-radius: var(--radius);
+      font-weight: 700; font-size: 0.95rem;
+      color: #fff; text-decoration: none;
+      transition: all 0.25s;
+      box-shadow: 0 0 30px rgba(34,211,238,0.2);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 40px rgba(34,211,238,0.3);
+    }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px;
+      background: transparent;
+      border: 1px solid var(--border-bright);
+      border-radius: var(--radius);
+      font-weight: 600; font-size: 0.95rem;
+      color: var(--text-dim); text-decoration: none;
+      transition: all 0.25s;
+    }
+    .btn-secondary:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-2px); }
+
+    /* ── Section header ── */
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--cyan);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 800; letter-spacing: -0.02em;
+      line-height: 1.2; margin-bottom: 16px;
+    }
+    .section-desc { color: var(--text-dim); max-width: 560px; font-size: 1.05rem; line-height: 1.7; }
+
+    /* ── Features ── */
+    .features { padding: 100px 0; }
+    .features-header { text-align: center; margin-bottom: 64px; }
+    .features-header .section-desc { margin: 0 auto; }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      position: relative; overflow: hidden;
+    }
+    .feature-card::before {
+      content: ''; position: absolute;
+      inset: 0; opacity: 0;
+      background: linear-gradient(135deg, rgba(34,211,238,0.04), rgba(168,85,247,0.04));
+      transition: opacity 0.3s;
+    }
+    .feature-card:hover { border-color: rgba(34,211,238,0.3); transform: translateY(-4px); }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 20px;
+    }
+    .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+    .feature-card p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; }
+
+    /* ── Commands ── */
+    .commands { padding: 100px 0; }
+    .commands-header { margin-bottom: 56px; }
+    .category-filters {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px;
+    }
+    .cat-pill {
+      padding: 6px 16px;
+      border-radius: 999px; border: 1px solid;
+      font-size: 0.8rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+      background: transparent;
+    }
+    .cat-pill.active { color: #000 !important; }
+    .commands-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 12px; margin-top: 28px;
+    }
+    .cmd-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      backdrop-filter: blur(8px);
+      transition: all 0.25s;
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .cmd-card:hover { border-color: var(--border-bright); transform: translateY(-2px); }
+    .cmd-badge {
+      flex-shrink: 0;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; font-weight: 600;
+      white-space: nowrap; margin-top: 2px;
+    }
+    .cmd-info h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 4px; }
+    .cmd-info p { font-size: 0.8rem; color: var(--text-dim); line-height: 1.5; }
+
+    /* Category colors */
+    .cat-ba    { --cat: #22d3ee; }
+    .cat-pm    { --cat: #a855f7; }
+    .cat-dev   { --cat: #10b981; }
+    .cat-arch  { --cat: #f59e0b; }
+    .cat-qa    { --cat: #3b82f6; }
+    .cat-ops   { --cat: #f97316; }
+    .cat-sec   { --cat: #ef4444; }
+    .cat-docs  { --cat: #8b5cf6; }
+    .cat-scrum { --cat: #ec4899; }
+    .cat-be    { --cat: #06b6d4; }
+
+    .cmd-badge { background: color-mix(in srgb, var(--cat) 15%, transparent); color: var(--cat); }
+    .cmd-card:hover { border-color: color-mix(in srgb, var(--cat) 40%, transparent); }
+    .cat-pill { border-color: color-mix(in srgb, var(--cat) 40%, transparent); color: var(--cat); }
+    .cat-pill.active { background: var(--cat); border-color: var(--cat); }
+
+    /* ── Workflow ── */
+    .workflow { padding: 100px 0; }
+    .workflow-header { text-align: center; margin-bottom: 64px; }
+    .workflow-header .section-desc { margin: 0 auto; }
+    .flow-tabs {
+      display: flex; gap: 4px; justify-content: center; margin-bottom: 40px;
+      background: rgba(15,23,42,0.5); border-radius: 12px; padding: 4px;
+      max-width: 400px; margin-left: auto; margin-right: auto; margin-bottom: 40px;
+      border: 1px solid var(--border);
+    }
+    .flow-tab {
+      flex: 1; padding: 10px;
+      border-radius: 8px; border: none;
+      font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+      color: var(--text-dim); background: transparent;
+      font-family: 'Inter', sans-serif;
+    }
+    .flow-tab.active { background: rgba(34,211,238,0.15); color: var(--cyan); }
+    .flow-content { display: none; }
+    .flow-content.active { display: block; }
+    .flow-steps {
+      display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: center; gap: 0; max-width: 900px; margin: 0 auto;
+    }
+    .flow-step {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      flex: 0 0 auto; min-width: 120px;
+    }
+    .flow-node {
+      background: rgba(15,23,42,0.9);
+      border: 1px solid var(--border-bright);
+      border-radius: var(--radius);
+      padding: 14px 18px; text-align: center;
+      backdrop-filter: blur(8px); min-width: 120px;
+      position: relative; overflow: hidden;
+      transition: all 0.25s;
+    }
+    .flow-node:hover { border-color: var(--cyan); transform: translateY(-3px); }
+    .flow-node::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+    }
+    .flow-node code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; color: var(--cyan); font-weight: 600;
+      display: block; margin-bottom: 4px;
+    }
+    .flow-node span { font-size: 0.72rem; color: var(--text-dimmer); }
+    .flow-arrow {
+      color: var(--text-dimmer); font-size: 1.2rem;
+      flex-shrink: 0; padding: 0 4px;
+      align-self: center; margin-top: -24px;
+    }
+    .flow-section-label {
+      text-align: center; font-size: 0.75rem;
+      font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 20px;
+    }
+
+    /* ── Agents ── */
+    .agents-table {
+      width: 100%; border-collapse: collapse; margin-top: 32px;
+    }
+    .agents-table th {
+      text-align: left; font-size: 0.8rem; font-weight: 600;
+      color: var(--text-dim); padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .agents-table td {
+      padding: 14px 16px; font-size: 0.875rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .agents-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .model-badge {
+      display: inline-block; padding: 2px 10px;
+      border-radius: 999px; font-size: 0.72rem; font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .model-haiku { background: rgba(34,211,238,0.12); color: var(--cyan); }
+    .model-sonnet { background: rgba(168,85,247,0.12); color: var(--purple); }
+    .agent-name { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #e2e8f0; }
+
+    /* ── VTI Section ── */
+    .vti { padding: 100px 0; }
+    .vti-inner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 60px 48px;
+      backdrop-filter: blur(10px);
+      position: relative; overflow: hidden;
+    }
+    .vti-inner::before {
+      content: ''; position: absolute;
+      top: -100px; right: -100px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(34,211,238,0.06), transparent 70%);
+    }
+    .vti-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: center;
+    }
+    @media (max-width: 768px) { .vti-grid { grid-template-columns: 1fr; } }
+    .vti-roles { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+    .vti-role {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 16px;
+      background: rgba(15,23,42,0.5);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .vti-role-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+    .vti-role h4 { font-size: 0.875rem; font-weight: 600; margin-bottom: 4px; }
+    .vti-role p { font-size: 0.8rem; color: var(--text-dim); line-height: 1.5; }
+    .bilingual-demo {
+      background: rgba(15,23,42,0.6);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px; position: relative;
+    }
+    .bilingual-demo::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, var(--purple), var(--cyan));
+    }
+    .bilingual-demo-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text-dimmer); margin-bottom: 16px;
+    }
+    .bilingual-item {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .bilingual-item:last-child { border-bottom: none; }
+    .bilingual-lang {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 4px;
+    }
+    .bilingual-text { font-size: 0.875rem; line-height: 1.5; }
+
+    /* ── Install full ── */
+    .install-section { padding: 100px 0; }
+    .install-section-header { text-align: center; margin-bottom: 56px; }
+    .install-section-header .section-desc { margin: 0 auto; }
+    .install-cards {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px; max-width: 900px; margin: 0 auto;
+    }
+    .install-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      backdrop-filter: blur(10px);
+      position: relative; overflow: hidden;
+    }
+    .install-card-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+    }
+    .install-card-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .install-card h3 { font-size: 1rem; font-weight: 700; }
+    .install-card p { font-size: 0.8rem; color: var(--text-dim); margin-top: 2px; }
+    .code-block {
+      background: rgba(3,7,18,0.8);
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; line-height: 1.8;
+      color: #e2e8f0; overflow-x: auto;
+      position: relative;
+    }
+    .code-block .kw { color: var(--cyan); }
+    .code-block .cm { color: var(--text-dimmer); }
+    .code-block .str { color: #86efac; }
+    .code-block .fl { color: var(--amber); }
+    .what-installs {
+      margin-top: 16px; font-size: 0.8rem; color: var(--text-dim);
+    }
+    .what-installs strong { color: var(--text); }
+
+    /* ── Footer ── */
+    footer {
+      padding: 56px 0; border-top: 1px solid var(--border);
+      position: relative; z-index: 1;
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .footer-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      color: var(--text-dim); text-decoration: none; font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--cyan); }
+    .footer-right { text-align: right; }
+    .footer-right p { font-size: 0.8rem; color: var(--text-dimmer); }
+    .footer-badges { display: flex; gap: 8px; margin-top: 8px; justify-content: flex-end; }
+    .footer-badge {
+      padding: 3px 10px;
+      border-radius: 999px; font-size: 0.7rem; font-weight: 600;
+      border: 1px solid;
+    }
+    .badge-mit { border-color: rgba(34,211,238,0.3); color: var(--cyan); }
+    .badge-claude { border-color: rgba(168,85,247,0.3); color: var(--purple); }
+
+    /* ── Animations ── */
+    .fade-up {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+
+    /* ── Divider ── */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-bright), transparent);
+      margin: 0 auto; max-width: 800px;
+    }
+
+    /* ── Responsive tweaks ── */
+    @media (max-width: 640px) {
+      .hero { padding: 120px 0 80px; }
+      .hero-stats { gap: 28px; }
+      .flow-steps { gap: 0; flex-direction: column; align-items: center; }
+      .flow-arrow { transform: rotate(90deg); margin: -12px 0; }
+      .commands-grid { grid-template-columns: 1fr; }
+      .vti-inner { padding: 32px 20px; }
+      .install-block { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-glow" aria-hidden="true"></div>
+
+<!-- ── Nav ── -->
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" aria-label="Agentic Development Lifecycle home">
+      <div class="nav-logo-icon" aria-hidden="true">A</div>
+      <span>ADLC</span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#commands">Commands</a></li>
+      <li><a href="#workflow">Workflow</a></li>
+      <li><a href="#vti">VTI Context</a></li>
+      <li><a href="#install" class="nav-cta">Install</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-badge" aria-label="Claude Code skill pack">
+      <span class="hero-badge-dot" aria-hidden="true"></span>
+      Claude Code Skill Pack
+    </div>
+
+    <h1>
+      <span class="grad">Agentic</span><br />
+      Development Lifecycle
+    </h1>
+
+    <p class="hero-tagline">
+      26 slash commands covering the full SDLC — for teams building
+      software with AI assistance.
+    </p>
+
+    <div class="hero-stats" role="list" aria-label="Key statistics">
+      <div class="hero-stat" role="listitem">
+        <div class="hero-stat-num">26</div>
+        <div class="hero-stat-label">Slash Commands</div>
+      </div>
+      <div class="hero-stat" role="listitem">
+        <div class="hero-stat-num">9</div>
+        <div class="hero-stat-label">SDLC Roles</div>
+      </div>
+      <div class="hero-stat" role="listitem">
+        <div class="hero-stat-num">7</div>
+        <div class="hero-stat-label">Subagents</div>
+      </div>
+      <div class="hero-stat" role="listitem">
+        <div class="hero-stat-num">MIT</div>
+        <div class="hero-stat-label">Open Source</div>
+      </div>
+    </div>
+
+    <!-- Install block -->
+    <div class="install-block" role="region" aria-label="Quick install">
+      <button class="copy-btn" onclick="copyInstall(this)" aria-label="Copy install command">Copy</button>
+      <div class="install-tabs" role="tablist" aria-label="Operating system">
+        <button class="install-tab active" role="tab" aria-selected="true" onclick="switchTab(this,'mac')">macOS / Linux</button>
+        <button class="install-tab" role="tab" aria-selected="false" onclick="switchTab(this,'win')">Windows</button>
+        <button class="install-tab" role="tab" aria-selected="false" onclick="switchTab(this,'lite')">Dev Lite</button>
+      </div>
+      <div class="install-content active" id="tab-mac">
+        <pre class="install-cmd" aria-label="macOS and Linux install command"><span class="cmd-keyword">npx</span> github:hiepdnh/Agentic-Development-Lifecycle <span class="cmd-keyword">--yes</span>
+
+<span class="comment"># Update existing install:</span>
+<span class="cmd-keyword">npx</span> github:hiepdnh/Agentic-Development-Lifecycle <span class="cmd-keyword">--update --yes</span></pre>
+      </div>
+      <div class="install-content" id="tab-win">
+        <pre class="install-cmd" aria-label="Windows install command"><span class="comment"># PowerShell</span>
+<span class="cmd-keyword">$tmp</span> = "<span style="color:#86efac">$env:TEMP\vti-install</span>"; mkdir <span class="cmd-keyword">$tmp</span> -Force; Set-Location <span class="cmd-keyword">$tmp</span>
+<span class="cmd-keyword">npx</span> github:hiepdnh/Agentic-Development-Lifecycle <span class="cmd-keyword">--yes</span></pre>
+      </div>
+      <div class="install-content" id="tab-lite">
+        <pre class="install-cmd" aria-label="Developer Lite install command"><span class="comment"># Minimal install — dev workflow only</span>
+<span class="cmd-keyword">node</span> packages/developer-lite/bin/install.js <span class="cmd-keyword">--yes</span>
+
+<span class="comment"># Includes: /dev:analyze /dev:implement /dev:review</span>
+<span class="comment">#           /dev:pr /dev:debug /sec:review /arch:adr /docs:update</span></pre>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="https://github.com/hiepdnh/Agentic-Development-Lifecycle" class="btn-primary" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        View on GitHub
+      </a>
+      <a href="#commands" class="btn-secondary">
+        Browse Commands
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── Features ── -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="features-header">
+      <p class="section-label">Why ADLC</p>
+      <h2 class="section-title">Built for how AI-assisted<br />teams actually work</h2>
+      <p class="section-desc">Structured commands, multi-agent delegation, and human decision gates — so your team stays in control while AI handles the heavy lifting.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card fade-up stagger-1">
+        <div class="feature-icon" style="background:rgba(34,211,238,0.1)" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <h3>Multi-Agent Pattern</h3>
+        <p>Heavy tasks spawn specialized lightweight subagents (haiku for parsing, sonnet for synthesis), keeping your main context window clean and focused.</p>
+      </div>
+
+      <div class="feature-card fade-up stagger-2">
+        <div class="feature-icon" style="background:rgba(168,85,247,0.1)" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3>Human-in-the-Loop Gates</h3>
+        <p>Every command includes mandatory decision gates — Claude presents options and waits for your approval. No autonomous auto-execution ever.</p>
+      </div>
+
+      <div class="feature-card fade-up stagger-3">
+        <div class="feature-icon" style="background:rgba(16,185,129,0.1)" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3>Two-Tier Documentation</h3>
+        <p>Ephemeral per-task docs (gitignored) for in-progress work, plus living baseline docs updated after each verified merge. Always-current knowledge.</p>
+      </div>
+
+      <div class="feature-card fade-up stagger-4">
+        <div class="feature-icon" style="background:rgba(245,158,11,0.1)" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Developer Lite Option</h3>
+        <p>A minimal subset for teams that need only core developer workflow — without PM/BA/QA/Ops overhead. 8 focused commands to get started fast.</p>
+      </div>
+
+      <div class="feature-card fade-up stagger-1">
+        <div class="feature-icon" style="background:rgba(59,130,246,0.1)" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Security-First Review</h3>
+        <p>Built-in OWASP Top 10 security review command with Always/Ask/Never classification. Security baked into the workflow, not bolted on.</p>
+      </div>
+
+      <div class="feature-card fade-up stagger-2">
+        <div class="feature-icon" style="background:rgba(236,72,153,0.1)" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Full SDLC Coverage</h3>
+        <p>From ideation to deployment — BA, PM, Dev, Arch, QA, DevOps, Security, Docs, and Scrum roles all covered in one cohesive framework.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── Commands ── -->
+<section class="commands" id="commands">
+  <div class="container">
+    <div class="commands-header">
+      <p class="section-label">26 Commands</p>
+      <h2 class="section-title">Every phase. Every role.<br />One skill pack.</h2>
+      <p class="section-desc">Structured, role-aware commands covering every sprint lifecycle phase. Color-coded by category for quick navigation.</p>
+
+      <div class="category-filters" role="group" aria-label="Filter by category">
+        <button class="cat-pill cat-ba active" onclick="filterCmds(this,'all')" aria-pressed="true">All</button>
+        <button class="cat-pill cat-ba" onclick="filterCmds(this,'ba')" aria-pressed="false">Business Analysis</button>
+        <button class="cat-pill cat-pm" onclick="filterCmds(this,'pm')" aria-pressed="false">Project Mgmt</button>
+        <button class="cat-pill cat-dev" onclick="filterCmds(this,'dev')" aria-pressed="false">Development</button>
+        <button class="cat-pill cat-arch" onclick="filterCmds(this,'arch')" aria-pressed="false">Architecture</button>
+        <button class="cat-pill cat-qa" onclick="filterCmds(this,'qa')" aria-pressed="false">QA</button>
+        <button class="cat-pill cat-ops" onclick="filterCmds(this,'ops')" aria-pressed="false">DevOps</button>
+        <button class="cat-pill cat-sec" onclick="filterCmds(this,'sec')" aria-pressed="false">Security</button>
+        <button class="cat-pill cat-docs" onclick="filterCmds(this,'docs')" aria-pressed="false">Docs</button>
+        <button class="cat-pill cat-scrum" onclick="filterCmds(this,'scrum')" aria-pressed="false">Scrum</button>
+        <button class="cat-pill cat-be" onclick="filterCmds(this,'be')" aria-pressed="false">Bridge Eng</button>
+      </div>
+    </div>
+
+    <div class="commands-grid" id="commands-grid" role="list" aria-label="Available commands">
+
+      <!-- BA -->
+      <div class="cmd-card cat-ba fade-up" data-cat="ba" role="listitem">
+        <span class="cmd-badge">/pm:ideate</span>
+        <div class="cmd-info">
+          <h4>Ideate</h4>
+          <p>Refine vague idea → clear concept with problem statement + NOT Doing list</p>
+        </div>
+      </div>
+      <div class="cmd-card cat-ba fade-up" data-cat="ba" role="listitem">
+        <span class="cmd-badge">/ba:spec</span>
+        <div class="cmd-info">
+          <h4>Specification</h4>
+          <p>Raw requirement → structured spec → <code style="font-family:monospace;font-size:0.75rem;color:var(--cyan)">requirements.md</code></p>
+        </div>
+      </div>
+      <div class="cmd-card cat-ba fade-up" data-cat="ba" role="listitem">
+        <span class="cmd-badge">/ba:user-story</span>
+        <div class="cmd-info">
+          <h4>User Stories</h4>
+          <p>Spec → User Stories with Acceptance Criteria</p>
+        </div>
+      </div>
+      <div class="cmd-card cat-ba fade-up" data-cat="ba" role="listitem">
+        <span class="cmd-badge">/ba:reverse</span>
+        <div class="cmd-info">
+          <h4>Reverse Engineer</h4>
+          <p>Reverse engineer legacy codebase → baseline docs</p>
+        </div>
+      </div>
+
+      <!-- BE -->
+      <div class="cmd-card cat-be fade-up" data-cat="be" role="listitem">
+        <span class="cmd-badge">/be:bridge</span>
+        <div class="cmd-info">
+          <h4>Bridge Engineer</h4>
+          <p>Translate JP requirements, create bilingual JP-VN deliverables</p>
+        </div>
+      </div>
+
+      <!-- PM -->
+      <div class="cmd-card cat-pm fade-up" data-cat="pm" role="listitem">
+        <span class="cmd-badge">/pm:breakdown</span>
+        <div class="cmd-info">
+          <h4>Task Breakdown</h4>
+          <p>Epic/Stories → Tasks with estimates + GitHub/GitLab Issues</p>
+        </div>
+      </div>
+      <div class="cmd-card cat-pm fade-up" data-cat="pm" role="listitem">
+        <span class="cmd-badge">/pm:status</span>
+        <div class="cmd-info">
+          <h4>Sprint Status</h4>
+          <p>Sprint status report for stakeholders</p>
+        </div>
+      </div>
+      <div class="cmd-card cat-pm fade-up" data-cat="pm" role="listitem">
+        <span class="cmd-badge">/pm:dashboard</span>
+        <div class="cmd-info">
+          <h4>Dashboard</h4>
+          <p>Static HTML sprint dashboard with kanban + health + backlog</p>
+        </div>
+      </div>
+
+      <!-- Dev -->
+      <div class="cmd-card cat-dev fade-up" data-cat="dev" role="listitem">
+        <span class="cmd-badge">/dev:analyze</span>
+        <div class="cmd-info">
+          <h4>Analyze</h4>
+          <p>Task → 2-3 implementation options with trade-offs → <code style="font-family:monospace;font-size:0.75rem;color:var(--green)">analysis.md</code></p>
+        </div>
+      </div>
+      <div class="cmd-card cat-dev fade-up" data-cat="dev" role="listitem">
+        <span class="cmd-badge">/dev:implement</span>
+        <div class="cmd-info">
+          <h4>Implement</h4>
+          <p>Implement file-by-file with human gates + verification + harness delta check</p>
+        </div>
+      </div>
+      <div class="cmd-card cat-dev fade-up" data-cat="dev" role="listitem">
+        <span class="cmd-badge">/dev:review</span>
+        <div class="cmd-info">
+          <h4>Code Review</h4>
+          <p>Holistic review: code quality + architecture + security in one run</p>
+        </div>
+      </div>
+      <div class="cmd-card cat-dev fade-up" data-cat="dev" role="listitem">
+        <span class="cmd-badge">/dev:pr</span>
+        <div class="cmd-info">
+          <h4>Pull Request</h4>
+          <p>Generate comprehensive PR description from diff</p>
+        </div>
+      </div>
+      <div class="cmd-card cat-dev fade-up" data-cat="dev" role="listitem">
+        <span class="cmd-badge">/dev:debug</span>
+        <div class="cmd-info">
+          <h4>Debug</h4>
+          <p>Structured debugging: reproduce → localize → fix</p>
+        </div>
+      </div>
+
+      <!-- Arch -->
+      <div class="cmd-card cat-arch fade-up" data-cat="arch" role="listitem">
+        <span class="cmd-badge">/arch:review</span>
+        <div class="cmd-info">
+          <h4>Architecture Review</h4>
+          <p>Design decision review with trade-off analysis</p>
+        </div>
+      </div>
+      <div class="cmd-card cat-arch fade-up" data-cat="arch" role="listitem">
+        <span class="cmd-badge">/arch:adr</span>
+        <div class="cmd-info">
+          <h4>ADR</h4>
+          <p>Create Architecture Decision Record → <code style="font-family:monospace;font-size:0.75rem;color:var(--amber)">docs/decisions/ADR-NNN.md</code></p>
+        </div>
+      </div>
+
+      <!-- QA -->
+      <div class="cmd-card cat-qa fade-up" data-cat="qa" role="listitem">
+        <span class="cmd-badge">/qa:testplan</span>
+        <div class="cmd-info">
+          <h4>Test Plan</h4>
+          <p>Spec → Test plan → <code style="font-family:monospace;font-size:0.75rem;color:var(--blue)">test-plan.md</code></p>
+        </div>
+      </div>
+      <div class="cmd-card cat-qa fade-up" data-cat="qa" role="listitem">
+        <span class="cmd-badge">/qa:bug</span>
+        <div class="cmd-info">
+          <h4>Bug Report</h4>
+          <p>Standardized bug report with reproduction steps</p>
+        </div>
+      </div>
+      <div class="cmd-card cat-qa fade-up" data-cat="qa" role="listitem">
+        <span class="cmd-badge">/qa:regression</span>
+        <div class="cmd-info">
+          <h4>Regression</h4>
+          <p>Regression checklist before release</p>
+        </div>
+      </div>
+
+      <!-- Ops -->
+      <div class="cmd-card cat-ops fade-up" data-cat="ops" role="listitem">
+        <span class="cmd-badge">/ops:deploy</span>
+        <div class="cmd-info">
+          <h4>Deploy</h4>
+          <p>Deployment checklist + CI quality gate + rollback plan</p>
+        </div>
+      </div>
+      <div class="cmd-card cat-ops fade-up" data-cat="ops" role="listitem">
+        <span class="cmd-badge">/ops:incident</span>
+        <div class="cmd-info">
+          <h4>Incident</h4>
+          <p>Incident triage + parallel investigation + RCA template</p>
+        </div>
+      </div>
+
+      <!-- Sec -->
+      <div class="cmd-card cat-sec fade-up" data-cat="sec" role="listitem">
+        <span class="cmd-badge">/sec:review</span>
+        <div class="cmd-info">
+          <h4>Security Review</h4>
+          <p>OWASP Top 10 audit: Always check / Ask First / Never classification</p>
+        </div>
+      </div>
+
+      <!-- Docs -->
+      <div class="cmd-card cat-docs fade-up" data-cat="docs" role="listitem">
+        <span class="cmd-badge">/docs:update</span>
+        <div class="cmd-info">
+          <h4>Update Docs</h4>
+          <p>Update baseline screen/API docs after task verify</p>
+        </div>
+      </div>
+      <div class="cmd-card cat-docs fade-up" data-cat="docs" role="listitem">
+        <span class="cmd-badge">/docs:project</span>
+        <div class="cmd-info">
+          <h4>Project Docs</h4>
+          <p>Sync project-level docs: README, workflow guides, CLAUDE.md</p>
+        </div>
+      </div>
+
+      <!-- Scrum -->
+      <div class="cmd-card cat-scrum fade-up" data-cat="scrum" role="listitem">
+        <span class="cmd-badge">/sm:standup</span>
+        <div class="cmd-info">
+          <h4>Daily Standup</h4>
+          <p>Daily standup summary for the team</p>
+        </div>
+      </div>
+      <div class="cmd-card cat-scrum fade-up" data-cat="scrum" role="listitem">
+        <span class="cmd-badge">/sm:retro</span>
+        <div class="cmd-info">
+          <h4>Retrospective</h4>
+          <p>Sprint retrospective structured format</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── Workflow ── -->
+<section class="workflow" id="workflow">
+  <div class="container">
+    <div class="workflow-header">
+      <p class="section-label">How It Works</p>
+      <h2 class="section-title">Structured flows for every scenario</h2>
+      <p class="section-desc">Commands chain together into proven workflows — from full sprint planning to a single developer task.</p>
+    </div>
+
+    <div class="flow-tabs" role="tablist" aria-label="Workflow type">
+      <button class="flow-tab active" role="tab" aria-selected="true" onclick="switchFlow(this,'full')">Full Sprint</button>
+      <button class="flow-tab" role="tab" aria-selected="false" onclick="switchFlow(this,'dev')">Dev Task</button>
+    </div>
+
+    <div class="flow-content active" id="flow-full">
+      <p class="flow-section-label" style="color:var(--text-dimmer);margin-bottom:32px">Sprint Planning Phase</p>
+      <div class="flow-steps" aria-label="Full sprint workflow">
+        <div class="flow-step">
+          <div class="flow-node">
+            <code>/pm:ideate</code>
+            <span>Clarify idea</span>
+          </div>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-step">
+          <div class="flow-node">
+            <code>/ba:spec</code>
+            <span>Write spec</span>
+          </div>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-step">
+          <div class="flow-node">
+            <code>/ba:user-story</code>
+            <span>User stories</span>
+          </div>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-step">
+          <div class="flow-node">
+            <code>/pm:breakdown</code>
+            <span>Tasks + issues</span>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin:24px 0;color:var(--text-dimmer);font-size:1.5rem" aria-label="then for each task">↓</div>
+      <p class="flow-section-label" style="color:var(--text-dimmer);margin-bottom:32px">Per-Task Development Phase</p>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-node">
+            <code>/dev:analyze</code>
+            <span>2-3 options</span>
+          </div>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-step">
+          <div class="flow-node" style="border-color:rgba(245,158,11,0.4)">
+            <code style="color:var(--amber)">review</code>
+            <span>Human gate</span>
+          </div>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-step">
+          <div class="flow-node">
+            <code>/dev:implement</code>
+            <span>Build it</span>
+          </div>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-step">
+          <div class="flow-node">
+            <code>/dev:review</code>
+            <span>Code review</span>
+          </div>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-step">
+          <div class="flow-node">
+            <code>/dev:pr</code>
+            <span>PR description</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-content" id="flow-dev">
+      <div class="flow-steps" aria-label="Developer task workflow">
+        <div class="flow-step">
+          <div class="flow-node">
+            <code>/dev:analyze</code>
+            <span>Options</span>
+          </div>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-step">
+          <div class="flow-node" style="border-color:rgba(245,158,11,0.4)">
+            <code style="color:var(--amber)">review</code>
+            <span>analysis.md</span>
+          </div>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-step">
+          <div class="flow-node">
+            <code>/dev:implement</code>
+            <span>Implement</span>
+          </div>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-step">
+          <div class="flow-node">
+            <code>/dev:review</code>
+            <span>Review</span>
+          </div>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-step">
+          <div class="flow-node">
+            <code>/dev:pr</code>
+            <span>Ship it</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Agents table -->
+    <div style="margin-top:64px">
+      <p class="section-label" style="display:block;margin-bottom:16px">Subagent Architecture</p>
+      <div style="overflow-x:auto">
+        <table class="agents-table" aria-label="Subagent definitions">
+          <thead>
+            <tr>
+              <th>Agent</th>
+              <th>Used by</th>
+              <th>Model</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="agent-name">task-reader</span></td>
+              <td style="color:var(--text-dim)">/dev:analyze</td>
+              <td><span class="model-badge model-haiku">haiku</span></td>
+              <td style="color:var(--text-dim)">Parse issue → structured JSON</td>
+            </tr>
+            <tr>
+              <td><span class="agent-name">code-scout</span></td>
+              <td style="color:var(--text-dim)">/dev:analyze</td>
+              <td><span class="model-badge model-haiku">haiku</span></td>
+              <td style="color:var(--text-dim)">Find relevant files in codebase</td>
+            </tr>
+            <tr>
+              <td><span class="agent-name">planner</span></td>
+              <td style="color:var(--text-dim)">/dev:analyze</td>
+              <td><span class="model-badge model-sonnet">sonnet</span></td>
+              <td style="color:var(--text-dim)">Synthesize implementation options</td>
+            </tr>
+            <tr>
+              <td><span class="agent-name">diff-reader</span></td>
+              <td style="color:var(--text-dim)">/dev:pr, /docs:update</td>
+              <td><span class="model-badge model-haiku">haiku</span></td>
+              <td style="color:var(--text-dim)">Map diff → AC coverage</td>
+            </tr>
+            <tr>
+              <td><span class="agent-name">review-reader</span></td>
+              <td style="color:var(--text-dim)">/dev:review</td>
+              <td><span class="model-badge model-haiku">haiku</span></td>
+              <td style="color:var(--text-dim)">Parse diff → review signals</td>
+            </tr>
+            <tr>
+              <td><span class="agent-name">test-gen</span></td>
+              <td style="color:var(--text-dim)">/qa:testplan</td>
+              <td><span class="model-badge model-sonnet">sonnet</span></td>
+              <td style="color:var(--text-dim)">Generate test cases from spec</td>
+            </tr>
+            <tr>
+              <td><span class="agent-name">doc-updater</span></td>
+              <td style="color:var(--text-dim)">/docs:update</td>
+              <td><span class="model-badge model-sonnet">sonnet</span></td>
+              <td style="color:var(--text-dim)">Update baseline documentation</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── VTI Context ── -->
+<section class="vti" id="vti">
+  <div class="container">
+    <div class="vti-inner">
+      <div class="vti-grid">
+        <div>
+          <p class="section-label">VTI Context</p>
+          <h2 class="section-title">Built for the JP–VN outsource model</h2>
+          <p class="section-desc" style="margin-bottom:0">Optimized for VTI Software — a Vietnamese dev team working with Japanese clients via Bridge Engineers. Includes bilingual delivery commands out of the box.</p>
+
+          <div class="vti-roles">
+            <div class="vti-role">
+              <div class="vti-role-icon" style="background:rgba(6,182,212,0.1)" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              </div>
+              <div>
+                <h4>Bridge Engineer</h4>
+                <p>Translates JP client requirements → VN team spec using <code style="font-family:monospace;font-size:0.78rem;color:var(--cyan)">/be:bridge</code></p>
+              </div>
+            </div>
+            <div class="vti-role">
+              <div class="vti-role-icon" style="background:rgba(34,211,238,0.1)" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg>
+              </div>
+              <div>
+                <h4>BA writes Vietnamese spec</h4>
+                <p>From clarified requirements using <code style="font-family:monospace;font-size:0.78rem;color:var(--cyan)">/ba:spec</code></p>
+              </div>
+            </div>
+            <div class="vti-role">
+              <div class="vti-role-icon" style="background:rgba(16,185,129,0.1)" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
+              <div>
+                <h4>Dev implements with AI guidance</h4>
+                <p>Code comments in English, structured via <code style="font-family:monospace;font-size:0.78rem;color:var(--cyan)">/dev:implement</code></p>
+              </div>
+            </div>
+            <div class="vti-role">
+              <div class="vti-role-icon" style="background:rgba(245,158,11,0.1)" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <h4>JP-formatted deliverables</h4>
+                <p>設計書、単体テスト仕様書、成果物 formatted for Japanese clients</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="bilingual-demo" aria-label="Bilingual deliverable example">
+            <div class="bilingual-demo-label">Bilingual Deliverable Example</div>
+
+            <div class="bilingual-item">
+              <div class="bilingual-lang" style="color:var(--cyan)">JP — Requirements</div>
+              <div class="bilingual-text">ユーザーログイン機能の実装<br /><span style="color:var(--text-dim);font-size:0.8rem">セキュリティ要件：パスワード強度チェック必須</span></div>
+            </div>
+            <div class="bilingual-item">
+              <div class="bilingual-lang" style="color:var(--purple)">VN — Spec</div>
+              <div class="bilingual-text">Triển khai chức năng đăng nhập người dùng<br /><span style="color:var(--text-dim);font-size:0.8rem">Yêu cầu bảo mật: kiểm tra độ mạnh mật khẩu bắt buộc</span></div>
+            </div>
+            <div class="bilingual-item">
+              <div class="bilingual-lang" style="color:var(--green)">EN — Code Comments</div>
+              <div class="bilingual-text" style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:#86efac">// Validate password strength per JP security spec<br />// Min 8 chars, 1 uppercase, 1 number, 1 symbol</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── Install ── -->
+<section class="install-section" id="install">
+  <div class="container">
+    <div class="install-section-header">
+      <p class="section-label">Get Started</p>
+      <h2 class="section-title">Install in seconds</h2>
+      <p class="section-desc">Drop into any project. Works with Claude Code CLI. No build step required.</p>
+    </div>
+
+    <div class="install-cards">
+      <div class="install-card fade-up stagger-1">
+        <div class="install-card-header">
+          <div class="install-card-icon" style="background:rgba(34,211,238,0.1)" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div>
+            <h3>macOS / Linux</h3>
+            <p>Full install — all 26 commands</p>
+          </div>
+        </div>
+        <div class="code-block" aria-label="macOS Linux install command">
+          <span class="kw">npx</span> github:hiepdnh/Agentic-Development-Lifecycle <span class="fl">--yes</span>
+        </div>
+        <div class="what-installs">
+          Installs: <strong>.claude/commands/</strong> · <strong>agents/</strong> · <strong>templates/</strong> · <strong>docs/workflows/</strong>
+        </div>
+      </div>
+
+      <div class="install-card fade-up stagger-2">
+        <div class="install-card-header">
+          <div class="install-card-icon" style="background:rgba(168,85,247,0.1)" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v3"/><rect x="16" y="13" width="6" height="8" rx="1"/><path d="M19 17v.01"/></svg>
+          </div>
+          <div>
+            <h3>Windows</h3>
+            <p>PowerShell install</p>
+          </div>
+        </div>
+        <div class="code-block" aria-label="Windows PowerShell install command">
+          <span class="cm"># PowerShell</span><br />
+          <span class="kw">$tmp</span> = <span class="str">"$env:TEMP\vti-install"</span><br />
+          mkdir <span class="kw">$tmp</span> -Force; Set-Location <span class="kw">$tmp</span><br />
+          <span class="kw">npx</span> github:hiepdnh/Agentic-Development-Lifecycle <span class="fl">--yes</span>
+        </div>
+        <div class="what-installs">
+          Or use <strong>setup.ps1</strong> from the repo for a streamlined Windows experience.
+        </div>
+      </div>
+
+      <div class="install-card fade-up stagger-3">
+        <div class="install-card-header">
+          <div class="install-card-icon" style="background:rgba(16,185,129,0.1)" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div>
+            <h3>Developer Lite</h3>
+            <p>Minimal — dev workflow only</p>
+          </div>
+        </div>
+        <div class="code-block" aria-label="Developer Lite install command">
+          <span class="cm"># Dev workflow without PM/BA/QA/Ops</span><br />
+          <span class="kw">node</span> packages/developer-lite/bin/install.js <span class="fl">--yes</span>
+        </div>
+        <div class="what-installs">
+          Includes: <strong>/dev:analyze</strong> <strong>/dev:implement</strong> <strong>/dev:review</strong> <strong>/dev:pr</strong> <strong>/dev:debug</strong> <strong>/sec:review</strong> <strong>/arch:adr</strong> <strong>/docs:update</strong>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:48px">
+      <a href="https://github.com/hiepdnh/Agentic-Development-Lifecycle" class="btn-primary" target="_blank" rel="noopener" style="display:inline-flex">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        View on GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">
+          <div class="nav-logo-icon" aria-hidden="true">A</div>
+          <span>Agentic Development Lifecycle</span>
+        </div>
+        <div class="footer-links" style="margin-top:16px">
+          <a href="https://github.com/hiepdnh/Agentic-Development-Lifecycle" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com/hiepdnh/Agentic-Development-Lifecycle/blob/main/README.md" target="_blank" rel="noopener">Docs</a>
+          <a href="https://github.com/hiepdnh/Agentic-Development-Lifecycle/blob/main/SECURITY.md" target="_blank" rel="noopener">Security</a>
+          <a href="https://github.com/hiepdnh/Agentic-Development-Lifecycle/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <p>Built by VTI Software · For teams building with AI</p>
+        <div class="footer-badges">
+          <span class="footer-badge badge-mit">MIT License</span>
+          <span class="footer-badge badge-claude">Claude Code</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Tab switching (install hero) ──
+  function switchTab(btn, id) {
+    document.querySelectorAll('.install-tab').forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    document.querySelectorAll('.install-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    document.getElementById('tab-' + id).classList.add('active');
+  }
+
+  // ── Copy install command ──
+  function copyInstall(btn) {
+    const active = document.querySelector('.install-content.active pre');
+    if (!active) return;
+    const text = active.innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    });
+  }
+
+  // ── Flow tab switching ──
+  function switchFlow(btn, id) {
+    document.querySelectorAll('.flow-tab').forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    document.querySelectorAll('.flow-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    document.getElementById('flow-' + id).classList.add('active');
+  }
+
+  // ── Command filtering ──
+  function filterCmds(btn, cat) {
+    document.querySelectorAll('.cat-pill').forEach(p => {
+      p.classList.remove('active');
+      p.setAttribute('aria-pressed', 'false');
+    });
+    btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
+
+    const cards = document.querySelectorAll('.cmd-card');
+    cards.forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // ── Scroll-based fade-in ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
