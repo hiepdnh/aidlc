@@ -193,7 +193,7 @@
     padding: 8px 16px; border-radius: 9999px;
     border: 1px solid rgba(59, 73, 76, 0.6);
     color: #bac9cc; background: transparent;
-    display: inline-flex; align-items: center; gap-6px;
+    display: inline-flex; align-items: center;
     gap: 6px;
     cursor: pointer; transition: all 0.2s ease;
   }
@@ -316,6 +316,16 @@
   ::-webkit-scrollbar { width: 5px; }
   ::-webkit-scrollbar-track { background: #051424; }
   ::-webkit-scrollbar-thumb { background: rgba(0,229,255,0.2); border-radius: 99px; }
+
+  /* Focus visible */
+  :focus-visible {
+    outline: 2px solid rgba(0, 229, 255, 0.6);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
+  /* Touch target minimums */
+  .wf-tab { min-height: 44px; display: inline-flex; align-items: center; }
 </style>
 </head>
 <body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
@@ -331,15 +341,22 @@
     </div>
     <div class="hidden md:flex items-center gap-8">
       <a class="font-body-md text-body-md text-primary-fixed-dim border-b-2 border-primary-fixed-dim pb-1" href="#hero">Platform</a>
-      <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#workflow">Lifecycle</a>
-      <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#commands">Commands</a>
-      <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#vti">VTI Context</a>
-      <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#install">Docs</a>
+      <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#workflows" data-i18n="nav.workflow">Workflows</a>
+      <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#commands" data-i18n="nav.commands">Commands</a>
+      <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#vti" data-i18n="nav.vti">VTI Context</a>
+      <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#install" data-i18n="nav.install">Install</a>
     </div>
-    <a href="https://github.com/hiepdnh/Agentic-Development-Lifecycle" target="_blank" rel="noopener"
-       class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-label-mono text-label-mono font-bold hover:scale-105 active:scale-95 transition-all shadow-[0_0_15px_rgba(0,229,255,0.3)]">
-      Deploy Agent
-    </a>
+    <div class="flex items-center gap-3">
+      <div class="flex items-center gap-1 px-3 py-1.5 rounded-full border border-outline-variant/40 bg-surface-container/30 font-label-mono text-label-mono text-[12px]" role="group" aria-label="Language selector">
+        <button class="lang-btn px-1.5 py-0.5 rounded transition-colors cursor-pointer text-primary-container" data-lang="en" onclick="applyLang('en')">EN</button>
+        <span class="text-outline-variant/60" aria-hidden="true">|</span>
+        <button class="lang-btn px-1.5 py-0.5 rounded transition-colors cursor-pointer text-on-surface-variant" data-lang="vi" onclick="applyLang('vi')">VI</button>
+      </div>
+      <a href="https://github.com/hiepdnh/Agentic-Development-Lifecycle" target="_blank" rel="noopener"
+         class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-label-mono text-label-mono font-bold hover:scale-105 active:scale-95 transition-all shadow-[0_0_15px_rgba(0,229,255,0.3)]">
+        Deploy Agent
+      </a>
+    </div>
   </div>
 </nav>
 
@@ -352,15 +369,15 @@
   <section class="relative pt-32 pb-24 px-gutter max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center" id="hero">
     <div class="z-10">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/10 border border-secondary-container/20 mb-6">
-        <span class="material-symbols-outlined text-[16px] text-secondary">auto_awesome</span>
-        <span class="font-label-mono text-label-mono text-secondary">CLAUDE CODE SKILL PACK</span>
+        <span class="material-symbols-outlined text-[16px] text-secondary" aria-hidden="true">auto_awesome</span>
+        <span class="font-label-mono text-label-mono text-secondary" data-i18n="hero.badge">Agentic Development Lifecycle</span>
       </div>
       <h1 class="font-headline-xl text-headline-xl mb-6 text-primary leading-[1.1]">
-        Agentic<br/>
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-container to-secondary">Development Lifecycle</span>
+        <span data-i18n="hero.h1a">Ship faster.</span><br/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-container to-secondary" data-i18n="hero.h1b">Think in agents.</span>
       </h1>
-      <p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">
-        26 slash commands covering the full SDLC — for teams building software with AI assistance. Built for BA, PM, Dev, QA, Ops, and Scrum roles.
+      <p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl" data-i18n="hero.desc">
+        A structured Claude workflow system for software teams. 26 slash commands, 7 AI subagents, and role-based flows — from discovery to deploy.
       </p>
 
       <!-- Stats -->
@@ -385,13 +402,11 @@
 
       <div class="flex gap-4 flex-wrap">
         <a href="https://github.com/hiepdnh/Agentic-Development-Lifecycle" target="_blank" rel="noopener"
-           class="bg-primary-container text-on-primary-container px-8 py-4 rounded-xl font-headline-md text-[18px] font-semibold hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all">
-          Get Started
-        </a>
+           class="bg-primary-container text-on-primary-container px-8 py-4 rounded-xl font-headline-md text-[18px] font-semibold hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all"
+           data-i18n="hero.cta.primary">Deploy Agent</a>
         <a href="#commands"
-           class="glass-panel text-on-surface px-8 py-4 rounded-xl font-headline-md text-[18px] font-semibold border border-outline-variant/50 hover:bg-surface-variant/20 transition-all">
-          Browse Commands
-        </a>
+           class="glass-panel text-on-surface px-8 py-4 rounded-xl font-headline-md text-[18px] font-semibold border border-outline-variant/50 hover:bg-surface-variant/20 transition-all"
+           data-i18n="hero.cta.secondary">View on GitHub</a>
       </div>
     </div>
 
@@ -400,7 +415,8 @@
       <div class="relative w-full aspect-square rounded-3xl overflow-hidden glass-panel border border-primary-container/20 neon-glow-cyan">
         <img class="w-full h-full object-cover opacity-80"
              src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9KjPKbl5by6B_biw8SP9_TSfv8kYwshjJxF-CkV9aUVR4u-yZnW0VlmdMK3lT4wwRQ3OBjjBVjKK4jw6eVPX4t-Zf4QxTj2UCe69aEK15RoR5IDOq-w9vrBs7b2CYQP-jCM1-1SoRhwrQUQ_AsulUlAuQT9fKrU-EbmFsoGIHQic44Za1DtPUmO1ED8BSk_JpF5-P-FnzBf6m6wbfc9O1JYPjRwrphrZ67fmQ4zJAqn3oO2BRL9SsmQKRZxNPQ6RiAz3SFtMfwQ7A"
-             alt="Futuristic AI robot assistant in a high-tech digital environment with cyan neon accents"/>
+             alt="Futuristic AI robot assistant in a high-tech digital environment with cyan neon accents"
+             loading="eager" decoding="async" width="600" height="500"/>
         <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
         <div class="absolute bottom-8 left-8 right-8 p-6 glass-panel rounded-2xl border border-primary-container/30">
           <div class="flex items-center justify-between">
@@ -409,7 +425,7 @@
                 <span class="material-symbols-outlined text-primary-container">smart_toy</span>
               </div>
               <div>
-                <p class="font-label-mono text-label-mono text-primary">ACTIVE AGENT</p>
+                <p class="font-label-mono text-label-mono text-primary" data-i18n="hero.active_agent">ACTIVE AGENT</p>
                 <p class="font-headline-md text-[18px] text-white">Code Scout</p>
               </div>
             </div>
@@ -425,41 +441,41 @@
   <!-- ── ADLC Flow ── -->
   <section class="py-section-gap px-gutter max-w-container-max mx-auto" id="workflow">
     <div class="text-center mb-16 fade-up">
-      <h2 class="font-headline-lg text-headline-lg text-primary mb-4">The ADLC Flow</h2>
-      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
-        A structured lifecycle designed for high-performing agentic teams.
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-4" data-i18n="flow.title">From idea to production — with AI at every step</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto" data-i18n="flow.desc">
+        Each phase of the lifecycle has a dedicated slash command, subagent delegation, and structured output.
       </p>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
       <div class="glass-panel p-6 rounded-2xl border-t-2 border-primary-container hover:bg-primary-container/5 transition-all group cursor-default fade-up delay-1">
-        <span class="material-symbols-outlined text-primary-container mb-4 block group-hover:scale-110 transition-transform">lightbulb</span>
-        <h3 class="font-label-mono text-label-mono text-white mb-2">1. IDEATE</h3>
-        <p class="font-body-md text-[14px] text-on-surface-variant">Define ideas and high-level goals.</p>
+        <span class="material-symbols-outlined text-primary-container mb-4 block group-hover:scale-110 transition-transform" aria-hidden="true">lightbulb</span>
+        <h3 class="font-label-mono text-label-mono text-white mb-2"><span data-i18n="flow.ideate.name">Ideate</span></h3>
+        <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="flow.ideate.desc">Capture & clarify the idea</p>
       </div>
       <div class="glass-panel p-6 rounded-2xl border-t-2 border-primary-fixed-dim hover:bg-primary-fixed-dim/5 transition-all group cursor-default fade-up delay-2">
-        <span class="material-symbols-outlined text-primary-fixed-dim mb-4 block group-hover:scale-110 transition-transform">description</span>
-        <h3 class="font-label-mono text-label-mono text-white mb-2">2. SPEC</h3>
-        <p class="font-body-md text-[14px] text-on-surface-variant">Write technical specs and requirements.</p>
+        <span class="material-symbols-outlined text-primary-fixed-dim mb-4 block group-hover:scale-110 transition-transform" aria-hidden="true">description</span>
+        <h3 class="font-label-mono text-label-mono text-white mb-2"><span data-i18n="flow.spec.name">Spec</span></h3>
+        <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="flow.spec.desc">Write user stories & acceptance criteria</p>
       </div>
       <div class="glass-panel p-6 rounded-2xl border-t-2 border-primary-fixed-dim hover:bg-primary-fixed-dim/5 transition-all group cursor-default fade-up delay-3">
-        <span class="material-symbols-outlined text-primary-fixed-dim mb-4 block group-hover:scale-110 transition-transform">search</span>
-        <h3 class="font-label-mono text-label-mono text-white mb-2">3. ANALYZE</h3>
-        <p class="font-body-md text-[14px] text-on-surface-variant">Analyze code and plan solutions.</p>
+        <span class="material-symbols-outlined text-primary-fixed-dim mb-4 block group-hover:scale-110 transition-transform" aria-hidden="true">search</span>
+        <h3 class="font-label-mono text-label-mono text-white mb-2"><span data-i18n="flow.analyze.name">Analyze</span></h3>
+        <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="flow.analyze.desc">Risk classify & plan implementation</p>
       </div>
       <div class="glass-panel p-6 rounded-2xl border-t-2 border-secondary hover:bg-secondary/5 transition-all group cursor-default fade-up delay-1">
-        <span class="material-symbols-outlined text-secondary mb-4 block group-hover:scale-110 transition-transform">code</span>
-        <h3 class="font-label-mono text-label-mono text-white mb-2">4. IMPLEMENT</h3>
-        <p class="font-body-md text-[14px] text-on-surface-variant">Build features with agentic assistance.</p>
+        <span class="material-symbols-outlined text-secondary mb-4 block group-hover:scale-110 transition-transform" aria-hidden="true">code</span>
+        <h3 class="font-label-mono text-label-mono text-white mb-2"><span data-i18n="flow.implement.name">Implement</span></h3>
+        <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="flow.implement.desc">Code with structured output artifacts</p>
       </div>
       <div class="glass-panel p-6 rounded-2xl border-t-2 border-secondary hover:bg-secondary/5 transition-all group cursor-default fade-up delay-2">
-        <span class="material-symbols-outlined text-secondary mb-4 block group-hover:scale-110 transition-transform">verified_user</span>
-        <h3 class="font-label-mono text-label-mono text-white mb-2">5. REVIEW</h3>
-        <p class="font-body-md text-[14px] text-on-surface-variant">Security and deep code review.</p>
+        <span class="material-symbols-outlined text-secondary mb-4 block group-hover:scale-110 transition-transform" aria-hidden="true">verified_user</span>
+        <h3 class="font-label-mono text-label-mono text-white mb-2"><span data-i18n="flow.review.name">Review</span></h3>
+        <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="flow.review.desc">AI-assisted PR review</p>
       </div>
       <div class="glass-panel p-6 rounded-2xl border-t-2 border-secondary-fixed-dim hover:bg-secondary-fixed-dim/5 transition-all group cursor-default fade-up delay-3">
-        <span class="material-symbols-outlined text-secondary-fixed-dim mb-4 block group-hover:scale-110 transition-transform">science</span>
-        <h3 class="font-label-mono text-label-mono text-white mb-2">6. TEST</h3>
-        <p class="font-body-md text-[14px] text-on-surface-variant">Automated testing and validation.</p>
+        <span class="material-symbols-outlined text-secondary-fixed-dim mb-4 block group-hover:scale-110 transition-transform" aria-hidden="true">science</span>
+        <h3 class="font-label-mono text-label-mono text-white mb-2"><span data-i18n="flow.test.name">Test</span></h3>
+        <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="flow.test.desc">Generate & execute test plans</p>
       </div>
       <div class="glass-panel p-6 rounded-2xl border-t-2 border-primary-container hover:bg-primary-container/5 transition-all group cursor-default fade-up delay-4">
         <span class="material-symbols-outlined text-primary-container mb-4 block group-hover:scale-110 transition-transform">rocket_launch</span>
@@ -470,40 +486,47 @@
   </section>
 
   <!-- ── Workflows ── -->
-  <section class="py-section-gap px-gutter max-w-container-max mx-auto" id="workflows-section">
+  <section class="py-section-gap px-gutter max-w-container-max mx-auto" id="workflows">
     <div class="mb-12 fade-up">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/10 border border-primary-container/20 mb-4">
         <span class="material-symbols-outlined text-[16px] text-primary-container">account_tree</span>
-        <span class="font-label-mono text-label-mono text-primary-container">SKILL WORKFLOWS</span>
+        <span class="font-label-mono text-label-mono text-primary-container" data-i18n="workflows.badge">ROLE WORKFLOWS</span>
       </div>
-      <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Workflows by role</h2>
-      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
-        26 skills chained into proven flows — từ Discovery đến Deploy. Chọn role để xem luồng tương ứng.
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-4" data-i18n="workflows.title">Every role has a dedicated flow</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl" data-i18n="workflows.intro">
+        26 skills chained into proven flows — from Discovery to Deploy. Select your role to see the corresponding workflow.
       </p>
     </div>
 
     <!-- Role tabs — state managed by CSS .wf-tab.active only -->
     <div class="flex flex-wrap gap-2 mb-8 fade-up" role="tablist">
-      <button class="wf-tab active" onclick="switchWf(this,'jp')" role="tab" aria-selected="true">
-        <span class="material-symbols-outlined">translate</span> Bridge Engineer
+      <button id="tab-jp" class="wf-tab active" onclick="switchWf(this,'jp')" role="tab" aria-selected="true" aria-controls="wf-jp">
+        <span class="material-symbols-outlined" aria-hidden="true">translate</span>
+        <span data-i18n="workflows.tab.bridge">Bridge Engineer</span>
       </button>
-      <button class="wf-tab" onclick="switchWf(this,'brownfield')" role="tab" aria-selected="false">
-        <span class="material-symbols-outlined">foundation</span> Brownfield
+      <button id="tab-brownfield" class="wf-tab" onclick="switchWf(this,'brownfield')" role="tab" aria-selected="false" aria-controls="wf-brownfield">
+        <span class="material-symbols-outlined" aria-hidden="true">foundation</span>
+        <span data-i18n="workflows.tab.brownfield">Brownfield</span>
       </button>
-      <button class="wf-tab" onclick="switchWf(this,'pmba')" role="tab" aria-selected="false">
-        <span class="material-symbols-outlined">assignment</span> PM / BA
+      <button id="tab-pmba" class="wf-tab" onclick="switchWf(this,'pmba')" role="tab" aria-selected="false" aria-controls="wf-pmba">
+        <span class="material-symbols-outlined" aria-hidden="true">assignment</span>
+        <span data-i18n="workflows.tab.pmba">PM / BA</span>
       </button>
-      <button class="wf-tab" onclick="switchWf(this,'dev')" role="tab" aria-selected="false">
-        <span class="material-symbols-outlined">code</span> Dev per Issue
+      <button id="tab-dev" class="wf-tab" onclick="switchWf(this,'dev')" role="tab" aria-selected="false" aria-controls="wf-dev">
+        <span class="material-symbols-outlined" aria-hidden="true">code</span>
+        <span data-i18n="workflows.tab.dev">Dev per Issue</span>
       </button>
-      <button class="wf-tab" onclick="switchWf(this,'qa')" role="tab" aria-selected="false">
-        <span class="material-symbols-outlined">science</span> QA
+      <button id="tab-qa" class="wf-tab" onclick="switchWf(this,'qa')" role="tab" aria-selected="false" aria-controls="wf-qa">
+        <span class="material-symbols-outlined" aria-hidden="true">science</span>
+        <span data-i18n="workflows.tab.qa">QA</span>
       </button>
-      <button class="wf-tab" onclick="switchWf(this,'arch')" role="tab" aria-selected="false">
-        <span class="material-symbols-outlined">architecture</span> Architecture
+      <button id="tab-arch" class="wf-tab" onclick="switchWf(this,'arch')" role="tab" aria-selected="false" aria-controls="wf-arch">
+        <span class="material-symbols-outlined" aria-hidden="true">architecture</span>
+        <span data-i18n="workflows.tab.arch">Architecture</span>
       </button>
-      <button class="wf-tab" onclick="switchWf(this,'sprint')" role="tab" aria-selected="false">
-        <span class="material-symbols-outlined">loop</span> Sprint Ops
+      <button id="tab-sprint" class="wf-tab" onclick="switchWf(this,'sprint')" role="tab" aria-selected="false" aria-controls="wf-sprint">
+        <span class="material-symbols-outlined" aria-hidden="true">loop</span>
+        <span data-i18n="workflows.tab.sprint">Sprint Ops</span>
       </button>
     </div>
 
@@ -511,47 +534,47 @@
     <div class="glass-panel rounded-3xl border border-outline-variant/30 overflow-hidden fade-up" style="border-top: 2px solid rgba(0,229,255,0.2);">
 
       <!-- JP Bridge -->
-      <div class="wf-panel" id="wf-jp">
+      <div class="wf-panel" id="wf-jp" role="tabpanel" aria-labelledby="tab-jp">
         <div class="px-8 pt-8 pb-5 border-b border-outline-variant/20">
           <div class="flex items-center gap-3 mb-2">
             <span class="material-symbols-outlined text-primary-container">translate</span>
             <h3 class="font-headline-md text-headline-md text-white">Bridge Engineer — JP Outsource Entry</h3>
           </div>
-          <p class="font-body-md text-body-md text-on-surface-variant">Nhận yêu cầu từ khách JP → dịch → tạo spec song ngữ JP-VN.</p>
+          <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="wf.bridge.desc">Receive JP client request → translate → create bilingual JP-VN spec.</p>
         </div>
         <div class="p-8">
           <div class="flow-diagram mb-8">
             <!-- Start node -->
             <div class="flow-node flow-node-start">
-              <span class="material-symbols-outlined fn-icon">flag</span>
+              <span class="material-symbols-outlined fn-icon" aria-hidden="true">flag</span>
               <span class="fn-label">JP Client</span>
-              <span class="fn-sub">Yêu cầu JP</span>
+              <span class="fn-sub" data-i18n="wf.bridge.req">JP Request</span>
             </div>
             <!-- Arrow -->
-            <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="flow-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <!-- Command node -->
             <div class="flow-node flow-node-cmd" style="--fc:0,229,255">
               <span class="fn-cmd">/be:bridge</span>
               <span class="fn-label">Bridge Engineer</span>
-              <span class="fn-sub">Dịch + phân tích</span>
+              <span class="fn-sub" data-i18n="wf.bridge.translate">Translate + Analyze</span>
             </div>
             <!-- Fork -->
             <div class="flow-fork">
               <div class="flow-fork-stem"></div>
               <div class="flow-fork-branch">
                 <div class="flex items-center gap-2">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="color:#3b494c;flex-shrink:0"><path d="M2 8h10M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="color:#3b494c;flex-shrink:0" aria-hidden="true"><path d="M2 8h10M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   <div class="flow-node flow-node-doc">
-                    <span class="material-symbols-outlined fn-icon" style="font-size:16px">description</span>
-                    <span class="fn-label">設計書 JP</span>
+                    <span class="material-symbols-outlined fn-icon" style="font-size:16px" aria-hidden="true">description</span>
+                    <span class="fn-label" data-i18n="wf.bridge.design">JP Design Doc</span>
                     <span class="fn-sub">Deliverable JP</span>
                   </div>
                 </div>
                 <div class="flex items-center gap-2 mt-2">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="color:#3b494c;flex-shrink:0"><path d="M2 8h10M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="color:#3b494c;flex-shrink:0" aria-hidden="true"><path d="M2 8h10M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   <div class="flow-node flow-node-cmd" style="--fc:0,229,255">
                     <span class="fn-cmd">/ba:spec</span>
-                    <span class="fn-label">BA — spec VN</span>
+                    <span class="fn-label" data-i18n="wf.bridge.spec">BA — VN Spec</span>
                     <span class="fn-sub">requirements.md</span>
                   </div>
                 </div>
@@ -561,19 +584,19 @@
           <div class="p-4 rounded-lg bg-surface-container-low border border-primary-container/20 font-label-mono text-[13px]">
             <span class="text-primary-container">OUTPUT</span>
             <span class="text-on-surface-variant/50 mx-2">·</span>
-            <span class="text-on-surface-variant">設計書 (JP) · requirements.md (VN) · bilingual glossary</span>
+            <span class="text-on-surface-variant" data-i18n="wf.bridge.output">設計書 (JP) · requirements.md (VN) · bilingual glossary</span>
           </div>
         </div>
       </div>
 
       <!-- Brownfield -->
-      <div class="wf-panel hidden" id="wf-brownfield">
+      <div class="wf-panel hidden" id="wf-brownfield" role="tabpanel" aria-labelledby="tab-brownfield">
         <div class="px-8 pt-8 pb-5 border-b border-outline-variant/20">
           <div class="flex items-center gap-3 mb-2">
             <span class="material-symbols-outlined text-secondary">foundation</span>
             <h3 class="font-headline-md text-headline-md text-white">Brownfield Onboarding — Legacy Take-over</h3>
           </div>
-          <p class="font-body-md text-body-md text-on-surface-variant">Tiếp nhận codebase cũ → reverse engineer → tạo baseline docs → feature mới.</p>
+          <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="wf.brownfield.desc">Inherit legacy codebase → reverse engineer → create baseline docs → add new feature.</p>
         </div>
         <div class="p-8">
           <div class="flow-diagram mb-6">
@@ -606,7 +629,7 @@
           </div>
           <div class="flex items-center gap-4 mb-6">
             <div class="blueprint-line flex-1"></div>
-            <span class="font-label-mono text-[11px] text-on-surface-variant/50 uppercase tracking-widest whitespace-nowrap">Sau đó — feature mới</span>
+            <span class="font-label-mono text-[11px] text-on-surface-variant/50 uppercase tracking-widest whitespace-nowrap" data-i18n="wf.brownfield.after">Then — new feature</span>
             <div class="blueprint-line flex-1"></div>
           </div>
           <div class="flow-diagram">
@@ -618,34 +641,34 @@
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-cmd" style="--fc:0,229,255">
               <span class="fn-cmd">/ba:spec</span>
-              <span class="fn-label">Feature mới</span>
-              <span class="fn-sub">Có full context</span>
+              <span class="fn-label" data-i18n="wf.brownfield.feature">New Feature</span>
+              <span class="fn-sub" data-i18n="wf.brownfield.context">Full Context</span>
             </div>
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-start" style="border-style:dashed">
               <span class="material-symbols-outlined fn-icon">more_horiz</span>
               <span class="fn-label">Dev flow</span>
-              <span class="fn-sub">→ xem Dev tab</span>
+              <span class="fn-sub" data-i18n="wf.brownfield.dev_link">→ see Dev tab</span>
             </div>
           </div>
         </div>
       </div>
 
       <!-- PM/BA -->
-      <div class="wf-panel hidden" id="wf-pmba">
+      <div class="wf-panel hidden" id="wf-pmba" role="tabpanel" aria-labelledby="tab-pmba">
         <div class="px-8 pt-8 pb-5 border-b border-outline-variant/20">
           <div class="flex items-center gap-3 mb-2">
             <span class="material-symbols-outlined text-secondary">assignment</span>
             <h3 class="font-headline-md text-headline-md text-white">PM / BA — Discovery → Planning</h3>
           </div>
-          <p class="font-body-md text-body-md text-on-surface-variant">Từ ý tưởng mơ hồ → spec rõ ràng → user stories → task breakdown.</p>
+          <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="wf.pmba.desc">From vague idea → clear spec → user stories → task breakdown.</p>
         </div>
         <div class="p-8">
           <div class="flow-diagram mb-8">
             <div class="flow-node flow-node-start">
               <span class="material-symbols-outlined fn-icon">lightbulb</span>
-              <span class="fn-label">Ý tưởng</span>
-              <span class="fn-sub">Vấn đề</span>
+              <span class="fn-label" data-i18n="wf.pmba.idea">Idea / Problem</span>
+              <span class="fn-sub"></span>
             </div>
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-cmd" style="--fc:221,183,255">
@@ -681,28 +704,28 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
             <div class="p-4 rounded-lg bg-surface-container-low border border-primary-container/20">
               <p class="font-label-mono text-[11px] text-primary-container mb-2 uppercase tracking-wider">Gate · /ba:user-story</p>
-              <p class="font-body-md text-[13px] text-on-surface-variant">Cần /ba:spec done trước</p>
+              <p class="font-body-md text-[13px] text-on-surface-variant" data-i18n="wf.pmba.gate.ba_spec">Requires /ba:spec done</p>
             </div>
             <div class="p-4 rounded-lg bg-surface-container-low border border-primary-container/20">
               <p class="font-label-mono text-[11px] text-primary-container mb-2 uppercase tracking-wider">Gate · /pm:breakdown</p>
-              <p class="font-body-md text-[13px] text-on-surface-variant">Cần User Stories đã có</p>
+              <p class="font-body-md text-[13px] text-on-surface-variant" data-i18n="wf.pmba.gate.user_story">Requires User Stories to exist</p>
             </div>
             <div class="p-4 rounded-lg bg-surface-container-low border border-secondary/20">
               <p class="font-label-mono text-[11px] text-secondary mb-2 uppercase tracking-wider">Parallel</p>
-              <p class="font-body-md text-[13px] text-on-surface-variant">/ba:spec → /qa:testplan song song với Dev</p>
+              <p class="font-body-md text-[13px] text-on-surface-variant" data-i18n="wf.pmba.gate.parallel">/ba:spec → /qa:testplan parallel with Dev</p>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Dev -->
-      <div class="wf-panel hidden" id="wf-dev">
+      <div class="wf-panel hidden" id="wf-dev" role="tabpanel" aria-labelledby="tab-dev">
         <div class="px-8 pt-8 pb-5 border-b border-outline-variant/20">
           <div class="flex items-center gap-3 mb-2">
             <span class="material-symbols-outlined text-primary-fixed-dim">code</span>
             <h3 class="font-headline-md text-headline-md text-white">Dev Cycle — Per Issue</h3>
           </div>
-          <p class="font-body-md text-body-md text-on-surface-variant">Mỗi issue đi qua Risk Classifier trước — 3 lane: tiny / normal / high-risk.</p>
+          <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="wf.dev.desc">Each issue goes through Risk Classifier first — 3 lanes: tiny / normal / high-risk.</p>
         </div>
         <div class="p-8">
           <!-- Risk Classifier -->
@@ -786,21 +809,21 @@
           <div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant/20 flex items-center gap-3">
             <span class="material-symbols-outlined text-on-surface-variant/60 flex-shrink-0">sync</span>
             <p class="font-body-md text-[13px] text-on-surface-variant">
-              <span class="font-label-mono text-[11px] text-on-surface-variant/60 uppercase tracking-wider">Bug loop — </span>
-              implement → debug → implement &nbsp;·&nbsp; review blocking issue → implement
+              <span class="font-label-mono text-[11px] text-on-surface-variant/60 uppercase tracking-wider" data-i18n="wf.dev.bug_loop">Bug loop</span>
+              <span class="ml-1">— </span><span data-i18n="wf.dev.bug_detail">implement → debug → implement · review blocking issue → implement</span>
             </p>
           </div>
         </div>
       </div>
 
       <!-- QA -->
-      <div class="wf-panel hidden" id="wf-qa">
+      <div class="wf-panel hidden" id="wf-qa" role="tabpanel" aria-labelledby="tab-qa">
         <div class="px-8 pt-8 pb-5 border-b border-outline-variant/20">
           <div class="flex items-center gap-3 mb-2">
             <span class="material-symbols-outlined text-tertiary-fixed-dim">science</span>
-            <h3 class="font-headline-md text-headline-md text-white">QA Cycle — Parallel với Dev</h3>
+            <h3 class="font-headline-md text-headline-md text-white" data-i18n="wf.qa.title">QA Cycle — Parallel with Dev</h3>
           </div>
-          <p class="font-body-md text-body-md text-on-surface-variant">QA chạy song song từ lúc có spec — không chờ Dev xong mới bắt đầu.</p>
+          <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="wf.qa.desc">QA runs in parallel from the moment spec exists — does not wait for Dev to finish.</p>
         </div>
         <div class="p-8">
           <div class="flow-diagram mb-8">
@@ -868,13 +891,13 @@
       </div>
 
       <!-- Architecture -->
-      <div class="wf-panel hidden" id="wf-arch">
+      <div class="wf-panel hidden" id="wf-arch" role="tabpanel" aria-labelledby="tab-arch">
         <div class="px-8 pt-8 pb-5 border-b border-outline-variant/20">
           <div class="flex items-center gap-3 mb-2">
             <span class="material-symbols-outlined text-primary-fixed">architecture</span>
-            <h3 class="font-headline-md text-headline-md text-white">Architecture — Xuyên suốt sprint</h3>
+            <h3 class="font-headline-md text-headline-md text-white" data-i18n="wf.arch.title">Architecture — Throughout the Sprint</h3>
           </div>
-          <p class="font-body-md text-body-md text-on-surface-variant">Không phải một giai đoạn riêng — trigger bất cứ khi nào có quyết định kỹ thuật lớn.</p>
+          <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="wf.arch.desc">Not a separate phase — triggers whenever a significant technical decision is needed.</p>
         </div>
         <div class="p-8">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -884,19 +907,19 @@
                 <span class="material-symbols-outlined text-primary-fixed">rate_review</span>
                 <span class="font-label-mono text-label-mono text-primary-fixed">/arch:review</span>
               </div>
-              <p class="font-body-md text-[14px] text-on-surface-variant mb-4">Design decision review với trade-off analysis. Trigger khi:</p>
+              <p class="font-body-md text-[14px] text-on-surface-variant mb-4" data-i18n="wf.arch.trigger_label">Design decision review with trade-off analysis. Triggers when:</p>
               <ul class="space-y-2 font-body-md text-[13px] text-on-surface-variant">
                 <li class="flex items-start gap-2">
-                  <span class="material-symbols-outlined text-primary-container text-[14px] mt-0.5 flex-shrink-0">arrow_forward</span>
-                  Planning có design phức tạp
+                  <span class="material-symbols-outlined text-primary-container text-[14px] mt-0.5 flex-shrink-0" aria-hidden="true">arrow_forward</span>
+                  <span data-i18n="wf.arch.trigger1">Planning has complex design</span>
                 </li>
                 <li class="flex items-start gap-2">
-                  <span class="material-symbols-outlined text-primary-container text-[14px] mt-0.5 flex-shrink-0">arrow_forward</span>
-                  /dev:implement gặp quyết định lớn
+                  <span class="material-symbols-outlined text-primary-container text-[14px] mt-0.5 flex-shrink-0" aria-hidden="true">arrow_forward</span>
+                  <span data-i18n="wf.arch.trigger2">/dev:implement hits a major decision</span>
                 </li>
                 <li class="flex items-start gap-2">
-                  <span class="material-symbols-outlined text-primary-container text-[14px] mt-0.5 flex-shrink-0">arrow_forward</span>
-                  PR có breaking change
+                  <span class="material-symbols-outlined text-primary-container text-[14px] mt-0.5 flex-shrink-0" aria-hidden="true">arrow_forward</span>
+                  <span data-i18n="wf.arch.trigger3">PR has a breaking change</span>
                 </li>
               </ul>
             </div>
@@ -906,11 +929,11 @@
                 <span class="material-symbols-outlined text-primary-fixed">article</span>
                 <span class="font-label-mono text-label-mono text-primary-fixed">/arch:adr</span>
               </div>
-              <p class="font-body-md text-[14px] text-on-surface-variant mb-4">Tạo Architecture Decision Record. Output:</p>
+              <p class="font-body-md text-[14px] text-on-surface-variant mb-4" data-i18n="wf.arch.output_label">Creates Architecture Decision Record. Output:</p>
               <div class="font-label-mono text-[12px] p-3 rounded-lg bg-surface-container-lowest border border-primary-fixed/20 text-primary-fixed">
                 docs/decisions/ADR-NNN.md
               </div>
-              <p class="font-body-md text-[13px] text-on-surface-variant mt-4">Sau khi có ADR → /arch:review update design nếu cần (bidirectional)</p>
+              <p class="font-body-md text-[13px] text-on-surface-variant mt-4" data-i18n="wf.arch.bidirectional">After ADR → /arch:review updates design if needed (bidirectional)</p>
             </div>
           </div>
           <div class="p-4 rounded-lg bg-surface-container-low border border-primary-fixed/20 flex items-center gap-3">
@@ -918,20 +941,20 @@
             <p class="font-body-md text-[13px] text-on-surface-variant">
               <span class="font-label-mono text-[11px] text-primary-fixed">/arch:review ↔ /arch:adr</span>
               <span class="text-on-surface-variant/60 ml-2">—</span>
-              <span class="ml-2">bidirectional. Review dẫn đến ADR, ADR update design dẫn đến review mới.</span>
+              <span class="ml-2" data-i18n="wf.arch.note">Bidirectional. Review leads to ADR, ADR updates design leads to new review.</span>
             </p>
           </div>
         </div>
       </div>
 
       <!-- Sprint Ops -->
-      <div class="wf-panel hidden" id="wf-sprint">
+      <div class="wf-panel hidden" id="wf-sprint" role="tabpanel" aria-labelledby="tab-sprint">
         <div class="px-8 pt-8 pb-5 border-b border-outline-variant/20">
           <div class="flex items-center gap-3 mb-2">
             <span class="material-symbols-outlined text-secondary">loop</span>
             <h3 class="font-headline-md text-headline-md text-white">Sprint Ops — Scrum Rituals</h3>
           </div>
-          <p class="font-body-md text-body-md text-on-surface-variant">Chạy lặp lại song song với Dev/QA suốt sprint.</p>
+          <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="wf.sprint.loop">Runs repeatedly in parallel with Dev/QA throughout the sprint.</p>
         </div>
         <div class="p-8">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
@@ -942,7 +965,7 @@
                 <span class="font-label-mono text-label-mono text-secondary">/sm:standup</span>
               </div>
               <p class="font-label-mono text-[11px] text-on-surface-variant/60 mb-2 uppercase tracking-wider">Daily</p>
-              <p class="font-body-md text-[14px] text-on-surface-variant">Tóm tắt standup cho team. Mỗi sáng hoặc khi cần báo cáo nhanh.</p>
+              <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="wf.sprint.standup">Daily standup summary for the team. Every morning or when a quick report is needed.</p>
             </div>
             <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 hover:border-secondary/30 transition-all group relative overflow-hidden">
               <div class="absolute top-0 left-0 right-0 h-0.5 bg-secondary/40"></div>
@@ -951,7 +974,7 @@
                 <span class="font-label-mono text-label-mono text-secondary">/pm:status</span>
               </div>
               <p class="font-label-mono text-[11px] text-on-surface-variant/60 mb-2 uppercase tracking-wider">Weekly / On-demand</p>
-              <p class="font-body-md text-[14px] text-on-surface-variant">Sprint status report cho stakeholders. Trigger từ /sm:standup hoặc khi có milestone.</p>
+              <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="wf.sprint.report">Sprint status report for stakeholders. Triggered from /sm:standup or on milestone.</p>
             </div>
             <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 hover:border-secondary/30 transition-all group relative overflow-hidden">
               <div class="absolute top-0 left-0 right-0 h-0.5 bg-secondary/40"></div>
@@ -960,7 +983,7 @@
                 <span class="font-label-mono text-label-mono text-secondary">/sm:retro</span>
               </div>
               <p class="font-label-mono text-[11px] text-on-surface-variant/60 mb-2 uppercase tracking-wider">Sprint End</p>
-              <p class="font-body-md text-[14px] text-on-surface-variant">Retrospective có cấu trúc. Trigger cuối sprint từ /sm:standup.</p>
+              <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="wf.sprint.retro">Structured retrospective. Triggered end-of-sprint from /sm:standup.</p>
             </div>
           </div>
           <div class="p-4 rounded-lg bg-surface-container-low border border-secondary/20 font-label-mono text-[13px]">
@@ -975,54 +998,54 @@
 
     <!-- Gate dependencies table -->
     <div class="mt-8 fade-up">
-      <button class="flex items-center gap-2 font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors mb-4" onclick="toggleGates(this)">
-        <span class="material-symbols-outlined text-[18px]">expand_more</span>
-        Gate Dependencies — điều kiện tiên quyết cho mỗi skill
+      <button class="flex items-center gap-2 font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors mb-4" onclick="toggleGates(this)" aria-expanded="false" aria-controls="gates-table">
+        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">expand_more</span>
+        <span data-i18n="gates.toggle">Gate Dependencies — prerequisite conditions for each skill</span>
       </button>
       <div id="gates-table" class="hidden overflow-x-auto">
         <table class="w-full glass-panel rounded-2xl border border-outline-variant/30 overflow-hidden">
           <thead>
             <tr class="border-b border-outline-variant/20">
               <th class="text-left px-6 py-4 font-label-mono text-label-mono text-on-surface-variant">SKILL</th>
-              <th class="text-left px-4 py-4 font-label-mono text-label-mono text-on-surface-variant">YÊU CẦU TRƯỚC</th>
+              <th class="text-left px-4 py-4 font-label-mono text-label-mono text-on-surface-variant" data-i18n="gates.col.req">PREREQUISITE</th>
             </tr>
           </thead>
           <tbody>
             <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
               <td class="px-6 py-3 font-label-mono text-label-mono text-primary-container">/ba:user-story</td>
-              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant">/ba:spec đã done</td>
+              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant" data-i18n="gates.row.dev_analyze">/ba:spec done</td>
             </tr>
             <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
               <td class="px-6 py-3 font-label-mono text-label-mono text-primary-container">/pm:breakdown</td>
-              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant">/ba:user-story hoặc User Stories đã có</td>
+              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant" data-i18n="gates.row.dev_implement">/ba:user-story or User Stories exist</td>
             </tr>
             <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
               <td class="px-6 py-3 font-label-mono text-label-mono text-primary-container">/dev:analyze</td>
-              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant">Risk Classifier đã chạy + Issue/task rõ ràng (AC defined)</td>
+              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant" data-i18n="gates.row.dev_pr">Risk Classifier run + Issue/task clear (AC defined)</td>
             </tr>
             <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
               <td class="px-6 py-3 font-label-mono text-label-mono text-primary-container">/dev:implement</td>
-              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant">docs/tasks/[ID]/analysis.md đã tồn tại</td>
+              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant" data-i18n="gates.row.dev_review">docs/tasks/[ID]/analysis.md exists</td>
             </tr>
             <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
               <td class="px-6 py-3 font-label-mono text-label-mono text-primary-container">/dev:review</td>
-              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant">/dev:implement Bước 5 done + verification.md saved + Harness Delta check done</td>
+              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant" data-i18n="gates.row.docs_update">/dev:implement Step 5 done + verification.md saved + Harness Delta check done</td>
             </tr>
             <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
               <td class="px-6 py-3 font-label-mono text-label-mono text-primary-container">/dev:pr</td>
-              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant">/dev:review Approve + không có blocking issues</td>
+              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant" data-i18n="gates.row.qa_regression">/dev:review Approved + no blocking issues</td>
             </tr>
             <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
               <td class="px-6 py-3 font-label-mono text-label-mono text-primary-container">/docs:update</td>
-              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant">PR đã merge</td>
+              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant" data-i18n="gates.row.qa_report">PR merged</td>
             </tr>
             <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
               <td class="px-6 py-3 font-label-mono text-label-mono text-primary-container">/qa:regression</td>
-              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant">Tất cả PR của sprint đã merge</td>
+              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant" data-i18n="gates.row.sm_report">All sprint PRs merged</td>
             </tr>
             <tr class="hover:bg-surface-container/30 transition-colors">
               <td class="px-6 py-3 font-label-mono text-label-mono text-primary-container">/ops:deploy</td>
-              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant">/qa:regression đã sign-off</td>
+              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant" data-i18n="gates.row.sm_retro">/qa:regression signed off</td>
             </tr>
           </tbody>
         </table>
@@ -1031,48 +1054,48 @@
   </section>
 
   <!-- ── Features ── -->
-  <section class="py-section-gap px-gutter max-w-container-max mx-auto">
+  <section class="py-section-gap px-gutter max-w-container-max mx-auto" id="features">
     <div class="text-center mb-16 fade-up">
-      <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Built for how AI-assisted teams work</h2>
-      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
-        Structured commands, multi-agent delegation, and human decision gates — stay in control while AI handles heavy lifting.
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-4" data-i18n="features.title">The complete agentic toolkit</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto" data-i18n="features.desc">
+        Every command outputs structured artifacts. Every artifact feeds the next command.
       </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 relative overflow-hidden group fade-up delay-1">
         <div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/5 rounded-full blur-3xl group-hover:bg-primary-container/10 transition-all"></div>
         <span class="material-symbols-outlined text-primary-container text-4xl mb-6 block">hub</span>
-        <h4 class="font-headline-md text-headline-md text-white mb-4">Multi-Agent Pattern</h4>
+        <h3 class="font-headline-md text-headline-md text-white mb-4">Multi-Agent Pattern</h3>
         <p class="font-body-md text-body-md text-on-surface-variant">Heavy tasks spawn specialized lightweight subagents — haiku for parsing, sonnet for synthesis — keeping your main context window clean.</p>
       </div>
       <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 relative overflow-hidden group fade-up delay-2">
         <div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-3xl group-hover:bg-secondary/10 transition-all"></div>
         <span class="material-symbols-outlined text-secondary text-4xl mb-6 block">person_search</span>
-        <h4 class="font-headline-md text-headline-md text-white mb-4">Human-in-the-Loop</h4>
+        <h3 class="font-headline-md text-headline-md text-white mb-4">Human-in-the-Loop</h3>
         <p class="font-body-md text-body-md text-on-surface-variant">Every command includes mandatory decision gates. Claude presents options and waits for your approval. No blind execution, ever.</p>
       </div>
       <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 relative overflow-hidden group fade-up delay-3">
         <div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/5 rounded-full blur-3xl group-hover:bg-primary-container/10 transition-all"></div>
         <span class="material-symbols-outlined text-primary-container text-4xl mb-6 block">auto_stories</span>
-        <h4 class="font-headline-md text-headline-md text-white mb-4">Two-Tier Documentation</h4>
+        <h3 class="font-headline-md text-headline-md text-white mb-4">Two-Tier Documentation</h3>
         <p class="font-body-md text-body-md text-on-surface-variant">Ephemeral per-task docs (gitignored) for in-progress work, plus living baseline docs updated after each verified merge.</p>
       </div>
       <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 relative overflow-hidden group fade-up delay-1">
         <div class="absolute top-0 right-0 w-32 h-32 bg-secondary-fixed-dim/5 rounded-full blur-3xl group-hover:bg-secondary-fixed-dim/10 transition-all"></div>
         <span class="material-symbols-outlined text-secondary-fixed-dim text-4xl mb-6 block">devices</span>
-        <h4 class="font-headline-md text-headline-md text-white mb-4">Developer Lite Option</h4>
+        <h3 class="font-headline-md text-headline-md text-white mb-4">Developer Lite Option</h3>
         <p class="font-body-md text-body-md text-on-surface-variant">A minimal subset for teams needing only core dev workflow — without PM/BA/QA/Ops overhead. 8 focused commands, install in seconds.</p>
       </div>
       <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 relative overflow-hidden group fade-up delay-2">
         <div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/5 rounded-full blur-3xl group-hover:bg-primary-container/10 transition-all"></div>
         <span class="material-symbols-outlined text-primary-container text-4xl mb-6 block">security</span>
-        <h4 class="font-headline-md text-headline-md text-white mb-4">Security-First Review</h4>
+        <h3 class="font-headline-md text-headline-md text-white mb-4">Security-First Review</h3>
         <p class="font-body-md text-body-md text-on-surface-variant">Built-in OWASP Top 10 security review with Always/Ask/Never classification. Security is part of the workflow, not bolted on.</p>
       </div>
       <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 relative overflow-hidden group fade-up delay-3">
         <div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-3xl group-hover:bg-secondary/10 transition-all"></div>
         <span class="material-symbols-outlined text-secondary text-4xl mb-6 block">groups</span>
-        <h4 class="font-headline-md text-headline-md text-white mb-4">Full SDLC Coverage</h4>
+        <h3 class="font-headline-md text-headline-md text-white mb-4">Full SDLC Coverage</h3>
         <p class="font-body-md text-body-md text-on-surface-variant">From ideation to deployment — BA, PM, Dev, Arch, QA, DevOps, Security, Docs, and Scrum roles all covered in one cohesive framework.</p>
       </div>
     </div>
@@ -1311,10 +1334,10 @@
     <div class="fade-up mb-12 text-center">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/10 border border-primary-container/20 mb-6">
         <span class="material-symbols-outlined text-[16px] text-primary-container">account_tree</span>
-        <span class="font-label-mono text-label-mono text-primary-container">SUBAGENT ARCHITECTURE</span>
+        <span class="font-label-mono text-label-mono text-primary-container" data-i18n="subagents.badge">SUBAGENT ARCHITECTURE</span>
       </div>
-      <h2 class="font-headline-lg text-headline-lg text-white mb-4">Specialized AI Agents</h2>
-      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Heavy tasks delegate to lightweight subagents — keeping your main context window clean and focused.</p>
+      <h2 class="font-headline-lg text-headline-lg text-white mb-4" data-i18n="subagents.title">Specialized AI Agents</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto" data-i18n="subagents.desc">Heavy tasks delegate to lightweight subagents — keeping your main context window clean and focused.</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 fade-up delay-1">
@@ -1323,7 +1346,7 @@
       <div class="agent-card glass-panel rounded-2xl border border-outline-variant/30 p-6 flex flex-col items-center text-center group hover:border-primary-container/40 transition-all duration-300 relative overflow-hidden" style="--ac:0,229,255">
         <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-container/40 to-transparent"></div>
         <div class="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-primary-container/20 group-hover:ring-primary-container/50 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.25)]">
-          <img src="agents/task-reader.png" alt="Task Reader agent" class="w-full h-full object-cover">
+          <img src="agents/task-reader.png" alt="Task Reader agent" class="w-full h-full object-cover" loading="lazy" decoding="async" width="96" height="96">
         </div>
         <h3 class="font-label-mono text-label-mono text-primary-container mb-1">task-reader</h3>
         <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Parse issue → structured JSON for downstream agents</p>
@@ -1337,7 +1360,7 @@
       <div class="agent-card glass-panel rounded-2xl border border-outline-variant/30 p-6 flex flex-col items-center text-center group hover:border-primary-container/40 transition-all duration-300 relative overflow-hidden" style="--ac:0,229,255">
         <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-container/40 to-transparent"></div>
         <div class="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-primary-container/20 group-hover:ring-primary-container/50 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.25)]">
-          <img src="agents/code-scout.png" alt="Code Scout agent" class="w-full h-full object-cover">
+          <img src="agents/code-scout.png" alt="Code Scout agent" class="w-full h-full object-cover" loading="lazy" decoding="async" width="96" height="96">
         </div>
         <h3 class="font-label-mono text-label-mono text-primary-container mb-1">code-scout</h3>
         <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Find relevant files and symbols across the codebase</p>
@@ -1351,7 +1374,7 @@
       <div class="agent-card glass-panel rounded-2xl border border-outline-variant/30 p-6 flex flex-col items-center text-center group hover:border-secondary/40 transition-all duration-300 relative overflow-hidden" style="--ac:221,183,255">
         <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-secondary/40 to-transparent"></div>
         <div class="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-secondary/20 group-hover:ring-secondary/50 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(221,183,255,0.25)]">
-          <img src="agents/planner.png" alt="Planner agent" class="w-full h-full object-cover">
+          <img src="agents/planner.png" alt="Planner agent" class="w-full h-full object-cover" loading="lazy" decoding="async" width="96" height="96">
         </div>
         <h3 class="font-label-mono text-label-mono text-secondary mb-1">planner</h3>
         <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Synthesize implementation options and plan approach</p>
@@ -1365,7 +1388,7 @@
       <div class="agent-card glass-panel rounded-2xl border border-outline-variant/30 p-6 flex flex-col items-center text-center group hover:border-primary-container/40 transition-all duration-300 relative overflow-hidden" style="--ac:0,229,255">
         <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-container/40 to-transparent"></div>
         <div class="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-primary-container/20 group-hover:ring-primary-container/50 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.25)]">
-          <img src="agents/diff-reader.png" alt="Diff Reader agent" class="w-full h-full object-cover">
+          <img src="agents/diff-reader.png" alt="Diff Reader agent" class="w-full h-full object-cover" loading="lazy" decoding="async" width="96" height="96">
         </div>
         <h3 class="font-label-mono text-label-mono text-primary-container mb-1">diff-reader</h3>
         <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Map diff output to acceptance criteria coverage</p>
@@ -1379,7 +1402,7 @@
       <div class="agent-card glass-panel rounded-2xl border border-outline-variant/30 p-6 flex flex-col items-center text-center group hover:border-primary-container/40 transition-all duration-300 relative overflow-hidden" style="--ac:0,229,255">
         <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-container/40 to-transparent"></div>
         <div class="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-primary-container/20 group-hover:ring-primary-container/50 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.25)]">
-          <img src="agents/review-reader.png" alt="Review Reader agent" class="w-full h-full object-cover">
+          <img src="agents/review-reader.png" alt="Review Reader agent" class="w-full h-full object-cover" loading="lazy" decoding="async" width="96" height="96">
         </div>
         <h3 class="font-label-mono text-label-mono text-primary-container mb-1">review-reader</h3>
         <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Parse PR diff and extract actionable review signals</p>
@@ -1393,7 +1416,7 @@
       <div class="agent-card glass-panel rounded-2xl border border-outline-variant/30 p-6 flex flex-col items-center text-center group hover:border-secondary/40 transition-all duration-300 relative overflow-hidden" style="--ac:221,183,255">
         <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-secondary/40 to-transparent"></div>
         <div class="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-secondary/20 group-hover:ring-secondary/50 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(221,183,255,0.25)]">
-          <img src="agents/test-gen.png" alt="Test Gen agent" class="w-full h-full object-cover">
+          <img src="agents/test-gen.png" alt="Test Gen agent" class="w-full h-full object-cover" loading="lazy" decoding="async" width="96" height="96">
         </div>
         <h3 class="font-label-mono text-label-mono text-secondary mb-1">test-gen</h3>
         <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Generate structured test cases from specification</p>
@@ -1407,7 +1430,7 @@
       <div class="agent-card glass-panel rounded-2xl border border-outline-variant/30 p-6 flex flex-col items-center text-center group hover:border-secondary/40 transition-all duration-300 relative overflow-hidden" style="--ac:221,183,255">
         <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-secondary/40 to-transparent"></div>
         <div class="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-secondary/20 group-hover:ring-secondary/50 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(221,183,255,0.25)]">
-          <img src="agents/doc-updater.png" alt="Doc Updater agent" class="w-full h-full object-cover">
+          <img src="agents/doc-updater.png" alt="Doc Updater agent" class="w-full h-full object-cover" loading="lazy" decoding="async" width="96" height="96">
         </div>
         <h3 class="font-label-mono text-label-mono text-secondary mb-1">doc-updater</h3>
         <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Update baseline documentation after code changes</p>
@@ -1426,38 +1449,38 @@
       <div class="fade-up">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/10 border border-secondary-container/20 mb-6">
           <span class="material-symbols-outlined text-[16px] text-secondary">language</span>
-          <span class="font-label-mono text-label-mono text-secondary">VTI CONTEXT</span>
+          <span class="font-label-mono text-label-mono text-secondary" data-i18n="vti.badge">VTI CONTEXT</span>
         </div>
-        <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Built for the JP–VN outsource model</h2>
-        <p class="font-body-lg text-body-lg text-on-surface-variant mb-8">
+        <h2 class="font-headline-lg text-headline-lg text-primary mb-4" data-i18n="vti.title">Built for the JP–VN outsource model</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant mb-8" data-i18n="vti.desc">
           Optimized for VTI Software — a Vietnamese dev team working with Japanese clients via Bridge Engineers. Bilingual delivery commands out of the box.
         </p>
         <div class="space-y-4">
           <div class="glass-panel p-5 rounded-2xl flex items-start gap-4">
             <span class="material-symbols-outlined text-primary-container flex-shrink-0">record_voice_over</span>
             <div>
-              <h4 class="font-label-mono text-label-mono text-white mb-1">BRIDGE ENGINEER</h4>
+              <h3 class="font-label-mono text-label-mono text-white mb-1" data-i18n="vti.be.title">BRIDGE ENGINEER</h3>
               <p class="font-body-md text-[14px] text-on-surface-variant">Translates JP client requirements → VN team spec using <code class="text-primary-container">/be:bridge</code></p>
             </div>
           </div>
           <div class="glass-panel p-5 rounded-2xl flex items-start gap-4">
             <span class="material-symbols-outlined text-primary-fixed-dim flex-shrink-0">edit_note</span>
             <div>
-              <h4 class="font-label-mono text-label-mono text-white mb-1">BA WRITES VIETNAMESE SPEC</h4>
+              <h3 class="font-label-mono text-label-mono text-white mb-1" data-i18n="vti.ba.title">BA WRITES VIETNAMESE SPEC</h3>
               <p class="font-body-md text-[14px] text-on-surface-variant">From clarified requirements using <code class="text-primary-container">/ba:spec</code></p>
             </div>
           </div>
           <div class="glass-panel p-5 rounded-2xl flex items-start gap-4">
             <span class="material-symbols-outlined text-secondary flex-shrink-0">code</span>
             <div>
-              <h4 class="font-label-mono text-label-mono text-white mb-1">DEV IMPLEMENTS WITH AI GUIDANCE</h4>
+              <h3 class="font-label-mono text-label-mono text-white mb-1" data-i18n="vti.dev.title">DEV IMPLEMENTS WITH AI GUIDANCE</h3>
               <p class="font-body-md text-[14px] text-on-surface-variant">Code comments in English, structured via <code class="text-primary-container">/dev:implement</code></p>
             </div>
           </div>
           <div class="glass-panel p-5 rounded-2xl flex items-start gap-4">
             <span class="material-symbols-outlined text-secondary-fixed-dim flex-shrink-0">inventory_2</span>
             <div>
-              <h4 class="font-label-mono text-label-mono text-white mb-1">JP-FORMATTED DELIVERABLES</h4>
+              <h3 class="font-label-mono text-label-mono text-white mb-1" data-i18n="vti.jp.title">JP-FORMATTED DELIVERABLES</h3>
               <p class="font-body-md text-[14px] text-on-surface-variant">設計書、単体テスト仕様書、成果物 formatted for Japanese clients</p>
             </div>
           </div>
@@ -1467,7 +1490,7 @@
       <!-- Bilingual demo -->
       <div class="glass-panel rounded-3xl border border-outline-variant/30 overflow-hidden fade-up delay-2">
         <div class="bg-surface-container-high px-6 py-4 flex items-center justify-between border-b border-outline-variant/30">
-          <div class="flex gap-2">
+          <div class="flex gap-2" aria-hidden="true">
             <div class="w-3 h-3 rounded-full bg-error"></div>
             <div class="w-3 h-3 rounded-full bg-secondary"></div>
             <div class="w-3 h-3 rounded-full bg-primary-container"></div>
@@ -1510,14 +1533,14 @@
   <!-- ── Terminal / Install ── -->
   <section class="py-section-gap px-gutter max-w-container-max mx-auto" id="install">
     <div class="text-center mb-12 fade-up">
-      <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Install in seconds</h2>
-      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
-        Drop into any project. Works with Claude Code CLI. No build step required.
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-4" data-i18n="install.title">Deploy in 60 seconds</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto" data-i18n="install.desc">
+        One command initializes the full ADLC workspace — commands, subagents, templates, and documentation scaffolding.
       </p>
     </div>
     <div class="glass-panel rounded-3xl border border-outline-variant/30 overflow-hidden shadow-2xl fade-up">
       <div class="bg-surface-container-high px-6 py-4 flex items-center justify-between border-b border-outline-variant/30">
-        <div class="flex gap-2">
+        <div class="flex gap-2" aria-hidden="true">
           <div class="w-3 h-3 rounded-full bg-error"></div>
           <div class="w-3 h-3 rounded-full bg-secondary"></div>
           <div class="w-3 h-3 rounded-full bg-primary-container"></div>
@@ -1543,12 +1566,12 @@
         <!-- Install options -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
-            <p class="text-primary-container mb-2 text-[11px] uppercase tracking-wider">macOS / Linux</p>
+            <p class="text-primary-container mb-2 text-[11px] uppercase tracking-wider" data-i18n="install.tab.unix">macOS / Linux</p>
             <code class="text-secondary-fixed-dim break-all">npx github:hiepdnh/Agentic-Development-Lifecycle --yes</code>
           </div>
           <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
-            <p class="text-primary-container mb-2 text-[11px] uppercase tracking-wider">Windows PowerShell</p>
-            <code class="text-secondary-fixed-dim">$tmp="$env:TEMP\vti"; mkdir $tmp; cd $tmp; npx ... --yes</code>
+            <p class="text-primary-container mb-2 text-[11px] uppercase tracking-wider" data-i18n="install.tab.windows">Windows</p>
+            <code class="text-secondary-fixed-dim break-all">$tmp="$env:TEMP\vti"; mkdir $tmp; cd $tmp; npx ... --yes</code>
           </div>
           <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
             <p class="text-secondary mb-2 text-[11px] uppercase tracking-wider">Developer Lite</p>
@@ -1585,8 +1608,8 @@
         <span class="text-on-surface-variant opacity-30">|</span>
         <span class="font-label-mono text-label-mono text-on-surface-variant">v1.0.4-agentic</span>
       </div>
-      <p class="font-body-md text-body-md text-tertiary-fixed-dim max-w-xs text-center md:text-left opacity-80">
-        Engineered for the Agentic Era. Build with the speed of thought.
+      <p class="font-body-md text-body-md text-tertiary-fixed-dim max-w-xs text-center md:text-left opacity-80" data-i18n="footer.tagline">
+        Agentic Development Lifecycle — built for AI-native engineering teams.
       </p>
     </div>
     <div class="flex flex-wrap justify-center gap-8">
@@ -1618,6 +1641,242 @@
 </footer>
 
 <script>
+  // ── i18n ──
+  const I18N = {
+    en: {
+      'nav.workflow': 'Workflows',
+      'nav.commands': 'Commands',
+      'nav.vti': 'VTI Context',
+      'nav.install': 'Install',
+      'hero.badge': 'Agentic Development Lifecycle',
+      'hero.h1a': 'Ship faster.',
+      'hero.h1b': 'Think in agents.',
+      'hero.desc': 'A structured Claude workflow system for software teams. 26 slash commands, 7 AI subagents, and role-based flows — from discovery to deploy.',
+      'hero.cta.primary': 'Deploy Agent',
+      'hero.cta.secondary': 'View on GitHub',
+      'hero.active_agent': 'ACTIVE AGENT',
+      'stat.skills': 'Skills',
+      'stat.subagents': 'Subagents',
+      'stat.roles': 'Roles',
+      'stat.commands': 'Commands',
+      'flow.badge': 'THE ADLC FLOW',
+      'flow.title': 'From idea to production — with AI at every step',
+      'flow.desc': 'Each phase of the lifecycle has a dedicated slash command, subagent delegation, and structured output.',
+      'flow.ideate.name': 'Ideate', 'flow.ideate.desc': 'Capture & clarify the idea',
+      'flow.spec.name': 'Spec', 'flow.spec.desc': 'Write user stories & acceptance criteria',
+      'flow.analyze.name': 'Analyze', 'flow.analyze.desc': 'Risk classify & plan implementation',
+      'flow.implement.name': 'Implement', 'flow.implement.desc': 'Code with structured output artifacts',
+      'flow.review.name': 'Review', 'flow.review.desc': 'AI-assisted PR review',
+      'flow.test.name': 'Test', 'flow.test.desc': 'Generate & execute test plans',
+      'flow.document.name': 'Document', 'flow.document.desc': 'Auto-update project documentation',
+      'flow.sprint.name': 'Sprint Ops', 'flow.sprint.desc': 'Standups, reports & retrospectives',
+      'workflows.badge': 'ROLE WORKFLOWS',
+      'workflows.title': 'Every role has a dedicated flow',
+      'workflows.intro': '26 skills chained into proven flows — from Discovery to Deploy. Select your role to see the corresponding workflow.',
+      'workflows.tab.bridge': 'Bridge Engineer',
+      'workflows.tab.brownfield': 'Brownfield',
+      'workflows.tab.pmba': 'PM / BA',
+      'workflows.tab.dev': 'Dev per Issue',
+      'workflows.tab.qa': 'QA',
+      'workflows.tab.arch': 'Architecture',
+      'workflows.tab.sprint': 'Sprint Ops',
+      'wf.bridge.desc': 'Receive JP client request → translate → create bilingual JP-VN spec.',
+      'wf.bridge.req': 'JP Request',
+      'wf.bridge.translate': 'Translate + Analyze',
+      'wf.bridge.spec': 'BA — VN Spec',
+      'wf.bridge.design': 'JP Design Doc',
+      'wf.bridge.output': '設計書 (JP) · requirements.md (VN) · bilingual glossary',
+      'wf.brownfield.desc': 'Inherit legacy codebase → reverse engineer → create baseline docs → add new feature.',
+      'wf.brownfield.after': 'Then — new feature',
+      'wf.brownfield.feature': 'New Feature',
+      'wf.brownfield.context': 'Full Context',
+      'wf.brownfield.dev_link': '→ see Dev tab',
+      'wf.pmba.desc': 'From vague idea → clear spec → user stories → task breakdown.',
+      'wf.pmba.idea': 'Idea / Problem',
+      'wf.pmba.gate.ba_spec': 'Requires /ba:spec done',
+      'wf.pmba.gate.user_story': 'Requires User Stories to exist',
+      'wf.pmba.gate.parallel': '/ba:spec → /qa:testplan parallel with Dev',
+      'wf.dev.desc': 'Each issue goes through Risk Classifier first — 3 lanes: tiny / normal / high-risk.',
+      'wf.dev.bug_loop': 'Bug loop',
+      'wf.dev.bug_detail': 'implement → debug → implement · review blocking issue → implement',
+      'wf.qa.title': 'QA Cycle — Parallel with Dev',
+      'wf.qa.desc': 'QA runs in parallel from the moment spec exists — does not wait for Dev to finish.',
+      'wf.arch.title': 'Architecture — Throughout the Sprint',
+      'wf.arch.desc': 'Not a separate phase — triggers whenever a significant technical decision is needed.',
+      'wf.arch.trigger_label': 'Design decision review with trade-off analysis. Triggers when:',
+      'wf.arch.trigger1': 'Planning has complex design',
+      'wf.arch.trigger2': '/dev:implement hits a major decision',
+      'wf.arch.trigger3': 'PR has a breaking change',
+      'wf.arch.output_label': 'Creates Architecture Decision Record. Output:',
+      'wf.arch.bidirectional': 'After ADR → /arch:review updates design if needed (bidirectional)',
+      'wf.arch.note': 'Bidirectional. Review leads to ADR, ADR updates design leads to new review.',
+      'wf.arch.loop': 'Runs repeatedly in parallel with Dev/QA throughout the sprint.',
+      'wf.sprint.loop': 'Runs repeatedly in parallel with Dev/QA throughout the sprint.',
+      'wf.sprint.standup': 'Daily standup summary for the team. Every morning or when a quick report is needed.',
+      'wf.sprint.report': 'Sprint status report for stakeholders. Triggered from /sm:standup or on milestone.',
+      'wf.sprint.retro': 'Structured retrospective. Triggered end-of-sprint from /sm:standup.',
+      'gates.toggle': 'Gate Dependencies — prerequisite conditions for each skill',
+      'gates.col.req': 'PREREQUISITE',
+      'gates.row.dev_analyze': '/ba:spec done',
+      'gates.row.dev_implement': '/ba:user-story or User Stories exist',
+      'gates.row.dev_pr': 'Risk Classifier run + Issue/task clear (AC defined)',
+      'gates.row.dev_review': 'docs/tasks/[ID]/analysis.md exists',
+      'gates.row.docs_update': '/dev:implement Step 5 done + verification.md saved + Harness Delta check done',
+      'gates.row.qa_regression': '/dev:review Approved + no blocking issues',
+      'gates.row.qa_report': 'PR merged',
+      'gates.row.sm_report': 'All sprint PRs merged',
+      'gates.row.sm_retro': '/qa:regression signed off',
+      'features.badge': 'BUILT FOR DEVELOPERS',
+      'features.title': 'The complete agentic toolkit',
+      'features.desc': 'Every command outputs structured artifacts. Every artifact feeds the next command.',
+      'subagents.badge': 'SUBAGENT ARCHITECTURE',
+      'subagents.title': 'Specialized AI Agents',
+      'subagents.desc': 'Heavy tasks delegate to lightweight subagents — keeping your main context window clean and focused.',
+      'vti.badge': 'VTI CONTEXT',
+      'vti.title': 'Built for the JP–VN outsource model',
+      'vti.desc': 'Optimized for VTI Software — a Vietnamese dev team working with Japanese clients via Bridge Engineers. Bilingual delivery commands out of the box.',
+      'vti.be.title': 'BRIDGE ENGINEER',
+      'vti.ba.title': 'BA WRITES VIETNAMESE SPEC',
+      'vti.dev.title': 'DEV IMPLEMENTS WITH AI GUIDANCE',
+      'vti.jp.title': 'JP-FORMATTED DELIVERABLES',
+      'install.badge': 'QUICK INSTALL',
+      'install.title': 'Deploy in 60 seconds',
+      'install.desc': 'One command initializes the full ADLC workspace — commands, subagents, templates, and documentation scaffolding.',
+      'install.tab.unix': 'macOS / Linux',
+      'install.tab.windows': 'Windows',
+      'footer.tagline': 'Agentic Development Lifecycle — built for AI-native engineering teams.',
+      'footer.made': 'Built at VTI Software',
+    },
+    vi: {
+      'nav.workflow': 'Luồng Làm Việc',
+      'nav.commands': 'Lệnh',
+      'nav.vti': 'Bối Cảnh VTI',
+      'nav.install': 'Cài Đặt',
+      'hero.badge': 'Vòng Đời Phát Triển Agentic',
+      'hero.h1a': 'Ship nhanh hơn.',
+      'hero.h1b': 'Tư duy theo agents.',
+      'hero.desc': 'Hệ thống workflow Claude có cấu trúc cho các team phần mềm. 26 lệnh slash, 7 AI subagent, và luồng theo vai trò — từ khám phá đến triển khai.',
+      'hero.cta.primary': 'Triển Khai Agent',
+      'hero.cta.secondary': 'Xem trên GitHub',
+      'hero.active_agent': 'AGENT ĐANG HOẠT ĐỘNG',
+      'stat.skills': 'Kỹ Năng',
+      'stat.subagents': 'Subagent',
+      'stat.roles': 'Vai Trò',
+      'stat.commands': 'Lệnh',
+      'flow.badge': 'VÒNG ĐỜI ADLC',
+      'flow.title': 'Từ ý tưởng đến production — với AI ở mỗi bước',
+      'flow.desc': 'Mỗi giai đoạn vòng đời có lệnh slash riêng, ủy quyền subagent, và đầu ra có cấu trúc.',
+      'flow.ideate.name': 'Ý Tưởng', 'flow.ideate.desc': 'Thu thập & làm rõ ý tưởng',
+      'flow.spec.name': 'Spec', 'flow.spec.desc': 'Viết user story & tiêu chí chấp nhận',
+      'flow.analyze.name': 'Phân Tích', 'flow.analyze.desc': 'Phân loại rủi ro & lên kế hoạch',
+      'flow.implement.name': 'Triển Khai', 'flow.implement.desc': 'Code với artifact đầu ra có cấu trúc',
+      'flow.review.name': 'Review', 'flow.review.desc': 'Review PR hỗ trợ bởi AI',
+      'flow.test.name': 'Kiểm Thử', 'flow.test.desc': 'Tạo & thực thi test plan',
+      'flow.document.name': 'Tài Liệu', 'flow.document.desc': 'Tự động cập nhật tài liệu dự án',
+      'flow.sprint.name': 'Vận Hành Sprint', 'flow.sprint.desc': 'Standup, báo cáo & retrospective',
+      'workflows.badge': 'LUỒNG THEO VAI TRÒ',
+      'workflows.title': 'Mỗi vai trò có luồng riêng',
+      'workflows.intro': '26 skill được kết nối thành luồng đã được kiểm chứng — từ Discovery đến Deploy. Chọn vai trò để xem luồng tương ứng.',
+      'workflows.tab.bridge': 'Bridge Engineer',
+      'workflows.tab.brownfield': 'Brownfield',
+      'workflows.tab.pmba': 'PM / BA',
+      'workflows.tab.dev': 'Dev theo Issue',
+      'workflows.tab.qa': 'QA',
+      'workflows.tab.arch': 'Kiến Trúc',
+      'workflows.tab.sprint': 'Vận Hành Sprint',
+      'wf.bridge.desc': 'Nhận yêu cầu từ khách JP → dịch → tạo spec song ngữ JP-VN.',
+      'wf.bridge.req': 'Yêu cầu JP',
+      'wf.bridge.translate': 'Dịch + phân tích',
+      'wf.bridge.spec': 'BA — spec VN',
+      'wf.bridge.design': 'Tài liệu thiết kế JP',
+      'wf.bridge.output': '設計書 (JP) · requirements.md (VN) · bảng thuật ngữ song ngữ',
+      'wf.brownfield.desc': 'Tiếp nhận codebase cũ → reverse engineer → tạo baseline docs → thêm feature mới.',
+      'wf.brownfield.after': 'Sau đó — feature mới',
+      'wf.brownfield.feature': 'Feature mới',
+      'wf.brownfield.context': 'Có full context',
+      'wf.brownfield.dev_link': '→ xem tab Dev',
+      'wf.pmba.desc': 'Từ ý tưởng mơ hồ → spec rõ ràng → user stories → task breakdown.',
+      'wf.pmba.idea': 'Ý tưởng / Vấn đề',
+      'wf.pmba.gate.ba_spec': 'Cần /ba:spec đã hoàn thành',
+      'wf.pmba.gate.user_story': 'Cần User Stories đã có',
+      'wf.pmba.gate.parallel': '/ba:spec → /qa:testplan song song với Dev',
+      'wf.dev.desc': 'Mỗi issue đi qua Risk Classifier trước — 3 làn: tiny / normal / high-risk.',
+      'wf.dev.bug_loop': 'Vòng lặp bug',
+      'wf.dev.bug_detail': 'implement → debug → implement · review có vấn đề chặn → implement',
+      'wf.qa.title': 'Chu kỳ QA — Song song với Dev',
+      'wf.qa.desc': 'QA chạy song song từ lúc có spec — không chờ Dev xong mới bắt đầu.',
+      'wf.arch.title': 'Kiến Trúc — Xuyên suốt sprint',
+      'wf.arch.desc': 'Không phải một giai đoạn riêng — kích hoạt bất cứ khi nào có quyết định kỹ thuật lớn.',
+      'wf.arch.trigger_label': 'Review quyết định thiết kế với phân tích trade-off. Kích hoạt khi:',
+      'wf.arch.trigger1': 'Planning có thiết kế phức tạp',
+      'wf.arch.trigger2': '/dev:implement gặp quyết định lớn',
+      'wf.arch.trigger3': 'PR có breaking change',
+      'wf.arch.output_label': 'Tạo Architecture Decision Record. Đầu ra:',
+      'wf.arch.bidirectional': 'Sau khi có ADR → /arch:review cập nhật thiết kế nếu cần (hai chiều)',
+      'wf.arch.note': 'Hai chiều. Review dẫn đến ADR, ADR cập nhật thiết kế dẫn đến review mới.',
+      'wf.arch.loop': 'Chạy lặp lại song song với Dev/QA suốt sprint.',
+      'wf.sprint.loop': 'Chạy lặp lại song song với Dev/QA suốt sprint.',
+      'wf.sprint.standup': 'Tóm tắt standup cho team. Mỗi sáng hoặc khi cần báo cáo nhanh.',
+      'wf.sprint.report': 'Sprint status report cho stakeholders. Trigger từ /sm:standup hoặc khi có milestone.',
+      'wf.sprint.retro': 'Retrospective có cấu trúc. Trigger cuối sprint từ /sm:standup.',
+      'gates.toggle': 'Điều kiện cổng — điều kiện tiên quyết cho mỗi skill',
+      'gates.col.req': 'YÊU CẦU TRƯỚC',
+      'gates.row.dev_analyze': '/ba:spec đã hoàn thành',
+      'gates.row.dev_implement': '/ba:user-story hoặc User Stories đã có',
+      'gates.row.dev_pr': 'Risk Classifier đã chạy + Issue/task rõ ràng (AC đã xác định)',
+      'gates.row.dev_review': 'docs/tasks/[ID]/analysis.md đã tồn tại',
+      'gates.row.docs_update': '/dev:implement Bước 5 done + verification.md lưu + Harness Delta check done',
+      'gates.row.qa_regression': '/dev:review Approved + không có blocking issues',
+      'gates.row.qa_report': 'PR đã merge',
+      'gates.row.sm_report': 'Tất cả PR của sprint đã merge',
+      'gates.row.sm_retro': '/qa:regression đã sign-off',
+      'features.badge': 'DÀNH CHO LẬP TRÌNH VIÊN',
+      'features.title': 'Bộ công cụ agentic hoàn chỉnh',
+      'features.desc': 'Mỗi lệnh tạo ra artifact có cấu trúc. Mỗi artifact cung cấp dữ liệu cho lệnh tiếp theo.',
+      'subagents.badge': 'KIẾN TRÚC SUBAGENT',
+      'subagents.title': 'Các AI Agent Chuyên Biệt',
+      'subagents.desc': 'Tác vụ nặng được ủy quyền cho subagent nhỏ — giữ context window chính sạch và tập trung.',
+      'vti.badge': 'BỐI CẢNH VTI',
+      'vti.title': 'Được tối ưu cho mô hình outsource JP–VN',
+      'vti.desc': 'Được tối ưu cho VTI Software — team lập trình viên Việt Nam làm việc với khách hàng Nhật qua Bridge Engineer. Lệnh giao hàng song ngữ sẵn có.',
+      'vti.be.title': 'BRIDGE ENGINEER',
+      'vti.ba.title': 'BA VIẾT SPEC TIẾNG VIỆT',
+      'vti.dev.title': 'DEV TRIỂN KHAI VỚI HƯỚNG DẪN AI',
+      'vti.jp.title': 'TÀI LIỆU ĐỊNH DẠNG JP',
+      'install.badge': 'CÀI ĐẶT NHANH',
+      'install.title': 'Triển khai trong 60 giây',
+      'install.desc': 'Một lệnh khởi tạo toàn bộ workspace ADLC — lệnh, subagent, template và khung tài liệu.',
+      'install.tab.unix': 'macOS / Linux',
+      'install.tab.windows': 'Windows',
+      'footer.tagline': 'Vòng Đời Phát Triển Agentic — xây dựng cho các team kỹ thuật AI-native.',
+      'footer.made': 'Xây dựng tại VTI Software',
+    }
+  };
+
+  let currentLang = localStorage.getItem('adlc_lang') || (navigator.language.startsWith('vi') ? 'vi' : 'en');
+
+  function applyLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('adlc_lang', lang);
+    document.documentElement.lang = lang;
+    const dict = I18N[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.textContent = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      const isActive = btn.getAttribute('data-lang') === lang;
+      btn.classList.toggle('text-primary-container', isActive);
+      btn.classList.toggle('text-on-surface-variant', !isActive);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => applyLang(currentLang));
+
   // ── Workflow tab switching ──
   function switchWf(btn, id) {
     document.querySelectorAll('.wf-tab').forEach(t => {
