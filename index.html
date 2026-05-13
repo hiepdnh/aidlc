@@ -1,1441 +1,910 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html class="dark" lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agentic Development Lifecycle — VTI SDLC Skill Framework</title>
-  <meta name="description" content="26 slash commands covering the full SDLC — for teams building software with AI assistance. A Claude Code skill pack by VTI Software." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ADLC | Agentic Development Lifecycle</title>
+<meta name="description" content="26 slash commands covering the full SDLC — for teams building software with AI assistance. A Claude Code skill pack by VTI Software."/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "outline-variant": "#3b494c",
+          "tertiary-fixed": "#d8e3fb",
+          "tertiary-fixed-dim": "#bcc7de",
+          "background": "#051424",
+          "secondary-fixed": "#f0dbff",
+          "secondary": "#ddb7ff",
+          "primary-fixed-dim": "#00daf3",
+          "primary-container": "#00e5ff",
+          "error-container": "#93000a",
+          "surface-container-lowest": "#010f1f",
+          "surface-variant": "#273647",
+          "on-error": "#690005",
+          "secondary-fixed-dim": "#ddb7ff",
+          "error": "#ffb4ab",
+          "surface": "#051424",
+          "primary-fixed": "#9cf0ff",
+          "inverse-on-surface": "#233143",
+          "surface-container-highest": "#273647",
+          "primary": "#c3f5ff",
+          "tertiary": "#e6edff",
+          "on-tertiary-fixed": "#111c2d",
+          "on-primary-fixed-variant": "#004f58",
+          "inverse-primary": "#006875",
+          "on-primary-fixed": "#001f24",
+          "surface-container-low": "#0d1c2d",
+          "tertiary-container": "#c6d1e9",
+          "secondary-container": "#6f00be",
+          "on-primary-container": "#00626e",
+          "inverse-surface": "#d4e4fa",
+          "on-tertiary": "#263143",
+          "surface-container-high": "#1c2b3c",
+          "on-secondary-fixed-variant": "#6900b3",
+          "on-secondary-container": "#d6a9ff",
+          "outline": "#849396",
+          "on-tertiary-container": "#4f5a6e",
+          "on-background": "#d4e4fa",
+          "on-error-container": "#ffdad6",
+          "on-secondary-fixed": "#2c0051",
+          "on-tertiary-fixed-variant": "#3c475a",
+          "surface-dim": "#051424",
+          "surface-container": "#122131",
+          "surface-bright": "#2c3a4c",
+          "surface-tint": "#00daf3",
+          "on-surface-variant": "#bac9cc",
+          "on-primary": "#00363d",
+          "on-surface": "#d4e4fa",
+          "on-secondary": "#490080"
+        },
+        borderRadius: {
+          sm: "0.125rem",
+          DEFAULT: "0.25rem",
+          md: "0.375rem",
+          lg: "0.5rem",
+          xl: "0.75rem",
+          "2xl": "1rem",
+          "3xl": "1.5rem",
+          full: "9999px"
+        },
+        spacing: {
+          gutter: "24px",
+          base: "8px",
+          "margin-mobile": "16px",
+          "container-max": "1280px",
+          "margin-desktop": "48px",
+          "section-gap": "80px"
+        },
+        fontFamily: {
+          "headline-md": ["Space Grotesk"],
+          "headline-lg": ["Space Grotesk"],
+          "body-md": ["Inter"],
+          "headline-xl": ["Space Grotesk"],
+          "body-lg": ["Inter"],
+          "label-mono": ["JetBrains Mono"]
+        },
+        fontSize: {
+          "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+          "headline-lg": ["40px", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "600" }],
+          "headline-lg-mobile": ["32px", { lineHeight: "1.2", fontWeight: "600" }],
+          "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+          "headline-xl": ["64px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+          "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+          "label-mono": ["14px", { lineHeight: "1.2", letterSpacing: "0.05em", fontWeight: "500" }]
+        },
+        maxWidth: { "container-max": "1280px" }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  .glass-panel {
+    background: rgba(10, 17, 32, 0.6);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 229, 255, 0.1);
+  }
+  .neon-glow-cyan { box-shadow: 0 0 15px rgba(0, 229, 255, 0.15); }
+  .neon-glow-cyan-strong { box-shadow: 0 0 30px rgba(0, 229, 255, 0.25); }
+  .neon-border-cyan { border: 1px solid rgba(0, 229, 255, 0.4); }
+  .neon-text-cyan { color: #00e5ff; text-shadow: 0 0 8px rgba(0, 229, 255, 0.5); }
+  .bg-grid {
+    background-image: linear-gradient(rgba(30, 41, 59, 0.2) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(30, 41, 59, 0.2) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .blueprint-line { background-color: #1E293B; height: 1px; width: 100%; }
 
-    :root {
-      --cyan: #22d3ee;
-      --cyan-dim: #0891b2;
-      --purple: #a855f7;
-      --purple-dim: #7c3aed;
-      --pink: #ec4899;
-      --green: #10b981;
-      --amber: #f59e0b;
-      --blue: #3b82f6;
-      --red: #ef4444;
-      --bg: #030712;
-      --bg2: #0a0f1e;
-      --bg3: #0f172a;
-      --surface: rgba(15,23,42,0.7);
-      --border: rgba(148,163,184,0.1);
-      --border-bright: rgba(148,163,184,0.2);
-      --text: #f1f5f9;
-      --text-dim: #94a3b8;
-      --text-dimmer: #475569;
-      --radius: 12px;
-      --radius-lg: 20px;
-    }
+  /* Cmd category colors */
+  .cat-ba    { --cat-rgb: 0, 218, 243; }
+  .cat-pm    { --cat-rgb: 168, 85, 247; }
+  .cat-dev   { --cat-rgb: 16, 185, 129; }
+  .cat-arch  { --cat-rgb: 245, 158, 11; }
+  .cat-qa    { --cat-rgb: 59, 130, 246; }
+  .cat-ops   { --cat-rgb: 249, 115, 22; }
+  .cat-sec   { --cat-rgb: 239, 68, 68; }
+  .cat-docs  { --cat-rgb: 139, 92, 246; }
+  .cat-scrum { --cat-rgb: 236, 72, 153; }
+  .cat-be    { --cat-rgb: 6, 182, 212; }
 
-    html { font-size: 16px; }
+  .cmd-card {
+    background: rgba(10, 17, 32, 0.6);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(var(--cat-rgb), 0.15);
+    transition: all 0.2s ease;
+  }
+  .cmd-card:hover {
+    border-color: rgba(var(--cat-rgb), 0.5);
+    background: rgba(var(--cat-rgb), 0.04);
+    box-shadow: 0 0 20px rgba(var(--cat-rgb), 0.1);
+    transform: translateY(-2px);
+  }
+  .cmd-badge {
+    background: rgba(var(--cat-rgb), 0.12);
+    color: rgb(var(--cat-rgb));
+    border: 1px solid rgba(var(--cat-rgb), 0.25);
+  }
+  .cmd-icon { color: rgb(var(--cat-rgb)); }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+  .cat-pill {
+    border: 1px solid rgba(var(--cat-rgb), 0.35);
+    color: rgb(var(--cat-rgb));
+    background: transparent;
+    transition: all 0.2s;
+  }
+  .cat-pill:hover, .cat-pill.active {
+    background: rgba(var(--cat-rgb), 0.15);
+    border-color: rgba(var(--cat-rgb), 0.6);
+  }
+  .cat-pill-all {
+    border: 1px solid rgba(0, 229, 255, 0.35);
+    color: #00e5ff;
+    background: transparent;
+    transition: all 0.2s;
+  }
+  .cat-pill-all:hover, .cat-pill-all.active {
+    background: rgba(0, 229, 255, 0.15);
+    border-color: rgba(0, 229, 255, 0.6);
+  }
 
-    /* ── Scrollbar ── */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 99px; }
+  /* Fade-in on scroll */
+  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+  .delay-4 { transition-delay: 0.4s; }
 
-    /* ── Background ── */
-    .bg-grid {
-      position: fixed; inset: 0; z-index: 0;
-      background-image:
-        linear-gradient(rgba(34,211,238,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(34,211,238,0.03) 1px, transparent 1px);
-      background-size: 48px 48px;
-      pointer-events: none;
-    }
-    .bg-glow {
-      position: fixed; inset: 0; z-index: 0;
-      background:
-        radial-gradient(ellipse 80% 50% at 20% 10%, rgba(168,85,247,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(34,211,238,0.07) 0%, transparent 60%);
-      pointer-events: none;
-    }
+  /* Terminal cursor blink */
+  .cursor { animation: blink 1.2s step-end infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
 
-    /* ── Layout ── */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    section { position: relative; z-index: 1; }
-
-    /* ── Nav ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(3,7,18,0.8);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      transition: all 0.3s ease;
-    }
-    .nav-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 24px; max-width: 1200px; margin: 0 auto;
-    }
-    .nav-logo {
-      display: flex; align-items: center; gap: 10px;
-      font-weight: 700; font-size: 1rem; color: var(--text);
-      text-decoration: none;
-    }
-    .nav-logo-icon {
-      width: 32px; height: 32px;
-      background: linear-gradient(135deg, var(--cyan), var(--purple));
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px; font-weight: 800; color: #000;
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .nav-links {
-      display: flex; align-items: center; gap: 32px;
-      list-style: none;
-    }
-    .nav-links a {
-      color: var(--text-dim); text-decoration: none; font-size: 0.875rem; font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text); }
-    .nav-cta {
-      padding: 8px 18px;
-      background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
-      border-radius: 8px; color: #fff !important;
-      font-weight: 600 !important; font-size: 0.875rem !important;
-      transition: opacity 0.2s !important;
-    }
-    .nav-cta:hover { opacity: 0.85; }
-
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-    }
-
-    /* ── Hero ── */
-    .hero {
-      padding: 160px 0 100px;
-      text-align: center;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 6px 16px;
-      background: rgba(34,211,238,0.1);
-      border: 1px solid rgba(34,211,238,0.25);
-      border-radius: 999px;
-      font-size: 0.8rem; font-weight: 600; color: var(--cyan);
-      margin-bottom: 28px;
-      letter-spacing: 0.05em; text-transform: uppercase;
-    }
-    .hero-badge-dot {
-      width: 6px; height: 6px;
-      background: var(--cyan);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.8); }
-    }
-    .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-      margin-bottom: 24px;
-    }
-    .hero h1 .grad {
-      background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 60%, var(--pink) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero-tagline {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      color: var(--text-dim);
-      max-width: 600px; margin: 0 auto 40px;
-      line-height: 1.7;
-    }
-    .hero-stats {
-      display: flex; justify-content: center; gap: 48px;
-      margin-bottom: 48px; flex-wrap: wrap;
-    }
-    .hero-stat { text-align: center; }
-    .hero-stat-num {
-      font-size: 2rem; font-weight: 800;
-      background: linear-gradient(135deg, var(--cyan), var(--purple));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero-stat-label { font-size: 0.8rem; color: var(--text-dim); font-weight: 500; }
-
-    /* ── Install block ── */
-    .install-block {
-      background: rgba(15,23,42,0.8);
-      border: 1px solid var(--border-bright);
-      border-radius: var(--radius-lg);
-      padding: 24px 28px;
-      max-width: 680px; margin: 0 auto 20px;
-      backdrop-filter: blur(10px);
-      position: relative; overflow: hidden;
-    }
-    .install-block::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-    }
-    .install-tabs {
-      display: flex; gap: 4px; margin-bottom: 16px;
-    }
-    .install-tab {
-      padding: 5px 14px;
-      border-radius: 6px; border: 1px solid transparent;
-      font-size: 0.75rem; font-weight: 600;
-      cursor: pointer; transition: all 0.2s;
-      color: var(--text-dim);
-      background: transparent;
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .install-tab.active {
-      background: rgba(34,211,238,0.15);
-      border-color: rgba(34,211,238,0.3);
-      color: var(--cyan);
-    }
-    .install-content { display: none; }
-    .install-content.active { display: block; }
-    .install-cmd {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      color: #e2e8f0;
-      line-height: 1.8;
-    }
-    .install-cmd .comment { color: var(--text-dimmer); }
-    .install-cmd .cmd-keyword { color: var(--cyan); }
-    .copy-btn {
-      position: absolute; top: 16px; right: 16px;
-      padding: 5px 12px;
-      background: rgba(34,211,238,0.1);
-      border: 1px solid rgba(34,211,238,0.2);
-      border-radius: 6px;
-      color: var(--cyan); font-size: 0.75rem; font-weight: 600;
-      cursor: pointer; transition: all 0.2s;
-      font-family: 'Inter', sans-serif;
-    }
-    .copy-btn:hover { background: rgba(34,211,238,0.2); }
-    .copy-btn.copied { color: var(--green); border-color: rgba(16,185,129,0.3); }
-
-    .hero-actions {
-      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
-    }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 28px;
-      background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
-      border-radius: var(--radius);
-      font-weight: 700; font-size: 0.95rem;
-      color: #fff; text-decoration: none;
-      transition: all 0.25s;
-      box-shadow: 0 0 30px rgba(34,211,238,0.2);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 40px rgba(34,211,238,0.3);
-    }
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 28px;
-      background: transparent;
-      border: 1px solid var(--border-bright);
-      border-radius: var(--radius);
-      font-weight: 600; font-size: 0.95rem;
-      color: var(--text-dim); text-decoration: none;
-      transition: all 0.25s;
-    }
-    .btn-secondary:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-2px); }
-
-    /* ── Section header ── */
-    .section-label {
-      display: inline-block;
-      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--cyan);
-      margin-bottom: 12px;
-    }
-    .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      font-weight: 800; letter-spacing: -0.02em;
-      line-height: 1.2; margin-bottom: 16px;
-    }
-    .section-desc { color: var(--text-dim); max-width: 560px; font-size: 1.05rem; line-height: 1.7; }
-
-    /* ── Features ── */
-    .features { padding: 100px 0; }
-    .features-header { text-align: center; margin-bottom: 64px; }
-    .features-header .section-desc { margin: 0 auto; }
-    .features-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-    .feature-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-      position: relative; overflow: hidden;
-    }
-    .feature-card::before {
-      content: ''; position: absolute;
-      inset: 0; opacity: 0;
-      background: linear-gradient(135deg, rgba(34,211,238,0.04), rgba(168,85,247,0.04));
-      transition: opacity 0.3s;
-    }
-    .feature-card:hover { border-color: rgba(34,211,238,0.3); transform: translateY(-4px); }
-    .feature-card:hover::before { opacity: 1; }
-    .feature-icon {
-      width: 48px; height: 48px;
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px; margin-bottom: 20px;
-    }
-    .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
-    .feature-card p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; }
-
-    /* ── Commands ── */
-    .commands { padding: 100px 0; }
-    .commands-header { margin-bottom: 56px; }
-    .category-filters {
-      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px;
-    }
-    .cat-pill {
-      padding: 6px 16px;
-      border-radius: 999px; border: 1px solid;
-      font-size: 0.8rem; font-weight: 600;
-      cursor: pointer; transition: all 0.2s;
-      background: transparent;
-    }
-    .cat-pill.active { color: #000 !important; }
-    .commands-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 12px; margin-top: 28px;
-    }
-    .cmd-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px 20px;
-      backdrop-filter: blur(8px);
-      transition: all 0.25s;
-      display: flex; align-items: flex-start; gap: 14px;
-    }
-    .cmd-card:hover { border-color: var(--border-bright); transform: translateY(-2px); }
-    .cmd-badge {
-      flex-shrink: 0;
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem; font-weight: 600;
-      white-space: nowrap; margin-top: 2px;
-    }
-    .cmd-info h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 4px; }
-    .cmd-info p { font-size: 0.8rem; color: var(--text-dim); line-height: 1.5; }
-
-    /* Category colors */
-    .cat-ba    { --cat: #22d3ee; }
-    .cat-pm    { --cat: #a855f7; }
-    .cat-dev   { --cat: #10b981; }
-    .cat-arch  { --cat: #f59e0b; }
-    .cat-qa    { --cat: #3b82f6; }
-    .cat-ops   { --cat: #f97316; }
-    .cat-sec   { --cat: #ef4444; }
-    .cat-docs  { --cat: #8b5cf6; }
-    .cat-scrum { --cat: #ec4899; }
-    .cat-be    { --cat: #06b6d4; }
-
-    .cmd-badge { background: color-mix(in srgb, var(--cat) 15%, transparent); color: var(--cat); }
-    .cmd-card:hover { border-color: color-mix(in srgb, var(--cat) 40%, transparent); }
-    .cat-pill { border-color: color-mix(in srgb, var(--cat) 40%, transparent); color: var(--cat); }
-    .cat-pill.active { background: var(--cat); border-color: var(--cat); }
-
-    /* ── Workflow ── */
-    .workflow { padding: 100px 0; }
-    .workflow-header { text-align: center; margin-bottom: 64px; }
-    .workflow-header .section-desc { margin: 0 auto; }
-    .flow-tabs {
-      display: flex; gap: 4px; justify-content: center; margin-bottom: 40px;
-      background: rgba(15,23,42,0.5); border-radius: 12px; padding: 4px;
-      max-width: 400px; margin-left: auto; margin-right: auto; margin-bottom: 40px;
-      border: 1px solid var(--border);
-    }
-    .flow-tab {
-      flex: 1; padding: 10px;
-      border-radius: 8px; border: none;
-      font-size: 0.85rem; font-weight: 600;
-      cursor: pointer; transition: all 0.2s;
-      color: var(--text-dim); background: transparent;
-      font-family: 'Inter', sans-serif;
-    }
-    .flow-tab.active { background: rgba(34,211,238,0.15); color: var(--cyan); }
-    .flow-content { display: none; }
-    .flow-content.active { display: block; }
-    .flow-steps {
-      display: flex; flex-wrap: wrap; align-items: center;
-      justify-content: center; gap: 0; max-width: 900px; margin: 0 auto;
-    }
-    .flow-step {
-      display: flex; flex-direction: column; align-items: center; gap: 10px;
-      flex: 0 0 auto; min-width: 120px;
-    }
-    .flow-node {
-      background: rgba(15,23,42,0.9);
-      border: 1px solid var(--border-bright);
-      border-radius: var(--radius);
-      padding: 14px 18px; text-align: center;
-      backdrop-filter: blur(8px); min-width: 120px;
-      position: relative; overflow: hidden;
-      transition: all 0.25s;
-    }
-    .flow-node:hover { border-color: var(--cyan); transform: translateY(-3px); }
-    .flow-node::before {
-      content: ''; position: absolute;
-      top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--cyan), var(--purple));
-    }
-    .flow-node code {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem; color: var(--cyan); font-weight: 600;
-      display: block; margin-bottom: 4px;
-    }
-    .flow-node span { font-size: 0.72rem; color: var(--text-dimmer); }
-    .flow-arrow {
-      color: var(--text-dimmer); font-size: 1.2rem;
-      flex-shrink: 0; padding: 0 4px;
-      align-self: center; margin-top: -24px;
-    }
-    .flow-section-label {
-      text-align: center; font-size: 0.75rem;
-      font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; margin-bottom: 20px;
-    }
-
-    /* ── Agents ── */
-    .agents-table {
-      width: 100%; border-collapse: collapse; margin-top: 32px;
-    }
-    .agents-table th {
-      text-align: left; font-size: 0.8rem; font-weight: 600;
-      color: var(--text-dim); padding: 12px 16px;
-      border-bottom: 1px solid var(--border);
-    }
-    .agents-table td {
-      padding: 14px 16px; font-size: 0.875rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .agents-table tr:hover td { background: rgba(255,255,255,0.02); }
-    .model-badge {
-      display: inline-block; padding: 2px 10px;
-      border-radius: 999px; font-size: 0.72rem; font-weight: 600;
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .model-haiku { background: rgba(34,211,238,0.12); color: var(--cyan); }
-    .model-sonnet { background: rgba(168,85,247,0.12); color: var(--purple); }
-    .agent-name { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #e2e8f0; }
-
-    /* ── VTI Section ── */
-    .vti { padding: 100px 0; }
-    .vti-inner {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 60px 48px;
-      backdrop-filter: blur(10px);
-      position: relative; overflow: hidden;
-    }
-    .vti-inner::before {
-      content: ''; position: absolute;
-      top: -100px; right: -100px;
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(34,211,238,0.06), transparent 70%);
-    }
-    .vti-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 48px; align-items: center;
-    }
-    @media (max-width: 768px) { .vti-grid { grid-template-columns: 1fr; } }
-    .vti-roles { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
-    .vti-role {
-      display: flex; align-items: flex-start; gap: 14px;
-      padding: 16px;
-      background: rgba(15,23,42,0.5);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-    }
-    .vti-role-icon {
-      width: 36px; height: 36px;
-      border-radius: 8px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px;
-    }
-    .vti-role h4 { font-size: 0.875rem; font-weight: 600; margin-bottom: 4px; }
-    .vti-role p { font-size: 0.8rem; color: var(--text-dim); line-height: 1.5; }
-    .bilingual-demo {
-      background: rgba(15,23,42,0.6);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 24px; position: relative;
-    }
-    .bilingual-demo::before {
-      content: ''; position: absolute;
-      top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, var(--purple), var(--cyan));
-    }
-    .bilingual-demo-label {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--text-dimmer); margin-bottom: 16px;
-    }
-    .bilingual-item {
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .bilingual-item:last-child { border-bottom: none; }
-    .bilingual-lang {
-      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.08em; margin-bottom: 4px;
-    }
-    .bilingual-text { font-size: 0.875rem; line-height: 1.5; }
-
-    /* ── Install full ── */
-    .install-section { padding: 100px 0; }
-    .install-section-header { text-align: center; margin-bottom: 56px; }
-    .install-section-header .section-desc { margin: 0 auto; }
-    .install-cards {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px; max-width: 900px; margin: 0 auto;
-    }
-    .install-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      backdrop-filter: blur(10px);
-      position: relative; overflow: hidden;
-    }
-    .install-card-header {
-      display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
-    }
-    .install-card-icon {
-      width: 40px; height: 40px;
-      border-radius: 10px; display: flex; align-items: center; justify-content: center;
-      font-size: 18px; flex-shrink: 0;
-    }
-    .install-card h3 { font-size: 1rem; font-weight: 700; }
-    .install-card p { font-size: 0.8rem; color: var(--text-dim); margin-top: 2px; }
-    .code-block {
-      background: rgba(3,7,18,0.8);
-      border: 1px solid var(--border);
-      border-radius: 8px; padding: 16px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem; line-height: 1.8;
-      color: #e2e8f0; overflow-x: auto;
-      position: relative;
-    }
-    .code-block .kw { color: var(--cyan); }
-    .code-block .cm { color: var(--text-dimmer); }
-    .code-block .str { color: #86efac; }
-    .code-block .fl { color: var(--amber); }
-    .what-installs {
-      margin-top: 16px; font-size: 0.8rem; color: var(--text-dim);
-    }
-    .what-installs strong { color: var(--text); }
-
-    /* ── Footer ── */
-    footer {
-      padding: 56px 0; border-top: 1px solid var(--border);
-      position: relative; z-index: 1;
-    }
-    .footer-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 24px;
-    }
-    .footer-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a {
-      color: var(--text-dim); text-decoration: none; font-size: 0.875rem;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--cyan); }
-    .footer-right { text-align: right; }
-    .footer-right p { font-size: 0.8rem; color: var(--text-dimmer); }
-    .footer-badges { display: flex; gap: 8px; margin-top: 8px; justify-content: flex-end; }
-    .footer-badge {
-      padding: 3px 10px;
-      border-radius: 999px; font-size: 0.7rem; font-weight: 600;
-      border: 1px solid;
-    }
-    .badge-mit { border-color: rgba(34,211,238,0.3); color: var(--cyan); }
-    .badge-claude { border-color: rgba(168,85,247,0.3); color: var(--purple); }
-
-    /* ── Animations ── */
-    .fade-up {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-    .stagger-1 { transition-delay: 0.1s; }
-    .stagger-2 { transition-delay: 0.2s; }
-    .stagger-3 { transition-delay: 0.3s; }
-    .stagger-4 { transition-delay: 0.4s; }
-
-    /* ── Divider ── */
-    .section-divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border-bright), transparent);
-      margin: 0 auto; max-width: 800px;
-    }
-
-    /* ── Responsive tweaks ── */
-    @media (max-width: 640px) {
-      .hero { padding: 120px 0 80px; }
-      .hero-stats { gap: 28px; }
-      .flow-steps { gap: 0; flex-direction: column; align-items: center; }
-      .flow-arrow { transform: rotate(90deg); margin: -12px 0; }
-      .commands-grid { grid-template-columns: 1fr; }
-      .vti-inner { padding: 32px 20px; }
-      .install-block { padding: 20px; }
-    }
-  </style>
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #051424; }
+  ::-webkit-scrollbar-thumb { background: rgba(0,229,255,0.2); border-radius: 99px; }
+</style>
 </head>
-<body>
-
-<div class="bg-grid" aria-hidden="true"></div>
-<div class="bg-glow" aria-hidden="true"></div>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
 
 <!-- ── Nav ── -->
-<nav aria-label="Main navigation">
-  <div class="nav-inner">
-    <a href="#" class="nav-logo" aria-label="Agentic Development Lifecycle home">
-      <div class="nav-logo-icon" aria-hidden="true">A</div>
-      <span>ADLC</span>
+<nav class="bg-background/80 backdrop-blur-xl border-b border-outline-variant/30 sticky top-0 z-50 shadow-[0_0_15px_rgba(0,229,255,0.1)]">
+  <div class="flex justify-between items-center px-gutter py-4 w-full max-w-container-max mx-auto">
+    <div class="flex items-center gap-4">
+      <div class="flex items-center justify-center w-10 h-10 bg-primary-container/10 border border-primary-container/30 rounded-xl">
+        <span class="material-symbols-outlined text-primary-container">terminal</span>
+      </div>
+      <span class="font-headline-md text-headline-md font-bold tracking-tighter text-primary-container">ADLC</span>
+    </div>
+    <div class="hidden md:flex items-center gap-8">
+      <a class="font-body-md text-body-md text-primary-fixed-dim border-b-2 border-primary-fixed-dim pb-1" href="#hero">Platform</a>
+      <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#workflow">Lifecycle</a>
+      <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#commands">Commands</a>
+      <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#vti">VTI Context</a>
+      <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#install">Docs</a>
+    </div>
+    <a href="https://github.com/hiepdnh/Agentic-Development-Lifecycle" target="_blank" rel="noopener"
+       class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-label-mono text-label-mono font-bold hover:scale-105 active:scale-95 transition-all shadow-[0_0_15px_rgba(0,229,255,0.3)]">
+      Deploy Agent
     </a>
-    <ul class="nav-links" role="list">
-      <li><a href="#features">Features</a></li>
-      <li><a href="#commands">Commands</a></li>
-      <li><a href="#workflow">Workflow</a></li>
-      <li><a href="#vti">VTI Context</a></li>
-      <li><a href="#install" class="nav-cta">Install</a></li>
-    </ul>
   </div>
 </nav>
 
-<!-- ── Hero ── -->
-<section class="hero" id="hero">
-  <div class="container">
-    <div class="hero-badge" aria-label="Claude Code skill pack">
-      <span class="hero-badge-dot" aria-hidden="true"></span>
-      Claude Code Skill Pack
-    </div>
+<main class="relative overflow-hidden">
+  <div class="absolute inset-0 bg-grid pointer-events-none opacity-40"></div>
+  <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-primary-container/5 rounded-full blur-[120px] -mr-96 -mt-96 pointer-events-none"></div>
+  <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary-container/5 rounded-full blur-[100px] -ml-64 -mb-64 pointer-events-none"></div>
 
-    <h1>
-      <span class="grad">Agentic</span><br />
-      Development Lifecycle
-    </h1>
-
-    <p class="hero-tagline">
-      26 slash commands covering the full SDLC — for teams building
-      software with AI assistance.
-    </p>
-
-    <div class="hero-stats" role="list" aria-label="Key statistics">
-      <div class="hero-stat" role="listitem">
-        <div class="hero-stat-num">26</div>
-        <div class="hero-stat-label">Slash Commands</div>
+  <!-- ── Hero ── -->
+  <section class="relative pt-32 pb-24 px-gutter max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center" id="hero">
+    <div class="z-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/10 border border-secondary-container/20 mb-6">
+        <span class="material-symbols-outlined text-[16px] text-secondary">auto_awesome</span>
+        <span class="font-label-mono text-label-mono text-secondary">CLAUDE CODE SKILL PACK</span>
       </div>
-      <div class="hero-stat" role="listitem">
-        <div class="hero-stat-num">9</div>
-        <div class="hero-stat-label">SDLC Roles</div>
-      </div>
-      <div class="hero-stat" role="listitem">
-        <div class="hero-stat-num">7</div>
-        <div class="hero-stat-label">Subagents</div>
-      </div>
-      <div class="hero-stat" role="listitem">
-        <div class="hero-stat-num">MIT</div>
-        <div class="hero-stat-label">Open Source</div>
-      </div>
-    </div>
+      <h1 class="font-headline-xl text-headline-xl mb-6 text-primary leading-[1.1]">
+        Agentic<br/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-container to-secondary">Development Lifecycle</span>
+      </h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">
+        26 slash commands covering the full SDLC — for teams building software with AI assistance. Built for BA, PM, Dev, QA, Ops, and Scrum roles.
+      </p>
 
-    <!-- Install block -->
-    <div class="install-block" role="region" aria-label="Quick install">
-      <button class="copy-btn" onclick="copyInstall(this)" aria-label="Copy install command">Copy</button>
-      <div class="install-tabs" role="tablist" aria-label="Operating system">
-        <button class="install-tab active" role="tab" aria-selected="true" onclick="switchTab(this,'mac')">macOS / Linux</button>
-        <button class="install-tab" role="tab" aria-selected="false" onclick="switchTab(this,'win')">Windows</button>
-        <button class="install-tab" role="tab" aria-selected="false" onclick="switchTab(this,'lite')">Dev Lite</button>
-      </div>
-      <div class="install-content active" id="tab-mac">
-        <pre class="install-cmd" aria-label="macOS and Linux install command"><span class="cmd-keyword">npx</span> github:hiepdnh/Agentic-Development-Lifecycle <span class="cmd-keyword">--yes</span>
-
-<span class="comment"># Update existing install:</span>
-<span class="cmd-keyword">npx</span> github:hiepdnh/Agentic-Development-Lifecycle <span class="cmd-keyword">--update --yes</span></pre>
-      </div>
-      <div class="install-content" id="tab-win">
-        <pre class="install-cmd" aria-label="Windows install command"><span class="comment"># PowerShell</span>
-<span class="cmd-keyword">$tmp</span> = "<span style="color:#86efac">$env:TEMP\vti-install</span>"; mkdir <span class="cmd-keyword">$tmp</span> -Force; Set-Location <span class="cmd-keyword">$tmp</span>
-<span class="cmd-keyword">npx</span> github:hiepdnh/Agentic-Development-Lifecycle <span class="cmd-keyword">--yes</span></pre>
-      </div>
-      <div class="install-content" id="tab-lite">
-        <pre class="install-cmd" aria-label="Developer Lite install command"><span class="comment"># Minimal install — dev workflow only</span>
-<span class="cmd-keyword">node</span> packages/developer-lite/bin/install.js <span class="cmd-keyword">--yes</span>
-
-<span class="comment"># Includes: /dev:analyze /dev:implement /dev:review</span>
-<span class="comment">#           /dev:pr /dev:debug /sec:review /arch:adr /docs:update</span></pre>
-      </div>
-    </div>
-
-    <div class="hero-actions">
-      <a href="https://github.com/hiepdnh/Agentic-Development-Lifecycle" class="btn-primary" target="_blank" rel="noopener">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        View on GitHub
-      </a>
-      <a href="#commands" class="btn-secondary">
-        Browse Commands
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ── Features ── -->
-<section class="features" id="features">
-  <div class="container">
-    <div class="features-header">
-      <p class="section-label">Why ADLC</p>
-      <h2 class="section-title">Built for how AI-assisted<br />teams actually work</h2>
-      <p class="section-desc">Structured commands, multi-agent delegation, and human decision gates — so your team stays in control while AI handles the heavy lifting.</p>
-    </div>
-
-    <div class="features-grid">
-      <div class="feature-card fade-up stagger-1">
-        <div class="feature-icon" style="background:rgba(34,211,238,0.1)" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+      <!-- Stats -->
+      <div class="flex flex-wrap gap-4 items-center mb-12">
+        <div class="flex flex-col border-r border-outline-variant/30 pr-8">
+          <span class="font-headline-md text-headline-md text-primary">26</span>
+          <span class="font-label-mono text-label-mono text-on-surface-variant">Slash Commands</span>
         </div>
-        <h3>Multi-Agent Pattern</h3>
-        <p>Heavy tasks spawn specialized lightweight subagents (haiku for parsing, sonnet for synthesis), keeping your main context window clean and focused.</p>
-      </div>
-
-      <div class="feature-card fade-up stagger-2">
-        <div class="feature-icon" style="background:rgba(168,85,247,0.1)" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <div class="flex flex-col border-r border-outline-variant/30 px-8">
+          <span class="font-headline-md text-headline-md text-primary">9</span>
+          <span class="font-label-mono text-label-mono text-on-surface-variant">SDLC Roles</span>
         </div>
-        <h3>Human-in-the-Loop Gates</h3>
-        <p>Every command includes mandatory decision gates — Claude presents options and waits for your approval. No autonomous auto-execution ever.</p>
-      </div>
-
-      <div class="feature-card fade-up stagger-3">
-        <div class="feature-icon" style="background:rgba(16,185,129,0.1)" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <div class="flex flex-col border-r border-outline-variant/30 px-8">
+          <span class="font-headline-md text-headline-md text-primary">7</span>
+          <span class="font-label-mono text-label-mono text-on-surface-variant">Subagents</span>
         </div>
-        <h3>Two-Tier Documentation</h3>
-        <p>Ephemeral per-task docs (gitignored) for in-progress work, plus living baseline docs updated after each verified merge. Always-current knowledge.</p>
-      </div>
-
-      <div class="feature-card fade-up stagger-4">
-        <div class="feature-icon" style="background:rgba(245,158,11,0.1)" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <div class="flex flex-col px-8">
+          <span class="font-headline-md text-headline-md text-primary">MIT</span>
+          <span class="font-label-mono text-label-mono text-on-surface-variant">Open Source</span>
         </div>
-        <h3>Developer Lite Option</h3>
-        <p>A minimal subset for teams that need only core developer workflow — without PM/BA/QA/Ops overhead. 8 focused commands to get started fast.</p>
       </div>
 
-      <div class="feature-card fade-up stagger-1">
-        <div class="feature-icon" style="background:rgba(59,130,246,0.1)" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3>Security-First Review</h3>
-        <p>Built-in OWASP Top 10 security review command with Always/Ask/Never classification. Security baked into the workflow, not bolted on.</p>
-      </div>
-
-      <div class="feature-card fade-up stagger-2">
-        <div class="feature-icon" style="background:rgba(236,72,153,0.1)" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-        </div>
-        <h3>Full SDLC Coverage</h3>
-        <p>From ideation to deployment — BA, PM, Dev, Arch, QA, DevOps, Security, Docs, and Scrum roles all covered in one cohesive framework.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ── Commands ── -->
-<section class="commands" id="commands">
-  <div class="container">
-    <div class="commands-header">
-      <p class="section-label">26 Commands</p>
-      <h2 class="section-title">Every phase. Every role.<br />One skill pack.</h2>
-      <p class="section-desc">Structured, role-aware commands covering every sprint lifecycle phase. Color-coded by category for quick navigation.</p>
-
-      <div class="category-filters" role="group" aria-label="Filter by category">
-        <button class="cat-pill cat-ba active" onclick="filterCmds(this,'all')" aria-pressed="true">All</button>
-        <button class="cat-pill cat-ba" onclick="filterCmds(this,'ba')" aria-pressed="false">Business Analysis</button>
-        <button class="cat-pill cat-pm" onclick="filterCmds(this,'pm')" aria-pressed="false">Project Mgmt</button>
-        <button class="cat-pill cat-dev" onclick="filterCmds(this,'dev')" aria-pressed="false">Development</button>
-        <button class="cat-pill cat-arch" onclick="filterCmds(this,'arch')" aria-pressed="false">Architecture</button>
-        <button class="cat-pill cat-qa" onclick="filterCmds(this,'qa')" aria-pressed="false">QA</button>
-        <button class="cat-pill cat-ops" onclick="filterCmds(this,'ops')" aria-pressed="false">DevOps</button>
-        <button class="cat-pill cat-sec" onclick="filterCmds(this,'sec')" aria-pressed="false">Security</button>
-        <button class="cat-pill cat-docs" onclick="filterCmds(this,'docs')" aria-pressed="false">Docs</button>
-        <button class="cat-pill cat-scrum" onclick="filterCmds(this,'scrum')" aria-pressed="false">Scrum</button>
-        <button class="cat-pill cat-be" onclick="filterCmds(this,'be')" aria-pressed="false">Bridge Eng</button>
+      <div class="flex gap-4 flex-wrap">
+        <a href="https://github.com/hiepdnh/Agentic-Development-Lifecycle" target="_blank" rel="noopener"
+           class="bg-primary-container text-on-primary-container px-8 py-4 rounded-xl font-headline-md text-[18px] font-semibold hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all">
+          Get Started
+        </a>
+        <a href="#commands"
+           class="glass-panel text-on-surface px-8 py-4 rounded-xl font-headline-md text-[18px] font-semibold border border-outline-variant/50 hover:bg-surface-variant/20 transition-all">
+          Browse Commands
+        </a>
       </div>
     </div>
 
-    <div class="commands-grid" id="commands-grid" role="list" aria-label="Available commands">
+    <!-- Hero image -->
+    <div class="relative z-10 hidden lg:block">
+      <div class="relative w-full aspect-square rounded-3xl overflow-hidden glass-panel border border-primary-container/20 neon-glow-cyan">
+        <img class="w-full h-full object-cover opacity-80"
+             src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9KjPKbl5by6B_biw8SP9_TSfv8kYwshjJxF-CkV9aUVR4u-yZnW0VlmdMK3lT4wwRQ3OBjjBVjKK4jw6eVPX4t-Zf4QxTj2UCe69aEK15RoR5IDOq-w9vrBs7b2CYQP-jCM1-1SoRhwrQUQ_AsulUlAuQT9fKrU-EbmFsoGIHQic44Za1DtPUmO1ED8BSk_JpF5-P-FnzBf6m6wbfc9O1JYPjRwrphrZ67fmQ4zJAqn3oO2BRL9SsmQKRZxNPQ6RiAz3SFtMfwQ7A"
+             alt="Futuristic AI robot assistant in a high-tech digital environment with cyan neon accents"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+        <div class="absolute bottom-8 left-8 right-8 p-6 glass-panel rounded-2xl border border-primary-container/30">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center">
+                <span class="material-symbols-outlined text-primary-container">smart_toy</span>
+              </div>
+              <div>
+                <p class="font-label-mono text-label-mono text-primary">ACTIVE AGENT</p>
+                <p class="font-headline-md text-[18px] text-white">Code Scout</p>
+              </div>
+            </div>
+            <div class="px-3 py-1 rounded bg-secondary-container/20 border border-secondary-container/40">
+              <span class="font-label-mono text-[12px] text-secondary">ORCHESTRATING...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ADLC Flow ── -->
+  <section class="py-section-gap px-gutter max-w-container-max mx-auto" id="workflow">
+    <div class="text-center mb-16 fade-up">
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-4">The ADLC Flow</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+        A structured lifecycle designed for high-performing agentic teams.
+      </p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+      <div class="glass-panel p-6 rounded-2xl border-t-2 border-primary-container hover:bg-primary-container/5 transition-all group cursor-default fade-up delay-1">
+        <span class="material-symbols-outlined text-primary-container mb-4 block group-hover:scale-110 transition-transform">lightbulb</span>
+        <h3 class="font-label-mono text-label-mono text-white mb-2">1. IDEATE</h3>
+        <p class="font-body-md text-[14px] text-on-surface-variant">Define ideas and high-level goals.</p>
+      </div>
+      <div class="glass-panel p-6 rounded-2xl border-t-2 border-primary-fixed-dim hover:bg-primary-fixed-dim/5 transition-all group cursor-default fade-up delay-2">
+        <span class="material-symbols-outlined text-primary-fixed-dim mb-4 block group-hover:scale-110 transition-transform">description</span>
+        <h3 class="font-label-mono text-label-mono text-white mb-2">2. SPEC</h3>
+        <p class="font-body-md text-[14px] text-on-surface-variant">Write technical specs and requirements.</p>
+      </div>
+      <div class="glass-panel p-6 rounded-2xl border-t-2 border-primary-fixed-dim hover:bg-primary-fixed-dim/5 transition-all group cursor-default fade-up delay-3">
+        <span class="material-symbols-outlined text-primary-fixed-dim mb-4 block group-hover:scale-110 transition-transform">search</span>
+        <h3 class="font-label-mono text-label-mono text-white mb-2">3. ANALYZE</h3>
+        <p class="font-body-md text-[14px] text-on-surface-variant">Analyze code and plan solutions.</p>
+      </div>
+      <div class="glass-panel p-6 rounded-2xl border-t-2 border-secondary hover:bg-secondary/5 transition-all group cursor-default fade-up delay-1">
+        <span class="material-symbols-outlined text-secondary mb-4 block group-hover:scale-110 transition-transform">code</span>
+        <h3 class="font-label-mono text-label-mono text-white mb-2">4. IMPLEMENT</h3>
+        <p class="font-body-md text-[14px] text-on-surface-variant">Build features with agentic assistance.</p>
+      </div>
+      <div class="glass-panel p-6 rounded-2xl border-t-2 border-secondary hover:bg-secondary/5 transition-all group cursor-default fade-up delay-2">
+        <span class="material-symbols-outlined text-secondary mb-4 block group-hover:scale-110 transition-transform">verified_user</span>
+        <h3 class="font-label-mono text-label-mono text-white mb-2">5. REVIEW</h3>
+        <p class="font-body-md text-[14px] text-on-surface-variant">Security and deep code review.</p>
+      </div>
+      <div class="glass-panel p-6 rounded-2xl border-t-2 border-secondary-fixed-dim hover:bg-secondary-fixed-dim/5 transition-all group cursor-default fade-up delay-3">
+        <span class="material-symbols-outlined text-secondary-fixed-dim mb-4 block group-hover:scale-110 transition-transform">science</span>
+        <h3 class="font-label-mono text-label-mono text-white mb-2">6. TEST</h3>
+        <p class="font-body-md text-[14px] text-on-surface-variant">Automated testing and validation.</p>
+      </div>
+      <div class="glass-panel p-6 rounded-2xl border-t-2 border-primary-container hover:bg-primary-container/5 transition-all group cursor-default fade-up delay-4">
+        <span class="material-symbols-outlined text-primary-container mb-4 block group-hover:scale-110 transition-transform">rocket_launch</span>
+        <h3 class="font-label-mono text-label-mono text-white mb-2">7. DEPLOY</h3>
+        <p class="font-body-md text-[14px] text-on-surface-variant">Deploy to production environments.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Features ── -->
+  <section class="py-section-gap px-gutter max-w-container-max mx-auto">
+    <div class="text-center mb-16 fade-up">
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Built for how AI-assisted teams work</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+        Structured commands, multi-agent delegation, and human decision gates — stay in control while AI handles heavy lifting.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 relative overflow-hidden group fade-up delay-1">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/5 rounded-full blur-3xl group-hover:bg-primary-container/10 transition-all"></div>
+        <span class="material-symbols-outlined text-primary-container text-4xl mb-6 block">hub</span>
+        <h4 class="font-headline-md text-headline-md text-white mb-4">Multi-Agent Pattern</h4>
+        <p class="font-body-md text-body-md text-on-surface-variant">Heavy tasks spawn specialized lightweight subagents — haiku for parsing, sonnet for synthesis — keeping your main context window clean.</p>
+      </div>
+      <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 relative overflow-hidden group fade-up delay-2">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-3xl group-hover:bg-secondary/10 transition-all"></div>
+        <span class="material-symbols-outlined text-secondary text-4xl mb-6 block">person_search</span>
+        <h4 class="font-headline-md text-headline-md text-white mb-4">Human-in-the-Loop</h4>
+        <p class="font-body-md text-body-md text-on-surface-variant">Every command includes mandatory decision gates. Claude presents options and waits for your approval. No blind execution, ever.</p>
+      </div>
+      <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 relative overflow-hidden group fade-up delay-3">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/5 rounded-full blur-3xl group-hover:bg-primary-container/10 transition-all"></div>
+        <span class="material-symbols-outlined text-primary-container text-4xl mb-6 block">auto_stories</span>
+        <h4 class="font-headline-md text-headline-md text-white mb-4">Two-Tier Documentation</h4>
+        <p class="font-body-md text-body-md text-on-surface-variant">Ephemeral per-task docs (gitignored) for in-progress work, plus living baseline docs updated after each verified merge.</p>
+      </div>
+      <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 relative overflow-hidden group fade-up delay-1">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-secondary-fixed-dim/5 rounded-full blur-3xl group-hover:bg-secondary-fixed-dim/10 transition-all"></div>
+        <span class="material-symbols-outlined text-secondary-fixed-dim text-4xl mb-6 block">devices</span>
+        <h4 class="font-headline-md text-headline-md text-white mb-4">Developer Lite Option</h4>
+        <p class="font-body-md text-body-md text-on-surface-variant">A minimal subset for teams needing only core dev workflow — without PM/BA/QA/Ops overhead. 8 focused commands, install in seconds.</p>
+      </div>
+      <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 relative overflow-hidden group fade-up delay-2">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/5 rounded-full blur-3xl group-hover:bg-primary-container/10 transition-all"></div>
+        <span class="material-symbols-outlined text-primary-container text-4xl mb-6 block">security</span>
+        <h4 class="font-headline-md text-headline-md text-white mb-4">Security-First Review</h4>
+        <p class="font-body-md text-body-md text-on-surface-variant">Built-in OWASP Top 10 security review with Always/Ask/Never classification. Security is part of the workflow, not bolted on.</p>
+      </div>
+      <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 relative overflow-hidden group fade-up delay-3">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-3xl group-hover:bg-secondary/10 transition-all"></div>
+        <span class="material-symbols-outlined text-secondary text-4xl mb-6 block">groups</span>
+        <h4 class="font-headline-md text-headline-md text-white mb-4">Full SDLC Coverage</h4>
+        <p class="font-body-md text-body-md text-on-surface-variant">From ideation to deployment — BA, PM, Dev, Arch, QA, DevOps, Security, Docs, and Scrum roles all covered in one cohesive framework.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Commands ── -->
+  <section class="py-section-gap px-gutter max-w-container-max mx-auto" id="commands">
+    <div class="mb-12 fade-up">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/10 border border-primary-container/20 mb-4">
+        <span class="material-symbols-outlined text-[16px] text-primary-container">terminal</span>
+        <span class="font-label-mono text-label-mono text-primary-container">26 COMMANDS</span>
+      </div>
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Every phase. Every role.</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+        Structured, role-aware commands covering every sprint lifecycle phase. Filter by category.
+      </p>
+
+      <!-- Filter pills -->
+      <div class="flex flex-wrap gap-2 mt-6" role="group" aria-label="Filter commands by category">
+        <button class="cat-pill-all active font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'all')" aria-pressed="true">All (26)</button>
+        <button class="cat-pill cat-ba font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'ba')" aria-pressed="false">Business Analysis</button>
+        <button class="cat-pill cat-pm font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'pm')" aria-pressed="false">Project Mgmt</button>
+        <button class="cat-pill cat-dev font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'dev')" aria-pressed="false">Development</button>
+        <button class="cat-pill cat-arch font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'arch')" aria-pressed="false">Architecture</button>
+        <button class="cat-pill cat-qa font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'qa')" aria-pressed="false">QA</button>
+        <button class="cat-pill cat-ops font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'ops')" aria-pressed="false">DevOps</button>
+        <button class="cat-pill cat-sec font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'sec')" aria-pressed="false">Security</button>
+        <button class="cat-pill cat-docs font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'docs')" aria-pressed="false">Docs</button>
+        <button class="cat-pill cat-scrum font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'scrum')" aria-pressed="false">Scrum</button>
+        <button class="cat-pill cat-be font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'be')" aria-pressed="false">Bridge Eng</button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3" id="commands-grid">
 
       <!-- BA -->
-      <div class="cmd-card cat-ba fade-up" data-cat="ba" role="listitem">
-        <span class="cmd-badge">/pm:ideate</span>
-        <div class="cmd-info">
-          <h4>Ideate</h4>
-          <p>Refine vague idea → clear concept with problem statement + NOT Doing list</p>
+      <div class="cmd-card cat-ba p-5 rounded-2xl flex items-start gap-4 fade-up" data-cat="ba">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">lightbulb</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/pm:ideate</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Refine vague idea → clear concept with problem statement + NOT Doing list</p>
         </div>
       </div>
-      <div class="cmd-card cat-ba fade-up" data-cat="ba" role="listitem">
-        <span class="cmd-badge">/ba:spec</span>
-        <div class="cmd-info">
-          <h4>Specification</h4>
-          <p>Raw requirement → structured spec → <code style="font-family:monospace;font-size:0.75rem;color:var(--cyan)">requirements.md</code></p>
+      <div class="cmd-card cat-ba p-5 rounded-2xl flex items-start gap-4 fade-up delay-1" data-cat="ba">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">description</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/ba:spec</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Raw requirement → structured spec → <code class="text-primary-container">requirements.md</code></p>
         </div>
       </div>
-      <div class="cmd-card cat-ba fade-up" data-cat="ba" role="listitem">
-        <span class="cmd-badge">/ba:user-story</span>
-        <div class="cmd-info">
-          <h4>User Stories</h4>
-          <p>Spec → User Stories with Acceptance Criteria</p>
+      <div class="cmd-card cat-ba p-5 rounded-2xl flex items-start gap-4 fade-up delay-2" data-cat="ba">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">task_alt</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/ba:user-story</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Spec → User Stories with Acceptance Criteria</p>
         </div>
       </div>
-      <div class="cmd-card cat-ba fade-up" data-cat="ba" role="listitem">
-        <span class="cmd-badge">/ba:reverse</span>
-        <div class="cmd-info">
-          <h4>Reverse Engineer</h4>
-          <p>Reverse engineer legacy codebase → baseline docs</p>
+      <div class="cmd-card cat-ba p-5 rounded-2xl flex items-start gap-4 fade-up delay-3" data-cat="ba">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">manage_search</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/ba:reverse</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Reverse engineer legacy codebase → baseline docs</p>
         </div>
       </div>
 
       <!-- BE -->
-      <div class="cmd-card cat-be fade-up" data-cat="be" role="listitem">
-        <span class="cmd-badge">/be:bridge</span>
-        <div class="cmd-info">
-          <h4>Bridge Engineer</h4>
-          <p>Translate JP requirements, create bilingual JP-VN deliverables</p>
+      <div class="cmd-card cat-be p-5 rounded-2xl flex items-start gap-4 fade-up" data-cat="be">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">translate</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/be:bridge</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Translate JP requirements, create bilingual JP-VN deliverables</p>
         </div>
       </div>
 
       <!-- PM -->
-      <div class="cmd-card cat-pm fade-up" data-cat="pm" role="listitem">
-        <span class="cmd-badge">/pm:breakdown</span>
-        <div class="cmd-info">
-          <h4>Task Breakdown</h4>
-          <p>Epic/Stories → Tasks with estimates + GitHub/GitLab Issues</p>
+      <div class="cmd-card cat-pm p-5 rounded-2xl flex items-start gap-4 fade-up delay-1" data-cat="pm">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">splitscreen</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/pm:breakdown</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Epic/Stories → Tasks with estimates + GitHub/GitLab Issues</p>
         </div>
       </div>
-      <div class="cmd-card cat-pm fade-up" data-cat="pm" role="listitem">
-        <span class="cmd-badge">/pm:status</span>
-        <div class="cmd-info">
-          <h4>Sprint Status</h4>
-          <p>Sprint status report for stakeholders</p>
+      <div class="cmd-card cat-pm p-5 rounded-2xl flex items-start gap-4 fade-up delay-2" data-cat="pm">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">bar_chart</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/pm:status</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Sprint status report for stakeholders</p>
         </div>
       </div>
-      <div class="cmd-card cat-pm fade-up" data-cat="pm" role="listitem">
-        <span class="cmd-badge">/pm:dashboard</span>
-        <div class="cmd-info">
-          <h4>Dashboard</h4>
-          <p>Static HTML sprint dashboard with kanban + health + backlog</p>
+      <div class="cmd-card cat-pm p-5 rounded-2xl flex items-start gap-4 fade-up delay-3" data-cat="pm">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">dashboard</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/pm:dashboard</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Static HTML sprint dashboard with kanban + health + backlog</p>
         </div>
       </div>
 
       <!-- Dev -->
-      <div class="cmd-card cat-dev fade-up" data-cat="dev" role="listitem">
-        <span class="cmd-badge">/dev:analyze</span>
-        <div class="cmd-info">
-          <h4>Analyze</h4>
-          <p>Task → 2-3 implementation options with trade-offs → <code style="font-family:monospace;font-size:0.75rem;color:var(--green)">analysis.md</code></p>
+      <div class="cmd-card cat-dev p-5 rounded-2xl flex items-start gap-4 fade-up" data-cat="dev">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">search</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/dev:analyze</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Task → 2-3 implementation options with trade-offs → <code class="text-primary-container">analysis.md</code></p>
         </div>
       </div>
-      <div class="cmd-card cat-dev fade-up" data-cat="dev" role="listitem">
-        <span class="cmd-badge">/dev:implement</span>
-        <div class="cmd-info">
-          <h4>Implement</h4>
-          <p>Implement file-by-file with human gates + verification + harness delta check</p>
+      <div class="cmd-card cat-dev p-5 rounded-2xl flex items-start gap-4 fade-up delay-1" data-cat="dev">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">code</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/dev:implement</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Implement file-by-file with human gates + verification + harness delta check</p>
         </div>
       </div>
-      <div class="cmd-card cat-dev fade-up" data-cat="dev" role="listitem">
-        <span class="cmd-badge">/dev:review</span>
-        <div class="cmd-info">
-          <h4>Code Review</h4>
-          <p>Holistic review: code quality + architecture + security in one run</p>
+      <div class="cmd-card cat-dev p-5 rounded-2xl flex items-start gap-4 fade-up delay-2" data-cat="dev">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">rate_review</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/dev:review</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Holistic review: code quality + architecture + security in one run</p>
         </div>
       </div>
-      <div class="cmd-card cat-dev fade-up" data-cat="dev" role="listitem">
-        <span class="cmd-badge">/dev:pr</span>
-        <div class="cmd-info">
-          <h4>Pull Request</h4>
-          <p>Generate comprehensive PR description from diff</p>
+      <div class="cmd-card cat-dev p-5 rounded-2xl flex items-start gap-4 fade-up delay-3" data-cat="dev">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">merge_type</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/dev:pr</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Generate comprehensive PR description from diff</p>
         </div>
       </div>
-      <div class="cmd-card cat-dev fade-up" data-cat="dev" role="listitem">
-        <span class="cmd-badge">/dev:debug</span>
-        <div class="cmd-info">
-          <h4>Debug</h4>
-          <p>Structured debugging: reproduce → localize → fix</p>
+      <div class="cmd-card cat-dev p-5 rounded-2xl flex items-start gap-4 fade-up" data-cat="dev">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">bug_report</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/dev:debug</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Structured debugging: reproduce → localize → fix</p>
         </div>
       </div>
 
       <!-- Arch -->
-      <div class="cmd-card cat-arch fade-up" data-cat="arch" role="listitem">
-        <span class="cmd-badge">/arch:review</span>
-        <div class="cmd-info">
-          <h4>Architecture Review</h4>
-          <p>Design decision review with trade-off analysis</p>
+      <div class="cmd-card cat-arch p-5 rounded-2xl flex items-start gap-4 fade-up delay-1" data-cat="arch">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">architecture</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/arch:review</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Design decision review with trade-off analysis</p>
         </div>
       </div>
-      <div class="cmd-card cat-arch fade-up" data-cat="arch" role="listitem">
-        <span class="cmd-badge">/arch:adr</span>
-        <div class="cmd-info">
-          <h4>ADR</h4>
-          <p>Create Architecture Decision Record → <code style="font-family:monospace;font-size:0.75rem;color:var(--amber)">docs/decisions/ADR-NNN.md</code></p>
+      <div class="cmd-card cat-arch p-5 rounded-2xl flex items-start gap-4 fade-up delay-2" data-cat="arch">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">article</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/arch:adr</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Create Architecture Decision Record → <code class="text-primary-container">docs/decisions/ADR-NNN.md</code></p>
         </div>
       </div>
 
       <!-- QA -->
-      <div class="cmd-card cat-qa fade-up" data-cat="qa" role="listitem">
-        <span class="cmd-badge">/qa:testplan</span>
-        <div class="cmd-info">
-          <h4>Test Plan</h4>
-          <p>Spec → Test plan → <code style="font-family:monospace;font-size:0.75rem;color:var(--blue)">test-plan.md</code></p>
+      <div class="cmd-card cat-qa p-5 rounded-2xl flex items-start gap-4 fade-up delay-3" data-cat="qa">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">checklist</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/qa:testplan</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Spec → Test plan → <code class="text-primary-container">test-plan.md</code></p>
         </div>
       </div>
-      <div class="cmd-card cat-qa fade-up" data-cat="qa" role="listitem">
-        <span class="cmd-badge">/qa:bug</span>
-        <div class="cmd-info">
-          <h4>Bug Report</h4>
-          <p>Standardized bug report with reproduction steps</p>
+      <div class="cmd-card cat-qa p-5 rounded-2xl flex items-start gap-4 fade-up" data-cat="qa">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">pest_control</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/qa:bug</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Standardized bug report with reproduction steps</p>
         </div>
       </div>
-      <div class="cmd-card cat-qa fade-up" data-cat="qa" role="listitem">
-        <span class="cmd-badge">/qa:regression</span>
-        <div class="cmd-info">
-          <h4>Regression</h4>
-          <p>Regression checklist before release</p>
+      <div class="cmd-card cat-qa p-5 rounded-2xl flex items-start gap-4 fade-up delay-1" data-cat="qa">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">replay</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/qa:regression</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Regression checklist before release</p>
         </div>
       </div>
 
       <!-- Ops -->
-      <div class="cmd-card cat-ops fade-up" data-cat="ops" role="listitem">
-        <span class="cmd-badge">/ops:deploy</span>
-        <div class="cmd-info">
-          <h4>Deploy</h4>
-          <p>Deployment checklist + CI quality gate + rollback plan</p>
+      <div class="cmd-card cat-ops p-5 rounded-2xl flex items-start gap-4 fade-up delay-2" data-cat="ops">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">rocket_launch</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/ops:deploy</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Deployment checklist + CI quality gate + rollback plan</p>
         </div>
       </div>
-      <div class="cmd-card cat-ops fade-up" data-cat="ops" role="listitem">
-        <span class="cmd-badge">/ops:incident</span>
-        <div class="cmd-info">
-          <h4>Incident</h4>
-          <p>Incident triage + parallel investigation + RCA template</p>
+      <div class="cmd-card cat-ops p-5 rounded-2xl flex items-start gap-4 fade-up delay-3" data-cat="ops">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">emergency</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/ops:incident</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Incident triage + parallel investigation + RCA template</p>
         </div>
       </div>
 
       <!-- Sec -->
-      <div class="cmd-card cat-sec fade-up" data-cat="sec" role="listitem">
-        <span class="cmd-badge">/sec:review</span>
-        <div class="cmd-info">
-          <h4>Security Review</h4>
-          <p>OWASP Top 10 audit: Always check / Ask First / Never classification</p>
+      <div class="cmd-card cat-sec p-5 rounded-2xl flex items-start gap-4 fade-up" data-cat="sec">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">shield</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/sec:review</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">OWASP Top 10 audit: Always check / Ask First / Never classification</p>
         </div>
       </div>
 
       <!-- Docs -->
-      <div class="cmd-card cat-docs fade-up" data-cat="docs" role="listitem">
-        <span class="cmd-badge">/docs:update</span>
-        <div class="cmd-info">
-          <h4>Update Docs</h4>
-          <p>Update baseline screen/API docs after task verify</p>
+      <div class="cmd-card cat-docs p-5 rounded-2xl flex items-start gap-4 fade-up delay-1" data-cat="docs">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">edit_document</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/docs:update</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Update baseline screen/API docs after task verify</p>
         </div>
       </div>
-      <div class="cmd-card cat-docs fade-up" data-cat="docs" role="listitem">
-        <span class="cmd-badge">/docs:project</span>
-        <div class="cmd-info">
-          <h4>Project Docs</h4>
-          <p>Sync project-level docs: README, workflow guides, CLAUDE.md</p>
+      <div class="cmd-card cat-docs p-5 rounded-2xl flex items-start gap-4 fade-up delay-2" data-cat="docs">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">sync</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/docs:project</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Sync project-level docs: README, workflow guides, CLAUDE.md</p>
         </div>
       </div>
 
       <!-- Scrum -->
-      <div class="cmd-card cat-scrum fade-up" data-cat="scrum" role="listitem">
-        <span class="cmd-badge">/sm:standup</span>
-        <div class="cmd-info">
-          <h4>Daily Standup</h4>
-          <p>Daily standup summary for the team</p>
+      <div class="cmd-card cat-scrum p-5 rounded-2xl flex items-start gap-4 fade-up delay-3" data-cat="scrum">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">record_voice_over</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/sm:standup</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Daily standup summary for the team</p>
         </div>
       </div>
-      <div class="cmd-card cat-scrum fade-up" data-cat="scrum" role="listitem">
-        <span class="cmd-badge">/sm:retro</span>
-        <div class="cmd-info">
-          <h4>Retrospective</h4>
-          <p>Sprint retrospective structured format</p>
+      <div class="cmd-card cat-scrum p-5 rounded-2xl flex items-start gap-4 fade-up" data-cat="scrum">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">forum</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/sm:retro</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant">Sprint retrospective in structured format</p>
         </div>
       </div>
 
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="section-divider"></div>
-
-<!-- ── Workflow ── -->
-<section class="workflow" id="workflow">
-  <div class="container">
-    <div class="workflow-header">
-      <p class="section-label">How It Works</p>
-      <h2 class="section-title">Structured flows for every scenario</h2>
-      <p class="section-desc">Commands chain together into proven workflows — from full sprint planning to a single developer task.</p>
-    </div>
-
-    <div class="flow-tabs" role="tablist" aria-label="Workflow type">
-      <button class="flow-tab active" role="tab" aria-selected="true" onclick="switchFlow(this,'full')">Full Sprint</button>
-      <button class="flow-tab" role="tab" aria-selected="false" onclick="switchFlow(this,'dev')">Dev Task</button>
-    </div>
-
-    <div class="flow-content active" id="flow-full">
-      <p class="flow-section-label" style="color:var(--text-dimmer);margin-bottom:32px">Sprint Planning Phase</p>
-      <div class="flow-steps" aria-label="Full sprint workflow">
-        <div class="flow-step">
-          <div class="flow-node">
-            <code>/pm:ideate</code>
-            <span>Clarify idea</span>
-          </div>
+  <!-- ── Subagents ── -->
+  <section class="py-section-gap px-gutter max-w-container-max mx-auto">
+    <div class="glass-panel rounded-3xl border border-outline-variant/30 overflow-hidden fade-up">
+      <div class="px-8 py-6 border-b border-outline-variant/30">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="material-symbols-outlined text-primary-container">account_tree</span>
+          <h2 class="font-headline-md text-headline-md text-white">Subagent Architecture</h2>
         </div>
-        <div class="flow-arrow" aria-hidden="true">→</div>
-        <div class="flow-step">
-          <div class="flow-node">
-            <code>/ba:spec</code>
-            <span>Write spec</span>
-          </div>
-        </div>
-        <div class="flow-arrow" aria-hidden="true">→</div>
-        <div class="flow-step">
-          <div class="flow-node">
-            <code>/ba:user-story</code>
-            <span>User stories</span>
-          </div>
-        </div>
-        <div class="flow-arrow" aria-hidden="true">→</div>
-        <div class="flow-step">
-          <div class="flow-node">
-            <code>/pm:breakdown</code>
-            <span>Tasks + issues</span>
-          </div>
-        </div>
+        <p class="font-body-md text-body-md text-on-surface-variant">Heavy tasks delegate to specialized lightweight subagents, keeping the main context window clean.</p>
       </div>
-      <div style="text-align:center;margin:24px 0;color:var(--text-dimmer);font-size:1.5rem" aria-label="then for each task">↓</div>
-      <p class="flow-section-label" style="color:var(--text-dimmer);margin-bottom:32px">Per-Task Development Phase</p>
-      <div class="flow-steps">
-        <div class="flow-step">
-          <div class="flow-node">
-            <code>/dev:analyze</code>
-            <span>2-3 options</span>
-          </div>
-        </div>
-        <div class="flow-arrow" aria-hidden="true">→</div>
-        <div class="flow-step">
-          <div class="flow-node" style="border-color:rgba(245,158,11,0.4)">
-            <code style="color:var(--amber)">review</code>
-            <span>Human gate</span>
-          </div>
-        </div>
-        <div class="flow-arrow" aria-hidden="true">→</div>
-        <div class="flow-step">
-          <div class="flow-node">
-            <code>/dev:implement</code>
-            <span>Build it</span>
-          </div>
-        </div>
-        <div class="flow-arrow" aria-hidden="true">→</div>
-        <div class="flow-step">
-          <div class="flow-node">
-            <code>/dev:review</code>
-            <span>Code review</span>
-          </div>
-        </div>
-        <div class="flow-arrow" aria-hidden="true">→</div>
-        <div class="flow-step">
-          <div class="flow-node">
-            <code>/dev:pr</code>
-            <span>PR description</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="flow-content" id="flow-dev">
-      <div class="flow-steps" aria-label="Developer task workflow">
-        <div class="flow-step">
-          <div class="flow-node">
-            <code>/dev:analyze</code>
-            <span>Options</span>
-          </div>
-        </div>
-        <div class="flow-arrow" aria-hidden="true">→</div>
-        <div class="flow-step">
-          <div class="flow-node" style="border-color:rgba(245,158,11,0.4)">
-            <code style="color:var(--amber)">review</code>
-            <span>analysis.md</span>
-          </div>
-        </div>
-        <div class="flow-arrow" aria-hidden="true">→</div>
-        <div class="flow-step">
-          <div class="flow-node">
-            <code>/dev:implement</code>
-            <span>Implement</span>
-          </div>
-        </div>
-        <div class="flow-arrow" aria-hidden="true">→</div>
-        <div class="flow-step">
-          <div class="flow-node">
-            <code>/dev:review</code>
-            <span>Review</span>
-          </div>
-        </div>
-        <div class="flow-arrow" aria-hidden="true">→</div>
-        <div class="flow-step">
-          <div class="flow-node">
-            <code>/dev:pr</code>
-            <span>Ship it</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Agents table -->
-    <div style="margin-top:64px">
-      <p class="section-label" style="display:block;margin-bottom:16px">Subagent Architecture</p>
-      <div style="overflow-x:auto">
-        <table class="agents-table" aria-label="Subagent definitions">
+      <div class="overflow-x-auto">
+        <table class="w-full">
           <thead>
-            <tr>
-              <th>Agent</th>
-              <th>Used by</th>
-              <th>Model</th>
-              <th>Purpose</th>
+            <tr class="border-b border-outline-variant/20">
+              <th class="text-left px-8 py-4 font-label-mono text-label-mono text-on-surface-variant">AGENT</th>
+              <th class="text-left px-4 py-4 font-label-mono text-label-mono text-on-surface-variant">USED BY</th>
+              <th class="text-left px-4 py-4 font-label-mono text-label-mono text-on-surface-variant">MODEL</th>
+              <th class="text-left px-4 py-4 font-label-mono text-label-mono text-on-surface-variant">PURPOSE</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><span class="agent-name">task-reader</span></td>
-              <td style="color:var(--text-dim)">/dev:analyze</td>
-              <td><span class="model-badge model-haiku">haiku</span></td>
-              <td style="color:var(--text-dim)">Parse issue → structured JSON</td>
+            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
+              <td class="px-8 py-4 font-label-mono text-label-mono text-primary-container">task-reader</td>
+              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">/dev:analyze</td>
+              <td class="px-4 py-4"><span class="bg-primary-container/10 text-primary-container border border-primary-container/20 font-label-mono text-[12px] px-3 py-1 rounded-full">haiku</span></td>
+              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">Parse issue → structured JSON</td>
             </tr>
-            <tr>
-              <td><span class="agent-name">code-scout</span></td>
-              <td style="color:var(--text-dim)">/dev:analyze</td>
-              <td><span class="model-badge model-haiku">haiku</span></td>
-              <td style="color:var(--text-dim)">Find relevant files in codebase</td>
+            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
+              <td class="px-8 py-4 font-label-mono text-label-mono text-primary-container">code-scout</td>
+              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">/dev:analyze</td>
+              <td class="px-4 py-4"><span class="bg-primary-container/10 text-primary-container border border-primary-container/20 font-label-mono text-[12px] px-3 py-1 rounded-full">haiku</span></td>
+              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">Find relevant files in codebase</td>
             </tr>
-            <tr>
-              <td><span class="agent-name">planner</span></td>
-              <td style="color:var(--text-dim)">/dev:analyze</td>
-              <td><span class="model-badge model-sonnet">sonnet</span></td>
-              <td style="color:var(--text-dim)">Synthesize implementation options</td>
+            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
+              <td class="px-8 py-4 font-label-mono text-label-mono text-secondary">planner</td>
+              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">/dev:analyze</td>
+              <td class="px-4 py-4"><span class="bg-secondary/10 text-secondary border border-secondary/20 font-label-mono text-[12px] px-3 py-1 rounded-full">sonnet</span></td>
+              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">Synthesize implementation options</td>
             </tr>
-            <tr>
-              <td><span class="agent-name">diff-reader</span></td>
-              <td style="color:var(--text-dim)">/dev:pr, /docs:update</td>
-              <td><span class="model-badge model-haiku">haiku</span></td>
-              <td style="color:var(--text-dim)">Map diff → AC coverage</td>
+            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
+              <td class="px-8 py-4 font-label-mono text-label-mono text-primary-container">diff-reader</td>
+              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">/dev:pr, /docs:update</td>
+              <td class="px-4 py-4"><span class="bg-primary-container/10 text-primary-container border border-primary-container/20 font-label-mono text-[12px] px-3 py-1 rounded-full">haiku</span></td>
+              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">Map diff → AC coverage</td>
             </tr>
-            <tr>
-              <td><span class="agent-name">review-reader</span></td>
-              <td style="color:var(--text-dim)">/dev:review</td>
-              <td><span class="model-badge model-haiku">haiku</span></td>
-              <td style="color:var(--text-dim)">Parse diff → review signals</td>
+            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
+              <td class="px-8 py-4 font-label-mono text-label-mono text-primary-container">review-reader</td>
+              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">/dev:review</td>
+              <td class="px-4 py-4"><span class="bg-primary-container/10 text-primary-container border border-primary-container/20 font-label-mono text-[12px] px-3 py-1 rounded-full">haiku</span></td>
+              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">Parse diff → review signals</td>
             </tr>
-            <tr>
-              <td><span class="agent-name">test-gen</span></td>
-              <td style="color:var(--text-dim)">/qa:testplan</td>
-              <td><span class="model-badge model-sonnet">sonnet</span></td>
-              <td style="color:var(--text-dim)">Generate test cases from spec</td>
+            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
+              <td class="px-8 py-4 font-label-mono text-label-mono text-secondary">test-gen</td>
+              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">/qa:testplan</td>
+              <td class="px-4 py-4"><span class="bg-secondary/10 text-secondary border border-secondary/20 font-label-mono text-[12px] px-3 py-1 rounded-full">sonnet</span></td>
+              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">Generate test cases from spec</td>
             </tr>
-            <tr>
-              <td><span class="agent-name">doc-updater</span></td>
-              <td style="color:var(--text-dim)">/docs:update</td>
-              <td><span class="model-badge model-sonnet">sonnet</span></td>
-              <td style="color:var(--text-dim)">Update baseline documentation</td>
+            <tr class="hover:bg-surface-container/30 transition-colors">
+              <td class="px-8 py-4 font-label-mono text-label-mono text-secondary">doc-updater</td>
+              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">/docs:update</td>
+              <td class="px-4 py-4"><span class="bg-secondary/10 text-secondary border border-secondary/20 font-label-mono text-[12px] px-3 py-1 rounded-full">sonnet</span></td>
+              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">Update baseline documentation</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="section-divider"></div>
-
-<!-- ── VTI Context ── -->
-<section class="vti" id="vti">
-  <div class="container">
-    <div class="vti-inner">
-      <div class="vti-grid">
-        <div>
-          <p class="section-label">VTI Context</p>
-          <h2 class="section-title">Built for the JP–VN outsource model</h2>
-          <p class="section-desc" style="margin-bottom:0">Optimized for VTI Software — a Vietnamese dev team working with Japanese clients via Bridge Engineers. Includes bilingual delivery commands out of the box.</p>
-
-          <div class="vti-roles">
-            <div class="vti-role">
-              <div class="vti-role-icon" style="background:rgba(6,182,212,0.1)" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-              </div>
-              <div>
-                <h4>Bridge Engineer</h4>
-                <p>Translates JP client requirements → VN team spec using <code style="font-family:monospace;font-size:0.78rem;color:var(--cyan)">/be:bridge</code></p>
-              </div>
+  <!-- ── VTI Context ── -->
+  <section class="py-section-gap px-gutter max-w-container-max mx-auto" id="vti">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="fade-up">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/10 border border-secondary-container/20 mb-6">
+          <span class="material-symbols-outlined text-[16px] text-secondary">language</span>
+          <span class="font-label-mono text-label-mono text-secondary">VTI CONTEXT</span>
+        </div>
+        <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Built for the JP–VN outsource model</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant mb-8">
+          Optimized for VTI Software — a Vietnamese dev team working with Japanese clients via Bridge Engineers. Bilingual delivery commands out of the box.
+        </p>
+        <div class="space-y-4">
+          <div class="glass-panel p-5 rounded-2xl flex items-start gap-4">
+            <span class="material-symbols-outlined text-primary-container flex-shrink-0">record_voice_over</span>
+            <div>
+              <h4 class="font-label-mono text-label-mono text-white mb-1">BRIDGE ENGINEER</h4>
+              <p class="font-body-md text-[14px] text-on-surface-variant">Translates JP client requirements → VN team spec using <code class="text-primary-container">/be:bridge</code></p>
             </div>
-            <div class="vti-role">
-              <div class="vti-role-icon" style="background:rgba(34,211,238,0.1)" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg>
-              </div>
-              <div>
-                <h4>BA writes Vietnamese spec</h4>
-                <p>From clarified requirements using <code style="font-family:monospace;font-size:0.78rem;color:var(--cyan)">/ba:spec</code></p>
-              </div>
+          </div>
+          <div class="glass-panel p-5 rounded-2xl flex items-start gap-4">
+            <span class="material-symbols-outlined text-primary-fixed-dim flex-shrink-0">edit_note</span>
+            <div>
+              <h4 class="font-label-mono text-label-mono text-white mb-1">BA WRITES VIETNAMESE SPEC</h4>
+              <p class="font-body-md text-[14px] text-on-surface-variant">From clarified requirements using <code class="text-primary-container">/ba:spec</code></p>
             </div>
-            <div class="vti-role">
-              <div class="vti-role-icon" style="background:rgba(16,185,129,0.1)" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-              </div>
-              <div>
-                <h4>Dev implements with AI guidance</h4>
-                <p>Code comments in English, structured via <code style="font-family:monospace;font-size:0.78rem;color:var(--cyan)">/dev:implement</code></p>
-              </div>
+          </div>
+          <div class="glass-panel p-5 rounded-2xl flex items-start gap-4">
+            <span class="material-symbols-outlined text-secondary flex-shrink-0">code</span>
+            <div>
+              <h4 class="font-label-mono text-label-mono text-white mb-1">DEV IMPLEMENTS WITH AI GUIDANCE</h4>
+              <p class="font-body-md text-[14px] text-on-surface-variant">Code comments in English, structured via <code class="text-primary-container">/dev:implement</code></p>
             </div>
-            <div class="vti-role">
-              <div class="vti-role-icon" style="background:rgba(245,158,11,0.1)" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              </div>
-              <div>
-                <h4>JP-formatted deliverables</h4>
-                <p>設計書、単体テスト仕様書、成果物 formatted for Japanese clients</p>
-              </div>
+          </div>
+          <div class="glass-panel p-5 rounded-2xl flex items-start gap-4">
+            <span class="material-symbols-outlined text-secondary-fixed-dim flex-shrink-0">inventory_2</span>
+            <div>
+              <h4 class="font-label-mono text-label-mono text-white mb-1">JP-FORMATTED DELIVERABLES</h4>
+              <p class="font-body-md text-[14px] text-on-surface-variant">設計書、単体テスト仕様書、成果物 formatted for Japanese clients</p>
             </div>
           </div>
         </div>
+      </div>
 
-        <div>
-          <div class="bilingual-demo" aria-label="Bilingual deliverable example">
-            <div class="bilingual-demo-label">Bilingual Deliverable Example</div>
-
-            <div class="bilingual-item">
-              <div class="bilingual-lang" style="color:var(--cyan)">JP — Requirements</div>
-              <div class="bilingual-text">ユーザーログイン機能の実装<br /><span style="color:var(--text-dim);font-size:0.8rem">セキュリティ要件：パスワード強度チェック必須</span></div>
+      <!-- Bilingual demo -->
+      <div class="glass-panel rounded-3xl border border-outline-variant/30 overflow-hidden fade-up delay-2">
+        <div class="bg-surface-container-high px-6 py-4 flex items-center justify-between border-b border-outline-variant/30">
+          <div class="flex gap-2">
+            <div class="w-3 h-3 rounded-full bg-error"></div>
+            <div class="w-3 h-3 rounded-full bg-secondary"></div>
+            <div class="w-3 h-3 rounded-full bg-primary-container"></div>
+          </div>
+          <span class="font-label-mono text-label-mono text-on-surface-variant">/be:bridge output</span>
+          <div class="w-8"></div>
+        </div>
+        <div class="p-8 space-y-6 font-label-mono text-[13px]">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <div class="px-2 py-0.5 rounded bg-primary-container/10 border border-primary-container/20">
+                <span class="text-primary-container text-[11px]">JP — CLIENT</span>
+              </div>
             </div>
-            <div class="bilingual-item">
-              <div class="bilingual-lang" style="color:var(--purple)">VN — Spec</div>
-              <div class="bilingual-text">Triển khai chức năng đăng nhập người dùng<br /><span style="color:var(--text-dim);font-size:0.8rem">Yêu cầu bảo mật: kiểm tra độ mạnh mật khẩu bắt buộc</span></div>
+            <p class="text-on-surface-variant leading-relaxed">ユーザーログイン機能の実装<br/><span class="text-on-surface-variant/60">セキュリティ要件：パスワード強度チェック必須</span></p>
+          </div>
+          <div class="blueprint-line"></div>
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <div class="px-2 py-0.5 rounded bg-secondary/10 border border-secondary/20">
+                <span class="text-secondary text-[11px]">VN — SPEC</span>
+              </div>
             </div>
-            <div class="bilingual-item">
-              <div class="bilingual-lang" style="color:var(--green)">EN — Code Comments</div>
-              <div class="bilingual-text" style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:#86efac">// Validate password strength per JP security spec<br />// Min 8 chars, 1 uppercase, 1 number, 1 symbol</div>
+            <p class="text-on-surface-variant leading-relaxed">Triển khai chức năng đăng nhập người dùng<br/><span class="text-on-surface-variant/60">Yêu cầu bảo mật: kiểm tra độ mạnh mật khẩu bắt buộc</span></p>
+          </div>
+          <div class="blueprint-line"></div>
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <div class="px-2 py-0.5 rounded bg-primary-fixed-dim/10 border border-primary-fixed-dim/20">
+                <span class="text-primary-fixed-dim text-[11px]">EN — CODE</span>
+              </div>
             </div>
+            <p class="text-primary-fixed-dim/60 leading-relaxed">// Validate password strength per JP security spec<br/>// Min 8 chars, 1 uppercase, 1 number, 1 symbol<br/><span class="text-primary-container">function</span> <span class="text-secondary">validatePassword</span>(pwd) &#123; ... &#125;</p>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="section-divider"></div>
-
-<!-- ── Install ── -->
-<section class="install-section" id="install">
-  <div class="container">
-    <div class="install-section-header">
-      <p class="section-label">Get Started</p>
-      <h2 class="section-title">Install in seconds</h2>
-      <p class="section-desc">Drop into any project. Works with Claude Code CLI. No build step required.</p>
+  <!-- ── Terminal / Install ── -->
+  <section class="py-section-gap px-gutter max-w-container-max mx-auto" id="install">
+    <div class="text-center mb-12 fade-up">
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Install in seconds</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+        Drop into any project. Works with Claude Code CLI. No build step required.
+      </p>
     </div>
-
-    <div class="install-cards">
-      <div class="install-card fade-up stagger-1">
-        <div class="install-card-header">
-          <div class="install-card-icon" style="background:rgba(34,211,238,0.1)" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </div>
-          <div>
-            <h3>macOS / Linux</h3>
-            <p>Full install — all 26 commands</p>
-          </div>
+    <div class="glass-panel rounded-3xl border border-outline-variant/30 overflow-hidden shadow-2xl fade-up">
+      <div class="bg-surface-container-high px-6 py-4 flex items-center justify-between border-b border-outline-variant/30">
+        <div class="flex gap-2">
+          <div class="w-3 h-3 rounded-full bg-error"></div>
+          <div class="w-3 h-3 rounded-full bg-secondary"></div>
+          <div class="w-3 h-3 rounded-full bg-primary-container"></div>
         </div>
-        <div class="code-block" aria-label="macOS Linux install command">
-          <span class="kw">npx</span> github:hiepdnh/Agentic-Development-Lifecycle <span class="fl">--yes</span>
-        </div>
-        <div class="what-installs">
-          Installs: <strong>.claude/commands/</strong> · <strong>agents/</strong> · <strong>templates/</strong> · <strong>docs/workflows/</strong>
-        </div>
+        <span class="font-label-mono text-label-mono text-on-surface-variant">Terminal — zsh</span>
+        <div class="w-8"></div>
       </div>
+      <div class="p-8 font-label-mono text-label-mono bg-[#010f1f]">
+        <div class="mb-4">
+          <span class="text-primary">➜</span>
+          <span class="text-secondary"> ~ </span>
+          <span class="text-white">npx github:hiepdnh/Agentic-Development-Lifecycle --yes</span>
+        </div>
+        <div class="text-on-surface-variant space-y-1 mb-6">
+          <p>[1/4] Resolving packages...</p>
+          <p>[2/4] Fetching orchestration blueprints...</p>
+          <p>[3/4] Initializing Claude Code environment...</p>
+          <p class="text-primary-container">✔ ADLC v1.0.4 successfully initialized.</p>
+          <p class="text-on-surface-variant/50">    .claude/commands/ — 26 skill files ready</p>
+          <p class="text-on-surface-variant/50">    agents/ — 7 subagent definitions loaded</p>
+          <p class="text-on-surface-variant/50">    templates/, docs/workflows/ — scaffolded</p>
+        </div>
+        <!-- Install options -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
+            <p class="text-primary-container mb-2 text-[11px] uppercase tracking-wider">macOS / Linux</p>
+            <code class="text-secondary-fixed-dim break-all">npx github:hiepdnh/Agentic-Development-Lifecycle --yes</code>
+          </div>
+          <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
+            <p class="text-primary-container mb-2 text-[11px] uppercase tracking-wider">Windows PowerShell</p>
+            <code class="text-secondary-fixed-dim">$tmp="$env:TEMP\vti"; mkdir $tmp; cd $tmp; npx ... --yes</code>
+          </div>
+          <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
+            <p class="text-secondary mb-2 text-[11px] uppercase tracking-wider">Developer Lite</p>
+            <code class="text-secondary-fixed-dim">node packages/developer-lite/bin/install.js --yes</code>
+          </div>
+        </div>
 
-      <div class="install-card fade-up stagger-2">
-        <div class="install-card-header">
-          <div class="install-card-icon" style="background:rgba(168,85,247,0.1)" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v3"/><rect x="16" y="13" width="6" height="8" rx="1"/><path d="M19 17v.01"/></svg>
-          </div>
-          <div>
-            <h3>Windows</h3>
-            <p>PowerShell install</p>
-          </div>
-        </div>
-        <div class="code-block" aria-label="Windows PowerShell install command">
-          <span class="cm"># PowerShell</span><br />
-          <span class="kw">$tmp</span> = <span class="str">"$env:TEMP\vti-install"</span><br />
-          mkdir <span class="kw">$tmp</span> -Force; Set-Location <span class="kw">$tmp</span><br />
-          <span class="kw">npx</span> github:hiepdnh/Agentic-Development-Lifecycle <span class="fl">--yes</span>
-        </div>
-        <div class="what-installs">
-          Or use <strong>setup.ps1</strong> from the repo for a streamlined Windows experience.
-        </div>
-      </div>
-
-      <div class="install-card fade-up stagger-3">
-        <div class="install-card-header">
-          <div class="install-card-icon" style="background:rgba(16,185,129,0.1)" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          </div>
-          <div>
-            <h3>Developer Lite</h3>
-            <p>Minimal — dev workflow only</p>
-          </div>
-        </div>
-        <div class="code-block" aria-label="Developer Lite install command">
-          <span class="cm"># Dev workflow without PM/BA/QA/Ops</span><br />
-          <span class="kw">node</span> packages/developer-lite/bin/install.js <span class="fl">--yes</span>
-        </div>
-        <div class="what-installs">
-          Includes: <strong>/dev:analyze</strong> <strong>/dev:implement</strong> <strong>/dev:review</strong> <strong>/dev:pr</strong> <strong>/dev:debug</strong> <strong>/sec:review</strong> <strong>/arch:adr</strong> <strong>/docs:update</strong>
+        <div class="mt-6 flex items-center gap-2">
+          <span class="text-primary">➜</span>
+          <span class="text-secondary"> ~ </span>
+          <span class="text-white">claude code</span>
+          <span class="cursor text-primary-container">▌</span>
         </div>
       </div>
     </div>
 
-    <div style="text-align:center;margin-top:48px">
-      <a href="https://github.com/hiepdnh/Agentic-Development-Lifecycle" class="btn-primary" target="_blank" rel="noopener" style="display:inline-flex">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+    <div class="text-center mt-10 fade-up">
+      <a href="https://github.com/hiepdnh/Agentic-Development-Lifecycle" target="_blank" rel="noopener"
+         class="bg-primary-container text-on-primary-container px-10 py-4 rounded-full font-label-mono text-label-mono font-bold hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(0,229,255,0.3)] inline-flex items-center gap-3">
+        <span class="material-symbols-outlined text-[20px]">open_in_new</span>
         View on GitHub
       </a>
     </div>
-  </div>
-</section>
+  </section>
+
+</main>
 
 <!-- ── Footer ── -->
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div>
-        <div class="footer-logo">
-          <div class="nav-logo-icon" aria-hidden="true">A</div>
-          <span>Agentic Development Lifecycle</span>
-        </div>
-        <div class="footer-links" style="margin-top:16px">
-          <a href="https://github.com/hiepdnh/Agentic-Development-Lifecycle" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://github.com/hiepdnh/Agentic-Development-Lifecycle/blob/main/README.md" target="_blank" rel="noopener">Docs</a>
-          <a href="https://github.com/hiepdnh/Agentic-Development-Lifecycle/blob/main/SECURITY.md" target="_blank" rel="noopener">Security</a>
-          <a href="https://github.com/hiepdnh/Agentic-Development-Lifecycle/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
-        </div>
+<footer class="bg-background relative w-full py-12 border-t border-outline-variant/20">
+  <div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-8">
+    <div class="flex flex-col items-center md:items-start gap-4">
+      <div class="flex items-center gap-3">
+        <span class="font-headline-md text-headline-md text-primary font-bold">ADLC</span>
+        <span class="text-on-surface-variant opacity-30">|</span>
+        <span class="font-label-mono text-label-mono text-on-surface-variant">v1.0.4-agentic</span>
       </div>
-      <div class="footer-right">
-        <p>Built by VTI Software · For teams building with AI</p>
-        <div class="footer-badges">
-          <span class="footer-badge badge-mit">MIT License</span>
-          <span class="footer-badge badge-claude">Claude Code</span>
-        </div>
-      </div>
+      <p class="font-body-md text-body-md text-tertiary-fixed-dim max-w-xs text-center md:text-left opacity-80">
+        Engineered for the Agentic Era. Build with the speed of thought.
+      </p>
     </div>
+    <div class="flex flex-wrap justify-center gap-8">
+      <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-fixed transition-colors"
+         href="https://github.com/hiepdnh/Agentic-Development-Lifecycle/blob/main/SECURITY.md" target="_blank" rel="noopener">Security</a>
+      <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-fixed transition-colors"
+         href="https://github.com/hiepdnh/Agentic-Development-Lifecycle/blob/main/README.md" target="_blank" rel="noopener">API Docs</a>
+      <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-fixed transition-colors"
+         href="https://github.com/hiepdnh/Agentic-Development-Lifecycle/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+      <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-fixed transition-colors"
+         href="https://github.com/hiepdnh/Agentic-Development-Lifecycle" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="flex gap-4">
+      <a class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center hover:bg-primary-container/10 transition-all border border-outline-variant/30"
+         href="https://github.com/hiepdnh/Agentic-Development-Lifecycle" target="_blank" rel="noopener" aria-label="Terminal / GitHub">
+        <span class="material-symbols-outlined text-on-surface-variant">terminal</span>
+      </a>
+      <a class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center hover:bg-primary-container/10 transition-all border border-outline-variant/30"
+         href="https://github.com/hiepdnh/Agentic-Development-Lifecycle/blob/main/README.md" target="_blank" rel="noopener" aria-label="Documentation">
+        <span class="material-symbols-outlined text-on-surface-variant">code</span>
+      </a>
+    </div>
+  </div>
+  <div class="max-w-container-max mx-auto px-gutter mt-12 pt-8 border-t border-outline-variant/10 text-center">
+    <p class="font-label-mono text-[12px] text-on-surface-variant/50 uppercase tracking-widest">
+      © 2025 ADLC · VTI SOFTWARE · MIT LICENSE · POWERED BY CLAUDE CODE
+    </p>
   </div>
 </footer>
 
 <script>
-  // ── Tab switching (install hero) ──
-  function switchTab(btn, id) {
-    document.querySelectorAll('.install-tab').forEach(t => {
-      t.classList.remove('active');
-      t.setAttribute('aria-selected', 'false');
-    });
-    document.querySelectorAll('.install-content').forEach(c => c.classList.remove('active'));
-    btn.classList.add('active');
-    btn.setAttribute('aria-selected', 'true');
-    document.getElementById('tab-' + id).classList.add('active');
-  }
-
-  // ── Copy install command ──
-  function copyInstall(btn) {
-    const active = document.querySelector('.install-content.active pre');
-    if (!active) return;
-    const text = active.innerText;
-    navigator.clipboard.writeText(text).then(() => {
-      btn.textContent = 'Copied!';
-      btn.classList.add('copied');
-      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
-    });
-  }
-
-  // ── Flow tab switching ──
-  function switchFlow(btn, id) {
-    document.querySelectorAll('.flow-tab').forEach(t => {
-      t.classList.remove('active');
-      t.setAttribute('aria-selected', 'false');
-    });
-    document.querySelectorAll('.flow-content').forEach(c => c.classList.remove('active'));
-    btn.classList.add('active');
-    btn.setAttribute('aria-selected', 'true');
-    document.getElementById('flow-' + id).classList.add('active');
-  }
-
-  // ── Command filtering ──
+  // ── Command filter ──
   function filterCmds(btn, cat) {
-    document.querySelectorAll('.cat-pill').forEach(p => {
+    // update pill states
+    document.querySelectorAll('.cat-pill, .cat-pill-all').forEach(p => {
       p.classList.remove('active');
       p.setAttribute('aria-pressed', 'false');
     });
     btn.classList.add('active');
     btn.setAttribute('aria-pressed', 'true');
-
-    const cards = document.querySelectorAll('.cmd-card');
-    cards.forEach(card => {
-      if (cat === 'all' || card.dataset.cat === cat) {
-        card.style.display = 'flex';
-      } else {
-        card.style.display = 'none';
-      }
+    // filter cards
+    document.querySelectorAll('#commands-grid > div').forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
     });
   }
 
-  // ── Scroll-based fade-in ──
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
+  // ── Scroll fade-in ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 </body>
