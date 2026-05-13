@@ -340,7 +340,7 @@
       <span class="font-headline-md text-headline-md font-bold tracking-tighter text-primary-container">ADLC</span>
     </div>
     <div class="hidden md:flex items-center gap-8">
-      <a class="font-body-md text-body-md text-primary-fixed-dim border-b-2 border-primary-fixed-dim pb-1" href="#hero">Platform</a>
+      <a class="font-body-md text-body-md text-primary-fixed-dim border-b-2 border-primary-fixed-dim pb-1" href="#hero" data-i18n="nav.platform">Platform</a>
       <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#workflows" data-i18n="nav.workflow">Workflows</a>
       <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#commands" data-i18n="nav.commands">Commands</a>
       <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#vti" data-i18n="nav.vti">VTI Context</a>
@@ -354,7 +354,7 @@
       </div>
       <a href="https://github.com/hiepdnh/Agentic-Development-Lifecycle" target="_blank" rel="noopener"
          class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-label-mono text-label-mono font-bold hover:scale-105 active:scale-95 transition-all shadow-[0_0_15px_rgba(0,229,255,0.3)]">
-        Deploy Agent
+        <span data-i18n="nav.cta">Deploy Agent</span>
       </a>
     </div>
   </div>
@@ -384,19 +384,19 @@
       <div class="flex flex-wrap gap-4 items-center mb-12">
         <div class="flex flex-col border-r border-outline-variant/30 pr-8">
           <span class="font-headline-md text-headline-md text-primary">26</span>
-          <span class="font-label-mono text-label-mono text-on-surface-variant">Slash Commands</span>
+          <span class="font-label-mono text-label-mono text-on-surface-variant" data-i18n="stat.cmd_label">Slash Commands</span>
         </div>
         <div class="flex flex-col border-r border-outline-variant/30 px-8">
           <span class="font-headline-md text-headline-md text-primary">9</span>
-          <span class="font-label-mono text-label-mono text-on-surface-variant">SDLC Roles</span>
+          <span class="font-label-mono text-label-mono text-on-surface-variant" data-i18n="stat.roles_label">SDLC Roles</span>
         </div>
         <div class="flex flex-col border-r border-outline-variant/30 px-8">
           <span class="font-headline-md text-headline-md text-primary">7</span>
-          <span class="font-label-mono text-label-mono text-on-surface-variant">Subagents</span>
+          <span class="font-label-mono text-label-mono text-on-surface-variant" data-i18n="stat.agents_label">Subagents</span>
         </div>
         <div class="flex flex-col px-8">
           <span class="font-headline-md text-headline-md text-primary">MIT</span>
-          <span class="font-label-mono text-label-mono text-on-surface-variant">Open Source</span>
+          <span class="font-label-mono text-label-mono text-on-surface-variant" data-i18n="stat.os_label">Open Source</span>
         </div>
       </div>
 
@@ -479,8 +479,8 @@
       </div>
       <div class="glass-panel p-6 rounded-2xl border-t-2 border-primary-container hover:bg-primary-container/5 transition-all group cursor-default fade-up delay-4">
         <span class="material-symbols-outlined text-primary-container mb-4 block group-hover:scale-110 transition-transform">rocket_launch</span>
-        <h3 class="font-label-mono text-label-mono text-white mb-2">7. DEPLOY</h3>
-        <p class="font-body-md text-[14px] text-on-surface-variant">Deploy to production environments.</p>
+        <h3 class="font-label-mono text-label-mono text-white mb-2" data-i18n="flow.deploy.name">7. DEPLOY</h3>
+        <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="flow.deploy.desc">Deploy to production environments.</p>
       </div>
     </div>
   </section>
@@ -538,7 +538,7 @@
         <div class="px-8 pt-8 pb-5 border-b border-outline-variant/20">
           <div class="flex items-center gap-3 mb-2">
             <span class="material-symbols-outlined text-primary-container">translate</span>
-            <h3 class="font-headline-md text-headline-md text-white">Bridge Engineer — JP Outsource Entry</h3>
+            <h3 class="font-headline-md text-headline-md text-white" data-i18n="wf.bridge.title">Bridge Engineer — JP Outsource Entry</h3>
           </div>
           <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="wf.bridge.desc">Receive JP client request → translate → create bilingual JP-VN spec.</p>
         </div>
@@ -547,7 +547,7 @@
             <!-- Start node -->
             <div class="flow-node flow-node-start">
               <span class="material-symbols-outlined fn-icon" aria-hidden="true">flag</span>
-              <span class="fn-label">JP Client</span>
+              <span class="fn-label" data-i18n="wf.bridge.node.client">JP Client</span>
               <span class="fn-sub" data-i18n="wf.bridge.req">JP Request</span>
             </div>
             <!-- Arrow -->
@@ -555,7 +555,7 @@
             <!-- Command node -->
             <div class="flow-node flow-node-cmd" style="--fc:0,229,255">
               <span class="fn-cmd">/be:bridge</span>
-              <span class="fn-label">Bridge Engineer</span>
+              <span class="fn-label" data-i18n="wf.bridge.node.eng">Bridge Engineer</span>
               <span class="fn-sub" data-i18n="wf.bridge.translate">Translate + Analyze</span>
             </div>
             <!-- Fork -->
@@ -567,7 +567,7 @@
                   <div class="flow-node flow-node-doc">
                     <span class="material-symbols-outlined fn-icon" style="font-size:16px" aria-hidden="true">description</span>
                     <span class="fn-label" data-i18n="wf.bridge.design">JP Design Doc</span>
-                    <span class="fn-sub">Deliverable JP</span>
+                    <span class="fn-sub" data-i18n="wf.bridge.node.deliverable">Deliverable JP</span>
                   </div>
                 </div>
                 <div class="flex items-center gap-2 mt-2">
@@ -582,7 +582,7 @@
             </div>
           </div>
           <div class="p-4 rounded-lg bg-surface-container-low border border-primary-container/20 font-label-mono text-[13px]">
-            <span class="text-primary-container">OUTPUT</span>
+            <span class="text-primary-container" data-i18n="wf.bridge.output_label">OUTPUT</span>
             <span class="text-on-surface-variant/50 mx-2">·</span>
             <span class="text-on-surface-variant" data-i18n="wf.bridge.output">設計書 (JP) · requirements.md (VN) · bilingual glossary</span>
           </div>
@@ -594,7 +594,7 @@
         <div class="px-8 pt-8 pb-5 border-b border-outline-variant/20">
           <div class="flex items-center gap-3 mb-2">
             <span class="material-symbols-outlined text-secondary">foundation</span>
-            <h3 class="font-headline-md text-headline-md text-white">Brownfield Onboarding — Legacy Take-over</h3>
+            <h3 class="font-headline-md text-headline-md text-white" data-i18n="wf.brownfield.title">Brownfield Onboarding — Legacy Take-over</h3>
           </div>
           <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="wf.brownfield.desc">Inherit legacy codebase → reverse engineer → create baseline docs → add new feature.</p>
         </div>
@@ -602,14 +602,14 @@
           <div class="flow-diagram mb-6">
             <div class="flow-node flow-node-start">
               <span class="material-symbols-outlined fn-icon">domain</span>
-              <span class="fn-label">Legacy Codebase</span>
-              <span class="fn-sub">Brownfield</span>
+              <span class="fn-label" data-i18n="wf.brownfield.node.legacy">Legacy Codebase</span>
+              <span class="fn-sub" data-i18n="wf.brownfield.node.label">Brownfield</span>
             </div>
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-cmd" style="--fc:0,229,255">
               <span class="fn-cmd">/ba:reverse</span>
-              <span class="fn-label">BA · Tech Lead</span>
-              <span class="fn-sub">Reverse engineer</span>
+              <span class="fn-label" data-i18n="wf.brownfield.node.ba_tl">BA · Tech Lead</span>
+              <span class="fn-sub" data-i18n="wf.brownfield.node.reverse">Reverse engineer</span>
             </div>
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-doc">
@@ -623,8 +623,8 @@
             </div>
             <div class="flow-node flow-node-cmd" style="--fc:0,218,243">
               <span class="fn-cmd">/be:bridge</span>
-              <span class="fn-label">JP review</span>
-              <span class="fn-sub">Optional</span>
+              <span class="fn-label" data-i18n="wf.brownfield.node.jp_review">JP review</span>
+              <span class="fn-sub" data-i18n="wf.brownfield.node.optional">Optional</span>
             </div>
           </div>
           <div class="flex items-center gap-4 mb-6">
@@ -636,7 +636,7 @@
             <div class="flow-node flow-node-doc">
               <span class="material-symbols-outlined fn-icon" style="font-size:16px">folder_open</span>
               <span class="fn-label">docs/baseline/</span>
-              <span class="fn-sub">full context</span>
+              <span class="fn-sub" data-i18n="wf.brownfield.node.ctx">full context</span>
             </div>
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-cmd" style="--fc:0,229,255">
@@ -647,7 +647,7 @@
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-start" style="border-style:dashed">
               <span class="material-symbols-outlined fn-icon">more_horiz</span>
-              <span class="fn-label">Dev flow</span>
+              <span class="fn-label" data-i18n="wf.brownfield.node.dev_flow">Dev flow</span>
               <span class="fn-sub" data-i18n="wf.brownfield.dev_link">→ see Dev tab</span>
             </div>
           </div>
@@ -659,7 +659,7 @@
         <div class="px-8 pt-8 pb-5 border-b border-outline-variant/20">
           <div class="flex items-center gap-3 mb-2">
             <span class="material-symbols-outlined text-secondary">assignment</span>
-            <h3 class="font-headline-md text-headline-md text-white">PM / BA — Discovery → Planning</h3>
+            <h3 class="font-headline-md text-headline-md text-white" data-i18n="wf.pmba.title">PM / BA — Discovery → Planning</h3>
           </div>
           <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="wf.pmba.desc">From vague idea → clear spec → user stories → task breakdown.</p>
         </div>
@@ -673,32 +673,32 @@
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-cmd" style="--fc:221,183,255">
               <span class="fn-cmd">/pm:ideate</span>
-              <span class="fn-label">PM · BA</span>
-              <span class="fn-sub">Clarify concept</span>
+              <span class="fn-label" data-i18n="wf.pmba.node.pmba">PM · BA</span>
+              <span class="fn-sub" data-i18n="wf.pmba.node.clarify">Clarify concept</span>
             </div>
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-cmd" style="--fc:0,229,255">
               <span class="fn-cmd">/ba:spec</span>
-              <span class="fn-label">BA</span>
+              <span class="fn-label" data-i18n="wf.pmba.node.ba_spec">BA</span>
               <span class="fn-sub">requirements.md</span>
             </div>
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-cmd" style="--fc:0,229,255">
               <span class="fn-cmd">/ba:user-story</span>
-              <span class="fn-label">BA</span>
-              <span class="fn-sub">Stories + AC</span>
+              <span class="fn-label" data-i18n="wf.pmba.node.ba_spec">BA</span>
+              <span class="fn-sub" data-i18n="wf.pmba.node.stories_ac">Stories + AC</span>
             </div>
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-cmd" style="--fc:221,183,255">
               <span class="fn-cmd">/pm:breakdown</span>
-              <span class="fn-label">PM</span>
-              <span class="fn-sub">Tasks + estimates</span>
+              <span class="fn-label" data-i18n="wf.pmba.node.pm">PM</span>
+              <span class="fn-sub" data-i18n="wf.pmba.node.tasks">Tasks + estimates</span>
             </div>
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-doc">
               <span class="material-symbols-outlined fn-icon" style="font-size:16px">task_alt</span>
-              <span class="fn-label">GitHub Issues</span>
-              <span class="fn-sub">Ready for Dev</span>
+              <span class="fn-label" data-i18n="wf.pmba.node.issues">GitHub Issues</span>
+              <span class="fn-sub" data-i18n="wf.pmba.node.ready">Ready for Dev</span>
             </div>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -723,45 +723,45 @@
         <div class="px-8 pt-8 pb-5 border-b border-outline-variant/20">
           <div class="flex items-center gap-3 mb-2">
             <span class="material-symbols-outlined text-primary-fixed-dim">code</span>
-            <h3 class="font-headline-md text-headline-md text-white">Dev Cycle — Per Issue</h3>
+            <h3 class="font-headline-md text-headline-md text-white" data-i18n="wf.dev.title">Dev Cycle — Per Issue</h3>
           </div>
           <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="wf.dev.desc">Each issue goes through Risk Classifier first — 3 lanes: tiny / normal / high-risk.</p>
         </div>
         <div class="p-8">
           <!-- Risk Classifier -->
           <div class="mb-8 p-5 rounded-lg border border-outline-variant/30 bg-surface-container-low">
-            <p class="font-label-mono text-[11px] text-on-surface-variant/70 mb-4 uppercase tracking-widest">Risk Classifier — 3 Lanes</p>
+            <p class="font-label-mono text-[11px] text-on-surface-variant/70 mb-4 uppercase tracking-widest" data-i18n="wf.dev.classifier_label">Risk Classifier — 3 Lanes</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
               <div class="p-4 rounded-lg border border-primary-fixed-dim/30 bg-primary-fixed-dim/5 flex items-start gap-3">
                 <span class="material-symbols-outlined text-primary-fixed-dim text-[20px] flex-shrink-0">radio_button_checked</span>
                 <div>
-                  <p class="font-label-mono text-[11px] text-primary-fixed-dim mb-1 uppercase">Tiny</p>
-                  <p class="font-body-md text-[13px] text-on-surface-variant">Patch direct → /dev:pr</p>
+                  <p class="font-label-mono text-[11px] text-primary-fixed-dim mb-1 uppercase" data-i18n="wf.dev.tiny">Tiny</p>
+                  <p class="font-body-md text-[13px] text-on-surface-variant" data-i18n="wf.dev.tiny_sub">Patch direct → /dev:pr</p>
                 </div>
               </div>
               <div class="p-4 rounded-lg border border-primary-container/30 bg-primary-container/5 flex items-start gap-3">
                 <span class="material-symbols-outlined text-primary-container text-[20px] flex-shrink-0">adjust</span>
                 <div>
-                  <p class="font-label-mono text-[11px] text-primary-container mb-1 uppercase">Normal</p>
-                  <p class="font-body-md text-[13px] text-on-surface-variant">/dev:analyze → full lane</p>
+                  <p class="font-label-mono text-[11px] text-primary-container mb-1 uppercase" data-i18n="wf.dev.normal">Normal</p>
+                  <p class="font-body-md text-[13px] text-on-surface-variant" data-i18n="wf.dev.normal_sub">/dev:analyze → full lane</p>
                 </div>
               </div>
               <div class="p-4 rounded-lg border border-error/30 bg-error/5 flex items-start gap-3">
                 <span class="material-symbols-outlined text-error text-[20px] flex-shrink-0">warning</span>
                 <div>
-                  <p class="font-label-mono text-[11px] text-error mb-1 uppercase">High-Risk</p>
-                  <p class="font-body-md text-[13px] text-on-surface-variant">Senior confirm → /dev:analyze</p>
+                  <p class="font-label-mono text-[11px] text-error mb-1 uppercase" data-i18n="wf.dev.high">High-Risk</p>
+                  <p class="font-body-md text-[13px] text-on-surface-variant" data-i18n="wf.dev.high_sub">Senior confirm → /dev:analyze</p>
                 </div>
               </div>
             </div>
           </div>
           <!-- Normal lane flow -->
-          <p class="font-label-mono text-[11px] text-on-surface-variant/60 uppercase tracking-widest mb-5">Normal Lane Flow</p>
+          <p class="font-label-mono text-[11px] text-on-surface-variant/60 uppercase tracking-widest mb-5" data-i18n="wf.dev.lane_label">Normal Lane Flow</p>
           <div class="flow-diagram mb-6">
             <div class="flow-node flow-node-cmd" style="--fc:0,218,243">
               <span class="fn-cmd">/dev:analyze</span>
               <span class="fn-label">Dev</span>
-              <span class="fn-sub">2-3 options</span>
+              <span class="fn-sub" data-i18n="wf.dev.node.options">2-3 options</span>
             </div>
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-gate">
@@ -773,12 +773,12 @@
             <div class="flow-node flow-node-cmd" style="--fc:0,218,243">
               <span class="fn-cmd">/dev:implement</span>
               <span class="fn-label">Dev</span>
-              <span class="fn-sub">File by file</span>
+              <span class="fn-sub" data-i18n="wf.dev.node.fileby">File by file</span>
             </div>
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-gate">
               <span class="material-symbols-outlined fn-icon">fact_check</span>
-              <span class="fn-label">Verification</span>
+              <span class="fn-label" data-i18n="wf.dev.node.verify">Verification</span>
               <span class="fn-sub">User test</span>
             </div>
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -791,18 +791,18 @@
             <div class="flow-node flow-node-cmd" style="--fc:0,218,243">
               <span class="fn-cmd">/dev:review</span>
               <span class="fn-label">Dev · TL</span>
-              <span class="fn-sub">Code + security</span>
+              <span class="fn-sub" data-i18n="wf.dev.node.code_sec">Code + security</span>
             </div>
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-cmd" style="--fc:0,218,243">
               <span class="fn-cmd">/dev:pr</span>
               <span class="fn-label">Dev</span>
-              <span class="fn-sub">PR description</span>
+              <span class="fn-sub" data-i18n="wf.dev.node.pr_desc">PR description</span>
             </div>
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-cmd" style="--fc:139,92,246">
               <span class="fn-cmd">/docs:update</span>
-              <span class="fn-label">Post-merge</span>
+              <span class="fn-label" data-i18n="wf.dev.node.postmerge">Post-merge</span>
               <span class="fn-sub">Baseline sync</span>
             </div>
           </div>
@@ -830,7 +830,7 @@
             <div class="flow-node flow-node-doc">
               <span class="material-symbols-outlined fn-icon" style="font-size:16px">description</span>
               <span class="fn-label">/ba:spec</span>
-              <span class="fn-sub">Input</span>
+              <span class="fn-sub" data-i18n="wf.qa.node.input">Input</span>
             </div>
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-cmd" style="--fc:156,176,255">
@@ -841,8 +841,8 @@
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-gate">
               <span class="material-symbols-outlined fn-icon">play_circle</span>
-              <span class="fn-label">Testing</span>
-              <span class="fn-sub">Execute</span>
+              <span class="fn-label" data-i18n="wf.qa.node.testing">Testing</span>
+              <span class="fn-sub" data-i18n="wf.qa.node.execute">Execute</span>
             </div>
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-cmd" style="--fc:156,176,255">
@@ -854,13 +854,13 @@
             <div class="flow-node flow-node-cmd" style="--fc:0,218,243">
               <span class="fn-cmd">/dev:debug</span>
               <span class="fn-label">Dev</span>
-              <span class="fn-sub">Fix</span>
+              <span class="fn-sub" data-i18n="wf.qa.node.fix">Fix</span>
             </div>
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-gate">
               <span class="material-symbols-outlined fn-icon">refresh</span>
-              <span class="fn-label">Retest</span>
-              <span class="fn-sub">Loop if fail</span>
+              <span class="fn-label" data-i18n="wf.qa.node.retest">Retest</span>
+              <span class="fn-sub" data-i18n="wf.qa.node.loop_fail">Loop if fail</span>
             </div>
           </div>
           <div class="flex items-center gap-4 mb-6">
@@ -871,8 +871,8 @@
           <div class="flow-diagram">
             <div class="flow-node flow-node-doc">
               <span class="material-symbols-outlined fn-icon" style="font-size:16px">merge_type</span>
-              <span class="fn-label">PRs merged</span>
-              <span class="fn-sub">Sprint end</span>
+              <span class="fn-label" data-i18n="wf.qa.node.merged">PRs merged</span>
+              <span class="fn-sub" data-i18n="wf.qa.node.sprint_end">Sprint end</span>
             </div>
             <div class="flow-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="flow-node flow-node-cmd" style="--fc:156,176,255">
@@ -952,7 +952,7 @@
         <div class="px-8 pt-8 pb-5 border-b border-outline-variant/20">
           <div class="flex items-center gap-3 mb-2">
             <span class="material-symbols-outlined text-secondary">loop</span>
-            <h3 class="font-headline-md text-headline-md text-white">Sprint Ops — Scrum Rituals</h3>
+            <h3 class="font-headline-md text-headline-md text-white" data-i18n="wf.sprint.title">Sprint Ops — Scrum Rituals</h3>
           </div>
           <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="wf.sprint.loop">Runs repeatedly in parallel with Dev/QA throughout the sprint.</p>
         </div>
@@ -964,7 +964,7 @@
                 <span class="material-symbols-outlined text-secondary">record_voice_over</span>
                 <span class="font-label-mono text-label-mono text-secondary">/sm:standup</span>
               </div>
-              <p class="font-label-mono text-[11px] text-on-surface-variant/60 mb-2 uppercase tracking-wider">Daily</p>
+              <p class="font-label-mono text-[11px] text-on-surface-variant/60 mb-2 uppercase tracking-wider" data-i18n="wf.sprint.standup.cadence">Daily</p>
               <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="wf.sprint.standup">Daily standup summary for the team. Every morning or when a quick report is needed.</p>
             </div>
             <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 hover:border-secondary/30 transition-all group relative overflow-hidden">
@@ -973,7 +973,7 @@
                 <span class="material-symbols-outlined text-secondary">bar_chart</span>
                 <span class="font-label-mono text-label-mono text-secondary">/pm:status</span>
               </div>
-              <p class="font-label-mono text-[11px] text-on-surface-variant/60 mb-2 uppercase tracking-wider">Weekly / On-demand</p>
+              <p class="font-label-mono text-[11px] text-on-surface-variant/60 mb-2 uppercase tracking-wider" data-i18n="wf.sprint.status.cadence">Weekly / On-demand</p>
               <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="wf.sprint.report">Sprint status report for stakeholders. Triggered from /sm:standup or on milestone.</p>
             </div>
             <div class="glass-panel p-6 rounded-2xl border border-outline-variant/30 hover:border-secondary/30 transition-all group relative overflow-hidden">
@@ -982,14 +982,14 @@
                 <span class="material-symbols-outlined text-secondary">forum</span>
                 <span class="font-label-mono text-label-mono text-secondary">/sm:retro</span>
               </div>
-              <p class="font-label-mono text-[11px] text-on-surface-variant/60 mb-2 uppercase tracking-wider">Sprint End</p>
+              <p class="font-label-mono text-[11px] text-on-surface-variant/60 mb-2 uppercase tracking-wider" data-i18n="wf.sprint.retro.cadence">Sprint End</p>
               <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="wf.sprint.retro">Structured retrospective. Triggered end-of-sprint from /sm:standup.</p>
             </div>
           </div>
           <div class="p-4 rounded-lg bg-surface-container-low border border-secondary/20 font-label-mono text-[13px]">
-            <span class="text-secondary uppercase tracking-wider text-[11px]">Flow</span>
+            <span class="text-secondary uppercase tracking-wider text-[11px]" data-i18n="wf.sprint.flow_label">Flow</span>
             <span class="text-on-surface-variant/50 mx-2">·</span>
-            <span class="text-on-surface-variant">/sm:standup (daily) → /sm:retro (sprint end) &nbsp;·&nbsp; /sm:standup → /pm:status (weekly)</span>
+            <span class="text-on-surface-variant" data-i18n="wf.sprint.flow_text">/sm:standup (daily) → /sm:retro (sprint end) &nbsp;·&nbsp; /sm:standup → /pm:status (weekly)</span>
           </div>
         </div>
       </div>
@@ -1006,7 +1006,7 @@
         <table class="w-full glass-panel rounded-2xl border border-outline-variant/30 overflow-hidden">
           <thead>
             <tr class="border-b border-outline-variant/20">
-              <th class="text-left px-6 py-4 font-label-mono text-label-mono text-on-surface-variant">SKILL</th>
+              <th class="text-left px-6 py-4 font-label-mono text-label-mono text-on-surface-variant" data-i18n="gates.col.skill">SKILL</th>
               <th class="text-left px-4 py-4 font-label-mono text-label-mono text-on-surface-variant" data-i18n="gates.col.req">PREREQUISITE</th>
             </tr>
           </thead>
@@ -1065,38 +1065,38 @@
       <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 relative overflow-hidden group fade-up delay-1">
         <div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/5 rounded-full blur-3xl group-hover:bg-primary-container/10 transition-all"></div>
         <span class="material-symbols-outlined text-primary-container text-4xl mb-6 block">hub</span>
-        <h3 class="font-headline-md text-headline-md text-white mb-4">Multi-Agent Pattern</h3>
-        <p class="font-body-md text-body-md text-on-surface-variant">Heavy tasks spawn specialized lightweight subagents — haiku for parsing, sonnet for synthesis — keeping your main context window clean.</p>
+        <h3 class="font-headline-md text-headline-md text-white mb-4" data-i18n="features.multi.title">Multi-Agent Pattern</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="features.multi.desc">Heavy tasks spawn specialized lightweight subagents — haiku for parsing, sonnet for synthesis — keeping your main context window clean.</p>
       </div>
       <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 relative overflow-hidden group fade-up delay-2">
         <div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-3xl group-hover:bg-secondary/10 transition-all"></div>
         <span class="material-symbols-outlined text-secondary text-4xl mb-6 block">person_search</span>
-        <h3 class="font-headline-md text-headline-md text-white mb-4">Human-in-the-Loop</h3>
-        <p class="font-body-md text-body-md text-on-surface-variant">Every command includes mandatory decision gates. Claude presents options and waits for your approval. No blind execution, ever.</p>
+        <h3 class="font-headline-md text-headline-md text-white mb-4" data-i18n="features.hitl.title">Human-in-the-Loop</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="features.hitl.desc">Every command includes mandatory decision gates. Claude presents options and waits for your approval. No blind execution, ever.</p>
       </div>
       <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 relative overflow-hidden group fade-up delay-3">
         <div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/5 rounded-full blur-3xl group-hover:bg-primary-container/10 transition-all"></div>
         <span class="material-symbols-outlined text-primary-container text-4xl mb-6 block">auto_stories</span>
-        <h3 class="font-headline-md text-headline-md text-white mb-4">Two-Tier Documentation</h3>
-        <p class="font-body-md text-body-md text-on-surface-variant">Ephemeral per-task docs (gitignored) for in-progress work, plus living baseline docs updated after each verified merge.</p>
+        <h3 class="font-headline-md text-headline-md text-white mb-4" data-i18n="features.docs.title">Two-Tier Documentation</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="features.docs.desc">Ephemeral per-task docs (gitignored) for in-progress work, plus living baseline docs updated after each verified merge.</p>
       </div>
       <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 relative overflow-hidden group fade-up delay-1">
         <div class="absolute top-0 right-0 w-32 h-32 bg-secondary-fixed-dim/5 rounded-full blur-3xl group-hover:bg-secondary-fixed-dim/10 transition-all"></div>
         <span class="material-symbols-outlined text-secondary-fixed-dim text-4xl mb-6 block">devices</span>
-        <h3 class="font-headline-md text-headline-md text-white mb-4">Developer Lite Option</h3>
-        <p class="font-body-md text-body-md text-on-surface-variant">A minimal subset for teams needing only core dev workflow — without PM/BA/QA/Ops overhead. 8 focused commands, install in seconds.</p>
+        <h3 class="font-headline-md text-headline-md text-white mb-4" data-i18n="features.lite.title">Developer Lite Option</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="features.lite.desc">A minimal subset for teams needing only core dev workflow — without PM/BA/QA/Ops overhead. 8 focused commands, install in seconds.</p>
       </div>
       <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 relative overflow-hidden group fade-up delay-2">
         <div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/5 rounded-full blur-3xl group-hover:bg-primary-container/10 transition-all"></div>
         <span class="material-symbols-outlined text-primary-container text-4xl mb-6 block">security</span>
-        <h3 class="font-headline-md text-headline-md text-white mb-4">Security-First Review</h3>
-        <p class="font-body-md text-body-md text-on-surface-variant">Built-in OWASP Top 10 security review with Always/Ask/Never classification. Security is part of the workflow, not bolted on.</p>
+        <h3 class="font-headline-md text-headline-md text-white mb-4" data-i18n="features.sec.title">Security-First Review</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="features.sec.desc">Built-in OWASP Top 10 security review with Always/Ask/Never classification. Security is part of the workflow, not bolted on.</p>
       </div>
       <div class="glass-panel p-8 rounded-3xl border border-outline-variant/30 relative overflow-hidden group fade-up delay-3">
         <div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-3xl group-hover:bg-secondary/10 transition-all"></div>
         <span class="material-symbols-outlined text-secondary text-4xl mb-6 block">groups</span>
-        <h3 class="font-headline-md text-headline-md text-white mb-4">Full SDLC Coverage</h3>
-        <p class="font-body-md text-body-md text-on-surface-variant">From ideation to deployment — BA, PM, Dev, Arch, QA, DevOps, Security, Docs, and Scrum roles all covered in one cohesive framework.</p>
+        <h3 class="font-headline-md text-headline-md text-white mb-4" data-i18n="features.sdlc.title">Full SDLC Coverage</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="features.sdlc.desc">From ideation to deployment — BA, PM, Dev, Arch, QA, DevOps, Security, Docs, and Scrum roles all covered in one cohesive framework.</p>
       </div>
     </div>
   </section>
@@ -1106,26 +1106,26 @@
     <div class="mb-12 fade-up">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/10 border border-primary-container/20 mb-4">
         <span class="material-symbols-outlined text-[16px] text-primary-container">terminal</span>
-        <span class="font-label-mono text-label-mono text-primary-container">26 COMMANDS</span>
+        <span class="font-label-mono text-label-mono text-primary-container" data-i18n="commands.badge">26 COMMANDS</span>
       </div>
-      <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Every phase. Every role.</h2>
-      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-4" data-i18n="commands.title">Every phase. Every role.</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl" data-i18n="commands.desc">
         Structured, role-aware commands covering every sprint lifecycle phase. Filter by category.
       </p>
 
       <!-- Filter pills -->
       <div class="flex flex-wrap gap-2 mt-6" role="group" aria-label="Filter commands by category">
-        <button class="cat-pill-all active font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'all')" aria-pressed="true">All (26)</button>
-        <button class="cat-pill cat-ba font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'ba')" aria-pressed="false">Business Analysis</button>
-        <button class="cat-pill cat-pm font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'pm')" aria-pressed="false">Project Mgmt</button>
-        <button class="cat-pill cat-dev font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'dev')" aria-pressed="false">Development</button>
-        <button class="cat-pill cat-arch font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'arch')" aria-pressed="false">Architecture</button>
-        <button class="cat-pill cat-qa font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'qa')" aria-pressed="false">QA</button>
-        <button class="cat-pill cat-ops font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'ops')" aria-pressed="false">DevOps</button>
-        <button class="cat-pill cat-sec font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'sec')" aria-pressed="false">Security</button>
-        <button class="cat-pill cat-docs font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'docs')" aria-pressed="false">Docs</button>
-        <button class="cat-pill cat-scrum font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'scrum')" aria-pressed="false">Scrum</button>
-        <button class="cat-pill cat-be font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'be')" aria-pressed="false">Bridge Eng</button>
+        <button class="cat-pill-all active font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'all')" aria-pressed="true" data-i18n="commands.cat.all">All (26)</button>
+        <button class="cat-pill cat-ba font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'ba')" aria-pressed="false" data-i18n="commands.cat.ba">Business Analysis</button>
+        <button class="cat-pill cat-pm font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'pm')" aria-pressed="false" data-i18n="commands.cat.pm">Project Mgmt</button>
+        <button class="cat-pill cat-dev font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'dev')" aria-pressed="false" data-i18n="commands.cat.dev">Development</button>
+        <button class="cat-pill cat-arch font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'arch')" aria-pressed="false" data-i18n="commands.cat.arch">Architecture</button>
+        <button class="cat-pill cat-qa font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'qa')" aria-pressed="false" data-i18n="commands.cat.qa">QA</button>
+        <button class="cat-pill cat-ops font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'ops')" aria-pressed="false" data-i18n="commands.cat.devops">DevOps</button>
+        <button class="cat-pill cat-sec font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'sec')" aria-pressed="false" data-i18n="commands.cat.sec">Security</button>
+        <button class="cat-pill cat-docs font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'docs')" aria-pressed="false" data-i18n="commands.cat.docs">Docs</button>
+        <button class="cat-pill cat-scrum font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'scrum')" aria-pressed="false" data-i18n="commands.cat.scrum">Scrum</button>
+        <button class="cat-pill cat-be font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'be')" aria-pressed="false" data-i18n="commands.cat.bridge">Bridge Eng</button>
       </div>
     </div>
 
@@ -1136,28 +1136,28 @@
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">lightbulb</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/pm:ideate</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Refine vague idea → clear concept with problem statement + NOT Doing list</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.pm_ideate.desc">Refine vague idea → clear concept with problem statement + NOT Doing list</p>
         </div>
       </div>
       <div class="cmd-card cat-ba p-5 rounded-2xl flex items-start gap-4 fade-up delay-1" data-cat="ba">
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">description</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/ba:spec</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Raw requirement → structured spec → <code class="text-primary-container">requirements.md</code></p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.ba_spec.desc">Raw requirement → structured spec → <code class="text-primary-container">requirements.md</code></p>
         </div>
       </div>
       <div class="cmd-card cat-ba p-5 rounded-2xl flex items-start gap-4 fade-up delay-2" data-cat="ba">
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">task_alt</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/ba:user-story</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Spec → User Stories with Acceptance Criteria</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.ba_user_story.desc">Spec → User Stories with Acceptance Criteria</p>
         </div>
       </div>
       <div class="cmd-card cat-ba p-5 rounded-2xl flex items-start gap-4 fade-up delay-3" data-cat="ba">
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">manage_search</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/ba:reverse</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Reverse engineer legacy codebase → baseline docs</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.ba_reverse.desc">Reverse engineer legacy codebase → baseline docs</p>
         </div>
       </div>
 
@@ -1166,7 +1166,7 @@
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">translate</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/be:bridge</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Translate JP requirements, create bilingual JP-VN deliverables</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.be_bridge.desc">Translate JP requirements, create bilingual JP-VN deliverables</p>
         </div>
       </div>
 
@@ -1175,21 +1175,21 @@
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">splitscreen</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/pm:breakdown</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Epic/Stories → Tasks with estimates + GitHub/GitLab Issues</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.pm_breakdown.desc">Epic/Stories → Tasks with estimates + GitHub/GitLab Issues</p>
         </div>
       </div>
       <div class="cmd-card cat-pm p-5 rounded-2xl flex items-start gap-4 fade-up delay-2" data-cat="pm">
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">bar_chart</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/pm:status</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Sprint status report for stakeholders</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.pm_status.desc">Sprint status report for stakeholders</p>
         </div>
       </div>
       <div class="cmd-card cat-pm p-5 rounded-2xl flex items-start gap-4 fade-up delay-3" data-cat="pm">
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">dashboard</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/pm:dashboard</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Static HTML sprint dashboard with kanban + health + backlog</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.pm_dashboard.desc">Static HTML sprint dashboard with kanban + health + backlog</p>
         </div>
       </div>
 
@@ -1198,35 +1198,35 @@
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">search</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/dev:analyze</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Task → 2-3 implementation options with trade-offs → <code class="text-primary-container">analysis.md</code></p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.dev_analyze.desc">Task → 2-3 implementation options with trade-offs → <code class="text-primary-container">analysis.md</code></p>
         </div>
       </div>
       <div class="cmd-card cat-dev p-5 rounded-2xl flex items-start gap-4 fade-up delay-1" data-cat="dev">
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">code</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/dev:implement</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Implement file-by-file with human gates + verification + harness delta check</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.dev_implement.desc">Implement file-by-file with human gates + verification + harness delta check</p>
         </div>
       </div>
       <div class="cmd-card cat-dev p-5 rounded-2xl flex items-start gap-4 fade-up delay-2" data-cat="dev">
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">rate_review</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/dev:review</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Holistic review: code quality + architecture + security in one run</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.dev_review.desc">Holistic review: code quality + architecture + security in one run</p>
         </div>
       </div>
       <div class="cmd-card cat-dev p-5 rounded-2xl flex items-start gap-4 fade-up delay-3" data-cat="dev">
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">merge_type</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/dev:pr</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Generate comprehensive PR description from diff</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.dev_pr.desc">Generate comprehensive PR description from diff</p>
         </div>
       </div>
       <div class="cmd-card cat-dev p-5 rounded-2xl flex items-start gap-4 fade-up" data-cat="dev">
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">bug_report</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/dev:debug</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Structured debugging: reproduce → localize → fix</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.dev_debug.desc">Structured debugging: reproduce → localize → fix</p>
         </div>
       </div>
 
@@ -1235,14 +1235,14 @@
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">architecture</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/arch:review</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Design decision review with trade-off analysis</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.arch_review.desc">Design decision review with trade-off analysis</p>
         </div>
       </div>
       <div class="cmd-card cat-arch p-5 rounded-2xl flex items-start gap-4 fade-up delay-2" data-cat="arch">
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">article</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/arch:adr</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Create Architecture Decision Record → <code class="text-primary-container">docs/decisions/ADR-NNN.md</code></p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.arch_adr.desc">Create Architecture Decision Record → <code class="text-primary-container">docs/decisions/ADR-NNN.md</code></p>
         </div>
       </div>
 
@@ -1251,21 +1251,21 @@
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">checklist</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/qa:testplan</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Spec → Test plan → <code class="text-primary-container">test-plan.md</code></p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.qa_testplan.desc">Spec → Test plan → <code class="text-primary-container">test-plan.md</code></p>
         </div>
       </div>
       <div class="cmd-card cat-qa p-5 rounded-2xl flex items-start gap-4 fade-up" data-cat="qa">
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">pest_control</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/qa:bug</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Standardized bug report with reproduction steps</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.qa_bug.desc">Standardized bug report with reproduction steps</p>
         </div>
       </div>
       <div class="cmd-card cat-qa p-5 rounded-2xl flex items-start gap-4 fade-up delay-1" data-cat="qa">
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">replay</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/qa:regression</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Regression checklist before release</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.qa_regression.desc">Regression checklist before release</p>
         </div>
       </div>
 
@@ -1274,14 +1274,14 @@
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">rocket_launch</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/ops:deploy</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Deployment checklist + CI quality gate + rollback plan</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.ops_deploy.desc">Deployment checklist + CI quality gate + rollback plan</p>
         </div>
       </div>
       <div class="cmd-card cat-ops p-5 rounded-2xl flex items-start gap-4 fade-up delay-3" data-cat="ops">
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">emergency</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/ops:incident</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Incident triage + parallel investigation + RCA template</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.ops_incident.desc">Incident triage + parallel investigation + RCA template</p>
         </div>
       </div>
 
@@ -1290,7 +1290,7 @@
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">shield</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/sec:review</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">OWASP Top 10 audit: Always check / Ask First / Never classification</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.sec_review.desc">OWASP Top 10 audit: Always check / Ask First / Never classification</p>
         </div>
       </div>
 
@@ -1299,14 +1299,14 @@
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">edit_document</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/docs:update</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Update baseline screen/API docs after task verify</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.docs_update.desc">Update baseline screen/API docs after task verify</p>
         </div>
       </div>
       <div class="cmd-card cat-docs p-5 rounded-2xl flex items-start gap-4 fade-up delay-2" data-cat="docs">
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">sync</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/docs:project</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Sync project-level docs: README, workflow guides, CLAUDE.md</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.docs_project.desc">Sync project-level docs: README, workflow guides, CLAUDE.md</p>
         </div>
       </div>
 
@@ -1315,14 +1315,14 @@
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">record_voice_over</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/sm:standup</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Daily standup summary for the team</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.sm_standup.desc">Daily standup summary for the team</p>
         </div>
       </div>
       <div class="cmd-card cat-scrum p-5 rounded-2xl flex items-start gap-4 fade-up" data-cat="scrum">
         <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">forum</span>
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/sm:retro</span>
-          <p class="font-body-md text-[14px] text-on-surface-variant">Sprint retrospective in structured format</p>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.sm_retro.desc">Sprint retrospective in structured format</p>
         </div>
       </div>
 
@@ -1349,7 +1349,7 @@
           <img src="agents/task-reader.png" alt="Task Reader agent" class="w-full h-full object-cover" loading="lazy" decoding="async" width="96" height="96">
         </div>
         <h3 class="font-label-mono text-label-mono text-primary-container mb-1">task-reader</h3>
-        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Parse issue → structured JSON for downstream agents</p>
+        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed" data-i18n="agent.task_reader.desc">Parse issue → structured JSON for downstream agents</p>
         <div class="mt-auto flex flex-wrap gap-2 justify-center">
           <span class="bg-primary-container/10 text-primary-container border border-primary-container/20 font-label-mono text-[11px] px-2.5 py-1 rounded-full">haiku</span>
           <span class="bg-surface-container-high text-on-surface-variant font-label-mono text-[11px] px-2.5 py-1 rounded-full">/dev:analyze</span>
@@ -1363,7 +1363,7 @@
           <img src="agents/code-scout.png" alt="Code Scout agent" class="w-full h-full object-cover" loading="lazy" decoding="async" width="96" height="96">
         </div>
         <h3 class="font-label-mono text-label-mono text-primary-container mb-1">code-scout</h3>
-        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Find relevant files and symbols across the codebase</p>
+        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed" data-i18n="agent.code_scout.desc">Find relevant files and symbols across the codebase</p>
         <div class="mt-auto flex flex-wrap gap-2 justify-center">
           <span class="bg-primary-container/10 text-primary-container border border-primary-container/20 font-label-mono text-[11px] px-2.5 py-1 rounded-full">haiku</span>
           <span class="bg-surface-container-high text-on-surface-variant font-label-mono text-[11px] px-2.5 py-1 rounded-full">/dev:analyze</span>
@@ -1377,7 +1377,7 @@
           <img src="agents/planner.png" alt="Planner agent" class="w-full h-full object-cover" loading="lazy" decoding="async" width="96" height="96">
         </div>
         <h3 class="font-label-mono text-label-mono text-secondary mb-1">planner</h3>
-        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Synthesize implementation options and plan approach</p>
+        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed" data-i18n="agent.planner.desc">Synthesize implementation options and plan approach</p>
         <div class="mt-auto flex flex-wrap gap-2 justify-center">
           <span class="bg-secondary/10 text-secondary border border-secondary/20 font-label-mono text-[11px] px-2.5 py-1 rounded-full">sonnet</span>
           <span class="bg-surface-container-high text-on-surface-variant font-label-mono text-[11px] px-2.5 py-1 rounded-full">/dev:analyze</span>
@@ -1391,7 +1391,7 @@
           <img src="agents/diff-reader.png" alt="Diff Reader agent" class="w-full h-full object-cover" loading="lazy" decoding="async" width="96" height="96">
         </div>
         <h3 class="font-label-mono text-label-mono text-primary-container mb-1">diff-reader</h3>
-        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Map diff output to acceptance criteria coverage</p>
+        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed" data-i18n="agent.diff_reader.desc">Map diff output to acceptance criteria coverage</p>
         <div class="mt-auto flex flex-wrap gap-2 justify-center">
           <span class="bg-primary-container/10 text-primary-container border border-primary-container/20 font-label-mono text-[11px] px-2.5 py-1 rounded-full">haiku</span>
           <span class="bg-surface-container-high text-on-surface-variant font-label-mono text-[11px] px-2.5 py-1 rounded-full">/dev:pr</span>
@@ -1405,7 +1405,7 @@
           <img src="agents/review-reader.png" alt="Review Reader agent" class="w-full h-full object-cover" loading="lazy" decoding="async" width="96" height="96">
         </div>
         <h3 class="font-label-mono text-label-mono text-primary-container mb-1">review-reader</h3>
-        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Parse PR diff and extract actionable review signals</p>
+        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed" data-i18n="agent.review_reader.desc">Parse PR diff and extract actionable review signals</p>
         <div class="mt-auto flex flex-wrap gap-2 justify-center">
           <span class="bg-primary-container/10 text-primary-container border border-primary-container/20 font-label-mono text-[11px] px-2.5 py-1 rounded-full">haiku</span>
           <span class="bg-surface-container-high text-on-surface-variant font-label-mono text-[11px] px-2.5 py-1 rounded-full">/dev:review</span>
@@ -1419,7 +1419,7 @@
           <img src="agents/test-gen.png" alt="Test Gen agent" class="w-full h-full object-cover" loading="lazy" decoding="async" width="96" height="96">
         </div>
         <h3 class="font-label-mono text-label-mono text-secondary mb-1">test-gen</h3>
-        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Generate structured test cases from specification</p>
+        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed" data-i18n="agent.test_gen.desc">Generate structured test cases from specification</p>
         <div class="mt-auto flex flex-wrap gap-2 justify-center">
           <span class="bg-secondary/10 text-secondary border border-secondary/20 font-label-mono text-[11px] px-2.5 py-1 rounded-full">sonnet</span>
           <span class="bg-surface-container-high text-on-surface-variant font-label-mono text-[11px] px-2.5 py-1 rounded-full">/qa:testplan</span>
@@ -1433,7 +1433,7 @@
           <img src="agents/doc-updater.png" alt="Doc Updater agent" class="w-full h-full object-cover" loading="lazy" decoding="async" width="96" height="96">
         </div>
         <h3 class="font-label-mono text-label-mono text-secondary mb-1">doc-updater</h3>
-        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Update baseline documentation after code changes</p>
+        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed" data-i18n="agent.doc_updater.desc">Update baseline documentation after code changes</p>
         <div class="mt-auto flex flex-wrap gap-2 justify-center">
           <span class="bg-secondary/10 text-secondary border border-secondary/20 font-label-mono text-[11px] px-2.5 py-1 rounded-full">sonnet</span>
           <span class="bg-surface-container-high text-on-surface-variant font-label-mono text-[11px] px-2.5 py-1 rounded-full">/docs:update</span>
@@ -1460,28 +1460,28 @@
             <span class="material-symbols-outlined text-primary-container flex-shrink-0">record_voice_over</span>
             <div>
               <h3 class="font-label-mono text-label-mono text-white mb-1" data-i18n="vti.be.title">BRIDGE ENGINEER</h3>
-              <p class="font-body-md text-[14px] text-on-surface-variant">Translates JP client requirements → VN team spec using <code class="text-primary-container">/be:bridge</code></p>
+              <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="vti.be.desc">Translates JP client requirements → VN team spec using <code class="text-primary-container">/be:bridge</code></p>
             </div>
           </div>
           <div class="glass-panel p-5 rounded-2xl flex items-start gap-4">
             <span class="material-symbols-outlined text-primary-fixed-dim flex-shrink-0">edit_note</span>
             <div>
               <h3 class="font-label-mono text-label-mono text-white mb-1" data-i18n="vti.ba.title">BA WRITES VIETNAMESE SPEC</h3>
-              <p class="font-body-md text-[14px] text-on-surface-variant">From clarified requirements using <code class="text-primary-container">/ba:spec</code></p>
+              <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="vti.ba.desc">From clarified requirements using <code class="text-primary-container">/ba:spec</code></p>
             </div>
           </div>
           <div class="glass-panel p-5 rounded-2xl flex items-start gap-4">
             <span class="material-symbols-outlined text-secondary flex-shrink-0">code</span>
             <div>
               <h3 class="font-label-mono text-label-mono text-white mb-1" data-i18n="vti.dev.title">DEV IMPLEMENTS WITH AI GUIDANCE</h3>
-              <p class="font-body-md text-[14px] text-on-surface-variant">Code comments in English, structured via <code class="text-primary-container">/dev:implement</code></p>
+              <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="vti.dev.desc">Code comments in English, structured via <code class="text-primary-container">/dev:implement</code></p>
             </div>
           </div>
           <div class="glass-panel p-5 rounded-2xl flex items-start gap-4">
             <span class="material-symbols-outlined text-secondary-fixed-dim flex-shrink-0">inventory_2</span>
             <div>
               <h3 class="font-label-mono text-label-mono text-white mb-1" data-i18n="vti.jp.title">JP-FORMATTED DELIVERABLES</h3>
-              <p class="font-body-md text-[14px] text-on-surface-variant">設計書、単体テスト仕様書、成果物 formatted for Japanese clients</p>
+              <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="vti.jp.desc">設計書、単体テスト仕様書、成果物 formatted for Japanese clients</p>
             </div>
           </div>
         </div>
@@ -1502,7 +1502,7 @@
           <div>
             <div class="flex items-center gap-2 mb-3">
               <div class="px-2 py-0.5 rounded bg-primary-container/10 border border-primary-container/20">
-                <span class="text-primary-container text-[11px]">JP — CLIENT</span>
+                <span class="text-primary-container text-[11px]" data-i18n="vti.demo.jp_label">JP — CLIENT</span>
               </div>
             </div>
             <p class="text-on-surface-variant leading-relaxed">ユーザーログイン機能の実装<br/><span class="text-on-surface-variant/60">セキュリティ要件：パスワード強度チェック必須</span></p>
@@ -1511,16 +1511,16 @@
           <div>
             <div class="flex items-center gap-2 mb-3">
               <div class="px-2 py-0.5 rounded bg-secondary/10 border border-secondary/20">
-                <span class="text-secondary text-[11px]">VN — SPEC</span>
+                <span class="text-secondary text-[11px]" data-i18n="vti.demo.vn_label">VN — SPEC</span>
               </div>
             </div>
-            <p class="text-on-surface-variant leading-relaxed">Triển khai chức năng đăng nhập người dùng<br/><span class="text-on-surface-variant/60">Yêu cầu bảo mật: kiểm tra độ mạnh mật khẩu bắt buộc</span></p>
+            <p class="text-on-surface-variant leading-relaxed" data-i18n-html="vti.demo.vn_text">Triển khai chức năng đăng nhập người dùng<br/><span class="text-on-surface-variant/60">Yêu cầu bảo mật: kiểm tra độ mạnh mật khẩu bắt buộc</span></p>
           </div>
           <div class="blueprint-line"></div>
           <div>
             <div class="flex items-center gap-2 mb-3">
               <div class="px-2 py-0.5 rounded bg-primary-fixed-dim/10 border border-primary-fixed-dim/20">
-                <span class="text-primary-fixed-dim text-[11px]">EN — CODE</span>
+                <span class="text-primary-fixed-dim text-[11px]" data-i18n="vti.demo.en_label">EN — CODE</span>
               </div>
             </div>
             <p class="text-primary-fixed-dim/60 leading-relaxed">// Validate password strength per JP security spec<br/>// Min 8 chars, 1 uppercase, 1 number, 1 symbol<br/><span class="text-primary-container">function</span> <span class="text-secondary">validatePassword</span>(pwd) &#123; ... &#125;</p>
@@ -1545,7 +1545,7 @@
           <div class="w-3 h-3 rounded-full bg-secondary"></div>
           <div class="w-3 h-3 rounded-full bg-primary-container"></div>
         </div>
-        <span class="font-label-mono text-label-mono text-on-surface-variant">Terminal — zsh</span>
+        <span class="font-label-mono text-label-mono text-on-surface-variant" data-i18n="install.terminal_label">Terminal — zsh</span>
         <div class="w-8"></div>
       </div>
       <div class="p-8 font-label-mono text-label-mono bg-[#010f1f]">
@@ -1574,7 +1574,7 @@
             <code class="text-secondary-fixed-dim break-all">$tmp="$env:TEMP\vti"; mkdir $tmp; cd $tmp; npx ... --yes</code>
           </div>
           <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
-            <p class="text-secondary mb-2 text-[11px] uppercase tracking-wider">Developer Lite</p>
+            <p class="text-secondary mb-2 text-[11px] uppercase tracking-wider" data-i18n="install.tab.lite">Developer Lite</p>
             <code class="text-secondary-fixed-dim">node packages/developer-lite/bin/install.js --yes</code>
           </div>
         </div>
@@ -1592,7 +1592,7 @@
       <a href="https://github.com/hiepdnh/Agentic-Development-Lifecycle" target="_blank" rel="noopener"
          class="bg-primary-container text-on-primary-container px-10 py-4 rounded-full font-label-mono text-label-mono font-bold hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(0,229,255,0.3)] inline-flex items-center gap-3">
         <span class="material-symbols-outlined text-[20px]">open_in_new</span>
-        View on GitHub
+        <span data-i18n="install.cta">View on GitHub</span>
       </a>
     </div>
   </section>
@@ -1614,13 +1614,13 @@
     </div>
     <div class="flex flex-wrap justify-center gap-8">
       <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-fixed transition-colors"
-         href="https://github.com/hiepdnh/Agentic-Development-Lifecycle/blob/main/SECURITY.md" target="_blank" rel="noopener">Security</a>
+         href="https://github.com/hiepdnh/Agentic-Development-Lifecycle/blob/main/SECURITY.md" target="_blank" rel="noopener" data-i18n="footer.link.security">Security</a>
       <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-fixed transition-colors"
-         href="https://github.com/hiepdnh/Agentic-Development-Lifecycle/blob/main/README.md" target="_blank" rel="noopener">API Docs</a>
+         href="https://github.com/hiepdnh/Agentic-Development-Lifecycle/blob/main/README.md" target="_blank" rel="noopener" data-i18n="footer.link.api">API Docs</a>
       <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-fixed transition-colors"
-         href="https://github.com/hiepdnh/Agentic-Development-Lifecycle/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+         href="https://github.com/hiepdnh/Agentic-Development-Lifecycle/blob/main/LICENSE" target="_blank" rel="noopener" data-i18n="footer.link.license">MIT License</a>
       <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-fixed transition-colors"
-         href="https://github.com/hiepdnh/Agentic-Development-Lifecycle" target="_blank" rel="noopener">GitHub</a>
+         href="https://github.com/hiepdnh/Agentic-Development-Lifecycle" target="_blank" rel="noopener" data-i18n="footer.link.github">GitHub</a>
     </div>
     <div class="flex gap-4">
       <a class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center hover:bg-primary-container/10 transition-all border border-outline-variant/30"
@@ -1635,7 +1635,7 @@
   </div>
   <div class="max-w-container-max mx-auto px-gutter mt-12 pt-8 border-t border-outline-variant/10 text-center">
     <p class="font-label-mono text-[12px] text-on-surface-variant/50 uppercase tracking-widest">
-      © 2025 ADLC · VTI SOFTWARE · MIT LICENSE · POWERED BY CLAUDE CODE
+      <span data-i18n="footer.copyright">© 2025 ADLC · VTI SOFTWARE · MIT LICENSE · POWERED BY CLAUDE CODE</span>
     </p>
   </div>
 </footer>
@@ -1746,6 +1746,141 @@
       'install.tab.windows': 'Windows',
       'footer.tagline': 'Agentic Development Lifecycle — built for AI-native engineering teams.',
       'footer.made': 'Built at VTI Software',
+      'nav.platform': 'Platform',
+      'nav.cta': 'Deploy Agent',
+      'stat.cmd_label': 'Slash Commands',
+      'stat.roles_label': 'SDLC Roles',
+      'stat.agents_label': 'Subagents',
+      'stat.os_label': 'Open Source',
+      'flow.deploy.name': '7. DEPLOY',
+      'flow.deploy.desc': 'Deploy to production environments.',
+      'wf.bridge.title': 'Bridge Engineer — JP Outsource Entry',
+      'wf.bridge.node.client': 'JP Client',
+      'wf.bridge.node.eng': 'Bridge Engineer',
+      'wf.bridge.node.deliverable': 'Deliverable JP',
+      'wf.bridge.output_label': 'OUTPUT',
+      'wf.brownfield.title': 'Brownfield Onboarding — Legacy Take-over',
+      'wf.brownfield.node.legacy': 'Legacy Codebase',
+      'wf.brownfield.node.label': 'Brownfield',
+      'wf.brownfield.node.ba_tl': 'BA · Tech Lead',
+      'wf.brownfield.node.reverse': 'Reverse engineer',
+      'wf.brownfield.node.jp_review': 'JP review',
+      'wf.brownfield.node.optional': 'Optional',
+      'wf.brownfield.node.ctx': 'full context',
+      'wf.brownfield.node.dev_flow': 'Dev flow',
+      'wf.pmba.title': 'PM / BA — Discovery → Planning',
+      'wf.pmba.node.pmba': 'PM · BA',
+      'wf.pmba.node.clarify': 'Clarify concept',
+      'wf.pmba.node.ba_spec': 'BA',
+      'wf.pmba.node.stories_ac': 'Stories + AC',
+      'wf.pmba.node.pm': 'PM',
+      'wf.pmba.node.tasks': 'Tasks + estimates',
+      'wf.pmba.node.issues': 'GitHub Issues',
+      'wf.pmba.node.ready': 'Ready for Dev',
+      'wf.dev.title': 'Dev Cycle — Per Issue',
+      'wf.dev.classifier_label': 'Risk Classifier — 3 Lanes',
+      'wf.dev.tiny': 'Tiny',
+      'wf.dev.tiny_sub': 'Patch direct → /dev:pr',
+      'wf.dev.normal': 'Normal',
+      'wf.dev.normal_sub': '/dev:analyze → full lane',
+      'wf.dev.high': 'High-Risk',
+      'wf.dev.high_sub': 'Senior confirm → /dev:analyze',
+      'wf.dev.lane_label': 'Normal Lane Flow',
+      'wf.dev.node.options': '2-3 options',
+      'wf.dev.node.fileby': 'File by file',
+      'wf.dev.node.verify': 'Verification',
+      'wf.dev.node.code_sec': 'Code + security',
+      'wf.dev.node.pr_desc': 'PR description',
+      'wf.dev.node.postmerge': 'Post-merge',
+      'wf.qa.node.input': 'Input',
+      'wf.qa.node.testing': 'Testing',
+      'wf.qa.node.execute': 'Execute',
+      'wf.qa.node.fix': 'Fix',
+      'wf.qa.node.retest': 'Retest',
+      'wf.qa.node.loop_fail': 'Loop if fail',
+      'wf.qa.node.merged': 'PRs merged',
+      'wf.qa.node.sprint_end': 'Sprint end',
+      'wf.sprint.title': 'Sprint Ops — Scrum Rituals',
+      'wf.sprint.standup.cadence': 'Daily',
+      'wf.sprint.status.cadence': 'Weekly / On-demand',
+      'wf.sprint.retro.cadence': 'Sprint End',
+      'wf.sprint.flow_label': 'Flow',
+      'wf.sprint.flow_text': '/sm:standup (daily) → /sm:retro (sprint end)  ·  /sm:standup → /pm:status (weekly)',
+      'gates.col.skill': 'SKILL',
+      'features.multi.title': 'Multi-Agent Pattern',
+      'features.multi.desc': 'Heavy tasks spawn specialized lightweight subagents — haiku for parsing, sonnet for synthesis — keeping your main context window clean.',
+      'features.hitl.title': 'Human-in-the-Loop',
+      'features.hitl.desc': 'Every command includes mandatory decision gates. Claude presents options and waits for your approval. No blind execution, ever.',
+      'features.docs.title': 'Two-Tier Documentation',
+      'features.docs.desc': 'Ephemeral per-task docs (gitignored) for in-progress work, plus living baseline docs updated after each verified merge.',
+      'features.lite.title': 'Developer Lite Option',
+      'features.lite.desc': 'A minimal subset for teams needing only core dev workflow — without PM/BA/QA/Ops overhead. 8 focused commands, install in seconds.',
+      'features.sec.title': 'Security-First Review',
+      'features.sec.desc': 'Built-in OWASP Top 10 security review with Always/Ask/Never classification. Security is part of the workflow, not bolted on.',
+      'features.sdlc.title': 'Full SDLC Coverage',
+      'features.sdlc.desc': 'From ideation to deployment — BA, PM, Dev, Arch, QA, DevOps, Security, Docs, and Scrum roles all covered in one cohesive framework.',
+      'commands.badge': '26 COMMANDS',
+      'commands.title': 'Every phase. Every role.',
+      'commands.desc': 'Structured, role-aware commands covering every sprint lifecycle phase. Filter by category.',
+      'commands.cat.all': 'All (26)',
+      'commands.cat.ba': 'Business Analysis',
+      'commands.cat.pm': 'Project Mgmt',
+      'commands.cat.dev': 'Development',
+      'commands.cat.arch': 'Architecture',
+      'commands.cat.qa': 'QA',
+      'commands.cat.devops': 'DevOps',
+      'commands.cat.sec': 'Security',
+      'commands.cat.docs': 'Docs',
+      'commands.cat.scrum': 'Scrum',
+      'commands.cat.bridge': 'Bridge Eng',
+      'cmd.pm_ideate.desc': 'Refine vague idea → clear concept with problem statement + NOT Doing list',
+      'cmd.ba_spec.desc': 'Raw requirement → structured spec → requirements.md',
+      'cmd.ba_user_story.desc': 'Spec → User Stories with Acceptance Criteria',
+      'cmd.ba_reverse.desc': 'Reverse engineer legacy codebase → baseline docs',
+      'cmd.be_bridge.desc': 'Translate JP requirements, create bilingual JP-VN deliverables',
+      'cmd.pm_breakdown.desc': 'Epic/Stories → Tasks with estimates + GitHub/GitLab Issues',
+      'cmd.pm_status.desc': 'Sprint status report for stakeholders',
+      'cmd.pm_dashboard.desc': 'Static HTML sprint dashboard with kanban + health + backlog',
+      'cmd.dev_analyze.desc': 'Task → 2-3 implementation options with trade-offs → analysis.md',
+      'cmd.dev_implement.desc': 'Implement file-by-file with human gates + verification + harness delta check',
+      'cmd.dev_review.desc': 'Holistic review: code quality + architecture + security in one run',
+      'cmd.dev_pr.desc': 'Generate comprehensive PR description from diff',
+      'cmd.dev_debug.desc': 'Structured debugging: reproduce → localize → fix',
+      'cmd.arch_review.desc': 'Design decision review with trade-off analysis',
+      'cmd.arch_adr.desc': 'Create Architecture Decision Record → docs/decisions/ADR-NNN.md',
+      'cmd.qa_testplan.desc': 'Spec → Test plan → test-plan.md',
+      'cmd.qa_bug.desc': 'Standardized bug report with reproduction steps',
+      'cmd.qa_regression.desc': 'Regression checklist before release',
+      'cmd.ops_deploy.desc': 'Deployment checklist + CI quality gate + rollback plan',
+      'cmd.ops_incident.desc': 'Incident triage + parallel investigation + RCA template',
+      'cmd.sec_review.desc': 'OWASP Top 10 audit: Always check / Ask First / Never classification',
+      'cmd.docs_update.desc': 'Update baseline screen/API docs after task verify',
+      'cmd.docs_project.desc': 'Sync project-level docs: README, workflow guides, CLAUDE.md',
+      'cmd.sm_standup.desc': 'Daily standup summary for the team',
+      'cmd.sm_retro.desc': 'Sprint retrospective in structured format',
+      'agent.task_reader.desc': 'Parse issue → structured JSON for downstream agents',
+      'agent.code_scout.desc': 'Find relevant files and symbols across the codebase',
+      'agent.planner.desc': 'Synthesize implementation options and plan approach',
+      'agent.diff_reader.desc': 'Map diff output to acceptance criteria coverage',
+      'agent.review_reader.desc': 'Parse PR diff and extract actionable review signals',
+      'agent.test_gen.desc': 'Generate structured test cases from specification',
+      'agent.doc_updater.desc': 'Update baseline documentation after code changes',
+      'vti.be.desc': 'Translates JP client requirements → VN team spec using /be:bridge',
+      'vti.ba.desc': 'From clarified requirements using /ba:spec',
+      'vti.dev.desc': 'Code comments in English, structured via /dev:implement',
+      'vti.jp.desc': '設計書、単体テスト仕様書、成果物 formatted for Japanese clients',
+      'vti.demo.jp_label': 'JP — CLIENT',
+      'vti.demo.vn_label': 'VN — SPEC',
+      'vti.demo.en_label': 'EN — CODE',
+      'vti.demo.vn_text': 'Implement user login feature<br/><span class="text-on-surface-variant/60">Security requirement: enforce password strength check</span>',
+      'install.terminal_label': 'Terminal — zsh',
+      'install.tab.lite': 'Developer Lite',
+      'install.cta': 'View on GitHub',
+      'footer.link.security': 'Security',
+      'footer.link.api': 'API Docs',
+      'footer.link.license': 'MIT License',
+      'footer.link.github': 'GitHub',
+      'footer.copyright': '© 2025 ADLC · VTI SOFTWARE · MIT LICENSE · POWERED BY CLAUDE CODE',
     },
     vi: {
       'nav.workflow': 'Luồng Làm Việc',
@@ -1850,6 +1985,141 @@
       'install.tab.windows': 'Windows',
       'footer.tagline': 'Vòng Đời Phát Triển Agentic — xây dựng cho các team kỹ thuật AI-native.',
       'footer.made': 'Xây dựng tại VTI Software',
+      'nav.platform': 'Nền Tảng',
+      'nav.cta': 'Triển Khai Agent',
+      'stat.cmd_label': 'Lệnh Slash',
+      'stat.roles_label': 'Vai Trò SDLC',
+      'stat.agents_label': 'Subagent',
+      'stat.os_label': 'Mã Nguồn Mở',
+      'flow.deploy.name': '7. TRIỂN KHAI',
+      'flow.deploy.desc': 'Triển khai lên môi trường production.',
+      'wf.bridge.title': 'Bridge Engineer — Nhận Dự Án JP',
+      'wf.bridge.node.client': 'Khách JP',
+      'wf.bridge.node.eng': 'Bridge Engineer',
+      'wf.bridge.node.deliverable': 'Tài liệu giao JP',
+      'wf.bridge.output_label': 'ĐẦU RA',
+      'wf.brownfield.title': 'Tiếp Nhận Brownfield — Kế Thừa Codebase Cũ',
+      'wf.brownfield.node.legacy': 'Codebase Cũ',
+      'wf.brownfield.node.label': 'Brownfield',
+      'wf.brownfield.node.ba_tl': 'BA · Tech Lead',
+      'wf.brownfield.node.reverse': 'Phân tích ngược',
+      'wf.brownfield.node.jp_review': 'JP review',
+      'wf.brownfield.node.optional': 'Tùy chọn',
+      'wf.brownfield.node.ctx': 'full context',
+      'wf.brownfield.node.dev_flow': 'Luồng Dev',
+      'wf.pmba.title': 'PM / BA — Khám phá → Lên kế hoạch',
+      'wf.pmba.node.pmba': 'PM · BA',
+      'wf.pmba.node.clarify': 'Làm rõ ý tưởng',
+      'wf.pmba.node.ba_spec': 'BA',
+      'wf.pmba.node.stories_ac': 'Stories + AC',
+      'wf.pmba.node.pm': 'PM',
+      'wf.pmba.node.tasks': 'Tasks + ước tính',
+      'wf.pmba.node.issues': 'GitHub Issues',
+      'wf.pmba.node.ready': 'Sẵn sàng cho Dev',
+      'wf.dev.title': 'Chu kỳ Dev — Theo Issue',
+      'wf.dev.classifier_label': 'Risk Classifier — 3 Làn',
+      'wf.dev.tiny': 'Nhỏ',
+      'wf.dev.tiny_sub': 'Patch trực tiếp → /dev:pr',
+      'wf.dev.normal': 'Bình thường',
+      'wf.dev.normal_sub': '/dev:analyze → full lane',
+      'wf.dev.high': 'Rủi ro cao',
+      'wf.dev.high_sub': 'Senior xác nhận → /dev:analyze',
+      'wf.dev.lane_label': 'Luồng Normal Lane',
+      'wf.dev.node.options': '2-3 phương án',
+      'wf.dev.node.fileby': 'File theo file',
+      'wf.dev.node.verify': 'Xác minh',
+      'wf.dev.node.code_sec': 'Code + bảo mật',
+      'wf.dev.node.pr_desc': 'Mô tả PR',
+      'wf.dev.node.postmerge': 'Sau merge',
+      'wf.qa.node.input': 'Đầu vào',
+      'wf.qa.node.testing': 'Kiểm thử',
+      'wf.qa.node.execute': 'Thực thi',
+      'wf.qa.node.fix': 'Sửa lỗi',
+      'wf.qa.node.retest': 'Kiểm thử lại',
+      'wf.qa.node.loop_fail': 'Lặp nếu thất bại',
+      'wf.qa.node.merged': 'PRs đã merge',
+      'wf.qa.node.sprint_end': 'Cuối sprint',
+      'wf.sprint.title': 'Vận Hành Sprint — Nghi Lễ Scrum',
+      'wf.sprint.standup.cadence': 'Hàng ngày',
+      'wf.sprint.status.cadence': 'Hàng tuần / Theo yêu cầu',
+      'wf.sprint.retro.cadence': 'Cuối sprint',
+      'wf.sprint.flow_label': 'Luồng',
+      'wf.sprint.flow_text': '/sm:standup (hàng ngày) → /sm:retro (cuối sprint)  ·  /sm:standup → /pm:status (hàng tuần)',
+      'gates.col.skill': 'KỸ NĂNG',
+      'features.multi.title': 'Mô hình Multi-Agent',
+      'features.multi.desc': 'Tác vụ nặng ủy quyền cho subagent nhẹ — haiku để phân tích cú pháp, sonnet để tổng hợp — giữ context window chính sạch.',
+      'features.hitl.title': 'Con Người Trong Vòng Lặp',
+      'features.hitl.desc': 'Mỗi lệnh có cổng quyết định bắt buộc — bạn luôn kiểm soát.',
+      'features.docs.title': 'Tài Liệu Hai Tầng',
+      'features.docs.desc': 'Tài liệu tạm thời theo task và tài liệu cơ sở lâu dài tách biệt.',
+      'features.lite.title': 'Tùy Chọn Developer Lite',
+      'features.lite.desc': 'Tập lệnh tối giản cho team muốn bắt đầu nhanh — không có overhead PM/BA/QA/Ops. 8 lệnh tập trung, cài đặt trong vài giây.',
+      'features.sec.title': 'Review Bảo Mật Đầu Tiên',
+      'features.sec.desc': 'Review OWASP Top 10 tích hợp sẵn vào mọi lệnh dev.',
+      'features.sdlc.title': 'Bao Phủ Toàn Bộ SDLC',
+      'features.sdlc.desc': 'Từ ideation đến deployment — không bỏ sót giai đoạn nào.',
+      'commands.badge': '26 LỆNH',
+      'commands.title': 'Mọi giai đoạn. Mọi vai trò.',
+      'commands.desc': 'Lệnh có cấu trúc, nhận biết vai trò, bao phủ mọi giai đoạn vòng đời sprint. Lọc theo danh mục.',
+      'commands.cat.all': 'Tất cả (26)',
+      'commands.cat.ba': 'Business Analysis',
+      'commands.cat.pm': 'Quản lý Dự Án',
+      'commands.cat.dev': 'Phát Triển',
+      'commands.cat.arch': 'Kiến Trúc',
+      'commands.cat.qa': 'QA',
+      'commands.cat.devops': 'DevOps',
+      'commands.cat.sec': 'Bảo Mật',
+      'commands.cat.docs': 'Tài Liệu',
+      'commands.cat.scrum': 'Scrum',
+      'commands.cat.bridge': 'Bridge Eng',
+      'cmd.pm_ideate.desc': 'Tinh chỉnh ý tưởng mơ hồ → khái niệm rõ ràng với problem statement + danh sách NOT Doing',
+      'cmd.ba_spec.desc': 'Yêu cầu thô → spec có cấu trúc → requirements.md',
+      'cmd.ba_user_story.desc': 'Spec → User Stories với Acceptance Criteria',
+      'cmd.ba_reverse.desc': 'Reverse engineer codebase cũ → baseline docs',
+      'cmd.be_bridge.desc': 'Dịch yêu cầu JP, tạo tài liệu giao hàng song ngữ JP-VN',
+      'cmd.pm_breakdown.desc': 'Epic/Stories → Tasks với ước tính + GitHub/GitLab Issues',
+      'cmd.pm_status.desc': 'Báo cáo sprint status cho stakeholders',
+      'cmd.pm_dashboard.desc': 'Dashboard sprint HTML tĩnh với kanban + health + backlog',
+      'cmd.dev_analyze.desc': 'Task → 2-3 phương án triển khai với trade-off → analysis.md',
+      'cmd.dev_implement.desc': 'Triển khai file theo file với human gates + xác minh + kiểm tra harness delta',
+      'cmd.dev_review.desc': 'Review toàn diện: chất lượng code + kiến trúc + bảo mật trong một lần chạy',
+      'cmd.dev_pr.desc': 'Tạo mô tả PR toàn diện từ diff',
+      'cmd.dev_debug.desc': 'Debug có cấu trúc: tái hiện → xác định vị trí → sửa',
+      'cmd.arch_review.desc': 'Review quyết định thiết kế với phân tích trade-off',
+      'cmd.arch_adr.desc': 'Tạo Architecture Decision Record → docs/decisions/ADR-NNN.md',
+      'cmd.qa_testplan.desc': 'Spec → Test plan → test-plan.md',
+      'cmd.qa_bug.desc': 'Bug report chuẩn hóa với các bước tái hiện',
+      'cmd.qa_regression.desc': 'Checklist regression trước khi release',
+      'cmd.ops_deploy.desc': 'Checklist deployment + CI quality gate + kế hoạch rollback',
+      'cmd.ops_incident.desc': 'Phân loại sự cố + điều tra song song + template RCA',
+      'cmd.sec_review.desc': 'Audit OWASP Top 10: phân loại Always check / Ask First / Never',
+      'cmd.docs_update.desc': 'Cập nhật baseline screen/API docs sau khi verify task',
+      'cmd.docs_project.desc': 'Đồng bộ docs cấp dự án: README, workflow guides, CLAUDE.md',
+      'cmd.sm_standup.desc': 'Tóm tắt standup hàng ngày cho team',
+      'cmd.sm_retro.desc': 'Retrospective sprint theo định dạng có cấu trúc',
+      'agent.task_reader.desc': 'Phân tích issue → JSON có cấu trúc cho các agent downstream',
+      'agent.code_scout.desc': 'Tìm file và symbol liên quan trong codebase',
+      'agent.planner.desc': 'Tổng hợp các phương án triển khai và lên kế hoạch tiếp cận',
+      'agent.diff_reader.desc': 'Ánh xạ diff output đến coverage acceptance criteria',
+      'agent.review_reader.desc': 'Phân tích PR diff và trích xuất tín hiệu review có thể thực hiện',
+      'agent.test_gen.desc': 'Tạo test case có cấu trúc từ specification',
+      'agent.doc_updater.desc': 'Cập nhật baseline documentation sau khi thay đổi code',
+      'vti.be.desc': 'Dịch yêu cầu khách JP → spec team VN bằng /be:bridge',
+      'vti.ba.desc': 'Từ yêu cầu đã làm rõ bằng /ba:spec',
+      'vti.dev.desc': 'Code comment bằng tiếng Anh, có cấu trúc qua /dev:implement',
+      'vti.jp.desc': '設計書、単体テスト仕様書、成果物 định dạng cho khách hàng Nhật',
+      'vti.demo.jp_label': 'JP — KHÁCH HÀNG',
+      'vti.demo.vn_label': 'VN — SPEC',
+      'vti.demo.en_label': 'EN — CODE',
+      'vti.demo.vn_text': 'Triển khai chức năng đăng nhập người dùng<br/><span class="text-on-surface-variant/60">Yêu cầu bảo mật: kiểm tra độ mạnh mật khẩu bắt buộc</span>',
+      'install.terminal_label': 'Terminal — zsh',
+      'install.tab.lite': 'Developer Lite',
+      'install.cta': 'Xem trên GitHub',
+      'footer.link.security': 'Bảo Mật',
+      'footer.link.api': 'Tài Liệu API',
+      'footer.link.license': 'MIT License',
+      'footer.link.github': 'GitHub',
+      'footer.copyright': '© 2025 ADLC · VTI SOFTWARE · MIT LICENSE · POWERED BY CLAUDE CODE',
     }
   };
 
