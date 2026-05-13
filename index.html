@@ -1307,71 +1307,116 @@
   </section>
 
   <!-- ── Subagents ── -->
-  <section class="py-section-gap px-gutter max-w-container-max mx-auto">
-    <div class="glass-panel rounded-3xl border border-outline-variant/30 overflow-hidden fade-up">
-      <div class="px-8 py-6 border-b border-outline-variant/30">
-        <div class="flex items-center gap-3 mb-2">
-          <span class="material-symbols-outlined text-primary-container">account_tree</span>
-          <h2 class="font-headline-md text-headline-md text-white">Subagent Architecture</h2>
+  <section class="py-section-gap px-gutter max-w-container-max mx-auto" id="subagents">
+    <div class="fade-up mb-12 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/10 border border-primary-container/20 mb-6">
+        <span class="material-symbols-outlined text-[16px] text-primary-container">account_tree</span>
+        <span class="font-label-mono text-label-mono text-primary-container">SUBAGENT ARCHITECTURE</span>
+      </div>
+      <h2 class="font-headline-lg text-headline-lg text-white mb-4">Specialized AI Agents</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Heavy tasks delegate to lightweight subagents — keeping your main context window clean and focused.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 fade-up delay-1">
+
+      <!-- task-reader -->
+      <div class="agent-card glass-panel rounded-2xl border border-outline-variant/30 p-6 flex flex-col items-center text-center group hover:border-primary-container/40 transition-all duration-300 relative overflow-hidden" style="--ac:0,229,255">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-container/40 to-transparent"></div>
+        <div class="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-primary-container/20 group-hover:ring-primary-container/50 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.25)]">
+          <img src="agents/task-reader.png" alt="Task Reader agent" class="w-full h-full object-cover">
         </div>
-        <p class="font-body-md text-body-md text-on-surface-variant">Heavy tasks delegate to specialized lightweight subagents, keeping the main context window clean.</p>
+        <h3 class="font-label-mono text-label-mono text-primary-container mb-1">task-reader</h3>
+        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Parse issue → structured JSON for downstream agents</p>
+        <div class="mt-auto flex flex-wrap gap-2 justify-center">
+          <span class="bg-primary-container/10 text-primary-container border border-primary-container/20 font-label-mono text-[11px] px-2.5 py-1 rounded-full">haiku</span>
+          <span class="bg-surface-container-high text-on-surface-variant font-label-mono text-[11px] px-2.5 py-1 rounded-full">/dev:analyze</span>
+        </div>
       </div>
-      <div class="overflow-x-auto">
-        <table class="w-full">
-          <thead>
-            <tr class="border-b border-outline-variant/20">
-              <th class="text-left px-8 py-4 font-label-mono text-label-mono text-on-surface-variant">AGENT</th>
-              <th class="text-left px-4 py-4 font-label-mono text-label-mono text-on-surface-variant">USED BY</th>
-              <th class="text-left px-4 py-4 font-label-mono text-label-mono text-on-surface-variant">MODEL</th>
-              <th class="text-left px-4 py-4 font-label-mono text-label-mono text-on-surface-variant">PURPOSE</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
-              <td class="px-8 py-4 font-label-mono text-label-mono text-primary-container">task-reader</td>
-              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">/dev:analyze</td>
-              <td class="px-4 py-4"><span class="bg-primary-container/10 text-primary-container border border-primary-container/20 font-label-mono text-[12px] px-3 py-1 rounded-full">haiku</span></td>
-              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">Parse issue → structured JSON</td>
-            </tr>
-            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
-              <td class="px-8 py-4 font-label-mono text-label-mono text-primary-container">code-scout</td>
-              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">/dev:analyze</td>
-              <td class="px-4 py-4"><span class="bg-primary-container/10 text-primary-container border border-primary-container/20 font-label-mono text-[12px] px-3 py-1 rounded-full">haiku</span></td>
-              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">Find relevant files in codebase</td>
-            </tr>
-            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
-              <td class="px-8 py-4 font-label-mono text-label-mono text-secondary">planner</td>
-              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">/dev:analyze</td>
-              <td class="px-4 py-4"><span class="bg-secondary/10 text-secondary border border-secondary/20 font-label-mono text-[12px] px-3 py-1 rounded-full">sonnet</span></td>
-              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">Synthesize implementation options</td>
-            </tr>
-            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
-              <td class="px-8 py-4 font-label-mono text-label-mono text-primary-container">diff-reader</td>
-              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">/dev:pr, /docs:update</td>
-              <td class="px-4 py-4"><span class="bg-primary-container/10 text-primary-container border border-primary-container/20 font-label-mono text-[12px] px-3 py-1 rounded-full">haiku</span></td>
-              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">Map diff → AC coverage</td>
-            </tr>
-            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
-              <td class="px-8 py-4 font-label-mono text-label-mono text-primary-container">review-reader</td>
-              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">/dev:review</td>
-              <td class="px-4 py-4"><span class="bg-primary-container/10 text-primary-container border border-primary-container/20 font-label-mono text-[12px] px-3 py-1 rounded-full">haiku</span></td>
-              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">Parse diff → review signals</td>
-            </tr>
-            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
-              <td class="px-8 py-4 font-label-mono text-label-mono text-secondary">test-gen</td>
-              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">/qa:testplan</td>
-              <td class="px-4 py-4"><span class="bg-secondary/10 text-secondary border border-secondary/20 font-label-mono text-[12px] px-3 py-1 rounded-full">sonnet</span></td>
-              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">Generate test cases from spec</td>
-            </tr>
-            <tr class="hover:bg-surface-container/30 transition-colors">
-              <td class="px-8 py-4 font-label-mono text-label-mono text-secondary">doc-updater</td>
-              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">/docs:update</td>
-              <td class="px-4 py-4"><span class="bg-secondary/10 text-secondary border border-secondary/20 font-label-mono text-[12px] px-3 py-1 rounded-full">sonnet</span></td>
-              <td class="px-4 py-4 font-body-md text-[14px] text-on-surface-variant">Update baseline documentation</td>
-            </tr>
-          </tbody>
-        </table>
+
+      <!-- code-scout -->
+      <div class="agent-card glass-panel rounded-2xl border border-outline-variant/30 p-6 flex flex-col items-center text-center group hover:border-primary-container/40 transition-all duration-300 relative overflow-hidden" style="--ac:0,229,255">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-container/40 to-transparent"></div>
+        <div class="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-primary-container/20 group-hover:ring-primary-container/50 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.25)]">
+          <img src="agents/code-scout.png" alt="Code Scout agent" class="w-full h-full object-cover">
+        </div>
+        <h3 class="font-label-mono text-label-mono text-primary-container mb-1">code-scout</h3>
+        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Find relevant files and symbols across the codebase</p>
+        <div class="mt-auto flex flex-wrap gap-2 justify-center">
+          <span class="bg-primary-container/10 text-primary-container border border-primary-container/20 font-label-mono text-[11px] px-2.5 py-1 rounded-full">haiku</span>
+          <span class="bg-surface-container-high text-on-surface-variant font-label-mono text-[11px] px-2.5 py-1 rounded-full">/dev:analyze</span>
+        </div>
       </div>
+
+      <!-- planner -->
+      <div class="agent-card glass-panel rounded-2xl border border-outline-variant/30 p-6 flex flex-col items-center text-center group hover:border-secondary/40 transition-all duration-300 relative overflow-hidden" style="--ac:221,183,255">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-secondary/40 to-transparent"></div>
+        <div class="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-secondary/20 group-hover:ring-secondary/50 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(221,183,255,0.25)]">
+          <img src="agents/planner.png" alt="Planner agent" class="w-full h-full object-cover">
+        </div>
+        <h3 class="font-label-mono text-label-mono text-secondary mb-1">planner</h3>
+        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Synthesize implementation options and plan approach</p>
+        <div class="mt-auto flex flex-wrap gap-2 justify-center">
+          <span class="bg-secondary/10 text-secondary border border-secondary/20 font-label-mono text-[11px] px-2.5 py-1 rounded-full">sonnet</span>
+          <span class="bg-surface-container-high text-on-surface-variant font-label-mono text-[11px] px-2.5 py-1 rounded-full">/dev:analyze</span>
+        </div>
+      </div>
+
+      <!-- diff-reader -->
+      <div class="agent-card glass-panel rounded-2xl border border-outline-variant/30 p-6 flex flex-col items-center text-center group hover:border-primary-container/40 transition-all duration-300 relative overflow-hidden" style="--ac:0,229,255">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-container/40 to-transparent"></div>
+        <div class="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-primary-container/20 group-hover:ring-primary-container/50 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.25)]">
+          <img src="agents/diff-reader.png" alt="Diff Reader agent" class="w-full h-full object-cover">
+        </div>
+        <h3 class="font-label-mono text-label-mono text-primary-container mb-1">diff-reader</h3>
+        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Map diff output to acceptance criteria coverage</p>
+        <div class="mt-auto flex flex-wrap gap-2 justify-center">
+          <span class="bg-primary-container/10 text-primary-container border border-primary-container/20 font-label-mono text-[11px] px-2.5 py-1 rounded-full">haiku</span>
+          <span class="bg-surface-container-high text-on-surface-variant font-label-mono text-[11px] px-2.5 py-1 rounded-full">/dev:pr</span>
+        </div>
+      </div>
+
+      <!-- review-reader -->
+      <div class="agent-card glass-panel rounded-2xl border border-outline-variant/30 p-6 flex flex-col items-center text-center group hover:border-primary-container/40 transition-all duration-300 relative overflow-hidden" style="--ac:0,229,255">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-container/40 to-transparent"></div>
+        <div class="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-primary-container/20 group-hover:ring-primary-container/50 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.25)]">
+          <img src="agents/review-reader.png" alt="Review Reader agent" class="w-full h-full object-cover">
+        </div>
+        <h3 class="font-label-mono text-label-mono text-primary-container mb-1">review-reader</h3>
+        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Parse PR diff and extract actionable review signals</p>
+        <div class="mt-auto flex flex-wrap gap-2 justify-center">
+          <span class="bg-primary-container/10 text-primary-container border border-primary-container/20 font-label-mono text-[11px] px-2.5 py-1 rounded-full">haiku</span>
+          <span class="bg-surface-container-high text-on-surface-variant font-label-mono text-[11px] px-2.5 py-1 rounded-full">/dev:review</span>
+        </div>
+      </div>
+
+      <!-- test-gen -->
+      <div class="agent-card glass-panel rounded-2xl border border-outline-variant/30 p-6 flex flex-col items-center text-center group hover:border-secondary/40 transition-all duration-300 relative overflow-hidden" style="--ac:221,183,255">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-secondary/40 to-transparent"></div>
+        <div class="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-secondary/20 group-hover:ring-secondary/50 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(221,183,255,0.25)]">
+          <img src="agents/test-gen.png" alt="Test Gen agent" class="w-full h-full object-cover">
+        </div>
+        <h3 class="font-label-mono text-label-mono text-secondary mb-1">test-gen</h3>
+        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Generate structured test cases from specification</p>
+        <div class="mt-auto flex flex-wrap gap-2 justify-center">
+          <span class="bg-secondary/10 text-secondary border border-secondary/20 font-label-mono text-[11px] px-2.5 py-1 rounded-full">sonnet</span>
+          <span class="bg-surface-container-high text-on-surface-variant font-label-mono text-[11px] px-2.5 py-1 rounded-full">/qa:testplan</span>
+        </div>
+      </div>
+
+      <!-- doc-updater -->
+      <div class="agent-card glass-panel rounded-2xl border border-outline-variant/30 p-6 flex flex-col items-center text-center group hover:border-secondary/40 transition-all duration-300 relative overflow-hidden" style="--ac:221,183,255">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-secondary/40 to-transparent"></div>
+        <div class="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-secondary/20 group-hover:ring-secondary/50 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(221,183,255,0.25)]">
+          <img src="agents/doc-updater.png" alt="Doc Updater agent" class="w-full h-full object-cover">
+        </div>
+        <h3 class="font-label-mono text-label-mono text-secondary mb-1">doc-updater</h3>
+        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed">Update baseline documentation after code changes</p>
+        <div class="mt-auto flex flex-wrap gap-2 justify-center">
+          <span class="bg-secondary/10 text-secondary border border-secondary/20 font-label-mono text-[11px] px-2.5 py-1 rounded-full">sonnet</span>
+          <span class="bg-surface-container-high text-on-surface-variant font-label-mono text-[11px] px-2.5 py-1 rounded-full">/docs:update</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
