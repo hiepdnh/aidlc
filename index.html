@@ -186,6 +186,54 @@
   .cursor { animation: blink 1.2s step-end infinite; }
   @keyframes blink { 50% { opacity: 0; } }
 
+  /* ── Workflow nodes ── */
+  .wf-node {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    padding: 12px 14px; min-width: 100px;
+    border-radius: 0.5rem;
+    flex-shrink: 0;
+  }
+  .wf-node-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: #d4e4fa; margin-top: 4px; }
+  .wf-node-sub { font-size: 10px; color: #bac9cc; margin-top: 2px; }
+  .wf-node-input {
+    background: rgba(27,41,60,0.8);
+    border: 1px solid rgba(148,163,184,0.2);
+  }
+  .wf-node-input .material-symbols-outlined { color: #bac9cc; }
+  .wf-node-cmd {
+    background: rgba(var(--nc), 0.08);
+    border: 1px solid rgba(var(--nc), 0.3);
+    box-shadow: 0 0 12px rgba(var(--nc), 0.08);
+  }
+  .wf-node-cmd-text {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;
+    color: rgb(var(--nc));
+  }
+  .wf-node-doc {
+    background: rgba(18,33,49,0.8);
+    border: 1px dashed rgba(148,163,184,0.25);
+  }
+  .wf-node-doc .material-symbols-outlined { color: #849396; }
+  .wf-node-gate {
+    background: rgba(245,158,11,0.07);
+    border: 2px solid rgba(245,158,11,0.35);
+  }
+  .wf-node-gate .material-symbols-outlined { color: #f59e0b; font-size: 18px; }
+  .wf-node-etc {
+    background: transparent; border: none;
+    display: flex; align-items: center; padding: 8px;
+  }
+  .wf-arrow {
+    font-size: 18px; color: #3b494c; flex-shrink: 0;
+    padding: 0 6px; align-self: center;
+  }
+  .wf-arrow-optional { color: #3b494c; opacity: 0.5; }
+  .wf-arrow-sm { font-size: 14px; color: #3b494c; flex-shrink: 0; }
+  .wf-arrow-fork { display: flex; align-items: center; flex-shrink: 0; }
+  .wf-fork-line { width: 1px; height: 64px; background: rgba(59,73,76,0.5); margin: 0 8px; }
+  .wf-fork-branches { display: flex; flex-direction: column; }
+  .wf-panel.hidden { display: none; }
+
   /* Scrollbar */
   ::-webkit-scrollbar { width: 5px; }
   ::-webkit-scrollbar-track { background: #051424; }
@@ -339,6 +387,516 @@
         <span class="material-symbols-outlined text-primary-container mb-4 block group-hover:scale-110 transition-transform">rocket_launch</span>
         <h3 class="font-label-mono text-label-mono text-white mb-2">7. DEPLOY</h3>
         <p class="font-body-md text-[14px] text-on-surface-variant">Deploy to production environments.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Workflows ── -->
+  <section class="py-section-gap px-gutter max-w-container-max mx-auto" id="workflows">
+    <div class="mb-12 fade-up">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/10 border border-primary-container/20 mb-4">
+        <span class="material-symbols-outlined text-[16px] text-primary-container">account_tree</span>
+        <span class="font-label-mono text-label-mono text-primary-container">SKILL WORKFLOWS</span>
+      </div>
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Workflows by role</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+        26 skills chained into proven flows — từ Discovery đến Deploy. Chọn role để xem luồng tương ứng.
+      </p>
+    </div>
+
+    <!-- Role tabs -->
+    <div class="flex flex-wrap gap-2 mb-8 fade-up" role="tablist" id="wf-tabs">
+      <button class="wf-tab active font-label-mono text-[12px] px-4 py-2 rounded-full border border-primary-container/40 bg-primary-container/15 text-primary-container transition-all" onclick="switchWf(this,'jp')" role="tab" aria-selected="true">🌐 Bridge Engineer</button>
+      <button class="wf-tab font-label-mono text-[12px] px-4 py-2 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary-container/30 hover:text-primary transition-all" onclick="switchWf(this,'brownfield')" role="tab" aria-selected="false">🏚️ Brownfield</button>
+      <button class="wf-tab font-label-mono text-[12px] px-4 py-2 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary-container/30 hover:text-primary transition-all" onclick="switchWf(this,'pmba')" role="tab" aria-selected="false">📋 PM / BA</button>
+      <button class="wf-tab font-label-mono text-[12px] px-4 py-2 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary-container/30 hover:text-primary transition-all" onclick="switchWf(this,'dev')" role="tab" aria-selected="false">💻 Dev per Issue</button>
+      <button class="wf-tab font-label-mono text-[12px] px-4 py-2 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary-container/30 hover:text-primary transition-all" onclick="switchWf(this,'qa')" role="tab" aria-selected="false">🧪 QA</button>
+      <button class="wf-tab font-label-mono text-[12px] px-4 py-2 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary-container/30 hover:text-primary transition-all" onclick="switchWf(this,'arch')" role="tab" aria-selected="false">🏛️ Architecture</button>
+      <button class="wf-tab font-label-mono text-[12px] px-4 py-2 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary-container/30 hover:text-primary transition-all" onclick="switchWf(this,'sprint')" role="tab" aria-selected="false">📊 Sprint Ops</button>
+    </div>
+
+    <!-- Workflow panels -->
+    <div class="glass-panel rounded-3xl border border-outline-variant/30 overflow-hidden fade-up">
+
+      <!-- JP Bridge -->
+      <div class="wf-panel" id="wf-jp">
+        <div class="px-8 pt-8 pb-4 border-b border-outline-variant/20">
+          <div class="flex items-center gap-3 mb-1">
+            <span class="material-symbols-outlined text-primary-container">translate</span>
+            <h3 class="font-headline-md text-headline-md text-white">Bridge Engineer — JP Outsource Entry</h3>
+          </div>
+          <p class="font-body-md text-body-md text-on-surface-variant">Nhận yêu cầu từ khách JP → dịch → tạo spec song ngữ JP-VN.</p>
+        </div>
+        <div class="p-8">
+          <div class="flex flex-wrap items-center gap-0 mb-8">
+            <div class="wf-node wf-node-input">
+              <span class="material-symbols-outlined text-[18px] mb-1">flag</span>
+              <span class="wf-node-label">JP Client</span>
+              <span class="wf-node-sub">Yêu cầu tiếng Nhật</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-cmd" style="--nc:0,218,243">
+              <span class="wf-node-cmd-text">/be:bridge</span>
+              <span class="wf-node-label">Bridge Engineer</span>
+              <span class="wf-node-sub">Dịch + phân tích</span>
+            </div>
+            <div class="wf-arrow-fork">
+              <div class="wf-fork-line"></div>
+              <div class="wf-fork-branches">
+                <div class="flex items-center gap-2 mb-3">
+                  <div class="wf-arrow-sm">→</div>
+                  <div class="wf-node wf-node-doc">
+                    <span class="material-symbols-outlined text-[14px]">description</span>
+                    <span class="wf-node-label">設計書 JP</span>
+                    <span class="wf-node-sub">Deliverable JP</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="wf-arrow-sm">→</div>
+                  <div class="wf-node wf-node-cmd" style="--nc:0,218,243">
+                    <span class="wf-node-cmd-text">/ba:spec</span>
+                    <span class="wf-node-label">BA — spec VN</span>
+                    <span class="wf-node-sub">requirements.md</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20 font-label-mono text-[13px]">
+            <span class="text-primary-container">OUTPUT:</span>
+            <span class="text-on-surface-variant ml-2">設計書 (JP) · requirements.md (VN) · bilingual glossary</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brownfield -->
+      <div class="wf-panel hidden" id="wf-brownfield">
+        <div class="px-8 pt-8 pb-4 border-b border-outline-variant/20">
+          <div class="flex items-center gap-3 mb-1">
+            <span class="material-symbols-outlined text-secondary">travel_explore</span>
+            <h3 class="font-headline-md text-headline-md text-white">Brownfield Onboarding — Legacy Take-over</h3>
+          </div>
+          <p class="font-body-md text-body-md text-on-surface-variant">Tiếp nhận codebase cũ → reverse engineer → tạo baseline docs → feature mới.</p>
+        </div>
+        <div class="p-8">
+          <div class="flex flex-wrap items-center gap-0 mb-8">
+            <div class="wf-node wf-node-input">
+              <span class="material-symbols-outlined text-[18px] mb-1">domain</span>
+              <span class="wf-node-label">Legacy Codebase</span>
+              <span class="wf-node-sub">Brownfield</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-cmd" style="--nc:0,218,243">
+              <span class="wf-node-cmd-text">/ba:reverse</span>
+              <span class="wf-node-label">BA · Tech Lead</span>
+              <span class="wf-node-sub">Reverse engineer</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-doc">
+              <span class="material-symbols-outlined text-[14px]">folder</span>
+              <span class="wf-node-label">docs/baseline/</span>
+              <span class="wf-node-sub">codebase-overview.md</span>
+            </div>
+            <div class="wf-arrow wf-arrow-optional" title="Optional">⤳</div>
+            <div class="wf-node wf-node-cmd" style="--nc:6,182,212">
+              <span class="wf-node-cmd-text">/be:bridge</span>
+              <span class="wf-node-label">JP review</span>
+              <span class="wf-node-sub">Optional</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="blueprint-line flex-1"></div>
+            <span class="font-label-mono text-[11px] text-on-surface-variant uppercase tracking-wider">Sau đó feature mới</span>
+            <div class="blueprint-line flex-1"></div>
+          </div>
+          <div class="flex flex-wrap items-center gap-0">
+            <div class="wf-node wf-node-doc">
+              <span class="material-symbols-outlined text-[14px]">folder</span>
+              <span class="wf-node-label">docs/baseline/</span>
+              <span class="wf-node-sub">context</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-cmd" style="--nc:0,218,243">
+              <span class="wf-node-cmd-text">/ba:spec</span>
+              <span class="wf-node-label">Feature mới</span>
+              <span class="wf-node-sub">Có full context</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-etc">
+              <span class="font-label-mono text-[11px] text-on-surface-variant">→ Dev flow...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PM/BA -->
+      <div class="wf-panel hidden" id="wf-pmba">
+        <div class="px-8 pt-8 pb-4 border-b border-outline-variant/20">
+          <div class="flex items-center gap-3 mb-1">
+            <span class="material-symbols-outlined text-purple-400" style="color:#a855f7">assignment</span>
+            <h3 class="font-headline-md text-headline-md text-white">PM / BA — Discovery → Planning</h3>
+          </div>
+          <p class="font-body-md text-body-md text-on-surface-variant">Từ ý tưởng mơ hồ → spec rõ ràng → user stories → task breakdown.</p>
+        </div>
+        <div class="p-8">
+          <div class="flex flex-wrap items-center gap-0 mb-8 overflow-x-auto">
+            <div class="wf-node wf-node-input">
+              <span class="material-symbols-outlined text-[18px] mb-1">lightbulb</span>
+              <span class="wf-node-label">Ý tưởng</span>
+              <span class="wf-node-sub">Vấn đề</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-cmd" style="--nc:168,85,247">
+              <span class="wf-node-cmd-text">/pm:ideate</span>
+              <span class="wf-node-label">PM · BA</span>
+              <span class="wf-node-sub">Clarify concept</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-cmd" style="--nc:0,218,243">
+              <span class="wf-node-cmd-text">/ba:spec</span>
+              <span class="wf-node-label">BA</span>
+              <span class="wf-node-sub">requirements.md</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-cmd" style="--nc:0,218,243">
+              <span class="wf-node-cmd-text">/ba:user-story</span>
+              <span class="wf-node-label">BA</span>
+              <span class="wf-node-sub">Stories + AC</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-cmd" style="--nc:168,85,247">
+              <span class="wf-node-cmd-text">/pm:breakdown</span>
+              <span class="wf-node-label">PM</span>
+              <span class="wf-node-sub">Tasks + estimates</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-doc">
+              <span class="material-symbols-outlined text-[14px]">bug_report</span>
+              <span class="wf-node-label">GitHub Issues</span>
+              <span class="wf-node-sub">Ready for Dev</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
+              <p class="font-label-mono text-[11px] text-primary-container mb-2">GATE: /ba:user-story</p>
+              <p class="font-body-md text-[13px] text-on-surface-variant">Cần /ba:spec done trước</p>
+            </div>
+            <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
+              <p class="font-label-mono text-[11px] text-primary-container mb-2">GATE: /pm:breakdown</p>
+              <p class="font-body-md text-[13px] text-on-surface-variant">Cần User Stories đã có</p>
+            </div>
+            <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
+              <p class="font-label-mono text-[11px] text-secondary mb-2">PARALLEL</p>
+              <p class="font-body-md text-[13px] text-on-surface-variant">/ba:spec → /qa:testplan song song với Dev</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dev -->
+      <div class="wf-panel hidden" id="wf-dev">
+        <div class="px-8 pt-8 pb-4 border-b border-outline-variant/20">
+          <div class="flex items-center gap-3 mb-1">
+            <span class="material-symbols-outlined" style="color:#10b981">code</span>
+            <h3 class="font-headline-md text-headline-md text-white">Dev Cycle — Per Issue</h3>
+          </div>
+          <p class="font-body-md text-body-md text-on-surface-variant">Mỗi issue đi qua Risk Classifier trước — 3 lane: tiny / normal / high-risk.</p>
+        </div>
+        <div class="p-8">
+          <!-- Risk classifier -->
+          <div class="mb-6 p-5 rounded-xl border border-outline-variant/30 bg-surface-container-low">
+            <p class="font-label-mono text-[11px] text-on-surface-variant mb-3 uppercase tracking-wider">Risk Classifier → 3 lanes</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="p-3 rounded-lg border" style="border-color:rgba(16,185,129,0.3);background:rgba(16,185,129,0.05)">
+                <p class="font-label-mono text-[11px] mb-1" style="color:#10b981">🔵 TINY</p>
+                <p class="font-body-md text-[13px] text-on-surface-variant">Patch direct → /dev:pr</p>
+              </div>
+              <div class="p-3 rounded-lg border" style="border-color:rgba(0,218,243,0.3);background:rgba(0,218,243,0.05)">
+                <p class="font-label-mono text-[11px] mb-1" style="color:#00daf3">🟢 NORMAL</p>
+                <p class="font-body-md text-[13px] text-on-surface-variant">/dev:analyze → full lane</p>
+              </div>
+              <div class="p-3 rounded-lg border" style="border-color:rgba(239,68,68,0.3);background:rgba(239,68,68,0.05)">
+                <p class="font-label-mono text-[11px] mb-1" style="color:#ef4444">🔴 HIGH-RISK</p>
+                <p class="font-body-md text-[13px] text-on-surface-variant">Senior confirm → /dev:analyze</p>
+              </div>
+            </div>
+          </div>
+          <!-- Main dev flow -->
+          <p class="font-label-mono text-[11px] text-on-surface-variant uppercase tracking-wider mb-4">Normal lane flow</p>
+          <div class="flex flex-wrap items-start gap-0 mb-6 overflow-x-auto">
+            <div class="wf-node wf-node-cmd" style="--nc:16,185,129">
+              <span class="wf-node-cmd-text">/dev:analyze</span>
+              <span class="wf-node-label">Dev</span>
+              <span class="wf-node-sub">2-3 options</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-gate">
+              <span class="material-symbols-outlined text-[16px] mb-1">pause_circle</span>
+              <span class="wf-node-label">analysis.md</span>
+              <span class="wf-node-sub">Hard stop</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-cmd" style="--nc:16,185,129">
+              <span class="wf-node-cmd-text">/dev:implement</span>
+              <span class="wf-node-label">Dev</span>
+              <span class="wf-node-sub">File by file</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-gate">
+              <span class="material-symbols-outlined text-[16px] mb-1">fact_check</span>
+              <span class="wf-node-label">Verification</span>
+              <span class="wf-node-sub">User test</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-gate">
+              <span class="material-symbols-outlined text-[16px] mb-1">change_history</span>
+              <span class="wf-node-label">Harness Delta</span>
+              <span class="wf-node-sub">Hard stop</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-cmd" style="--nc:16,185,129">
+              <span class="wf-node-cmd-text">/dev:review</span>
+              <span class="wf-node-label">Dev · TL</span>
+              <span class="wf-node-sub">Code + security</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-cmd" style="--nc:16,185,129">
+              <span class="wf-node-cmd-text">/dev:pr</span>
+              <span class="wf-node-label">Dev</span>
+              <span class="wf-node-sub">PR description</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-cmd" style="--nc:139,92,246">
+              <span class="wf-node-cmd-text">/docs:update</span>
+              <span class="wf-node-label">Post-merge</span>
+              <span class="wf-node-sub">Baseline sync</span>
+            </div>
+          </div>
+          <!-- Debug loop note -->
+          <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20 flex items-start gap-3">
+            <span class="material-symbols-outlined text-on-surface-variant text-[20px] flex-shrink-0">sync</span>
+            <div>
+              <p class="font-label-mono text-[11px] text-on-surface-variant mb-1">BUG LOOP</p>
+              <p class="font-body-md text-[13px] text-on-surface-variant">/dev:implement gặp bug → /dev:debug → quay lại /dev:implement · /dev:review có blocking issue → quay lại /dev:implement</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- QA -->
+      <div class="wf-panel hidden" id="wf-qa">
+        <div class="px-8 pt-8 pb-4 border-b border-outline-variant/20">
+          <div class="flex items-center gap-3 mb-1">
+            <span class="material-symbols-outlined" style="color:#3b82f6">science</span>
+            <h3 class="font-headline-md text-headline-md text-white">QA Cycle — Parallel với Dev</h3>
+          </div>
+          <p class="font-body-md text-body-md text-on-surface-variant">QA chạy song song từ lúc có spec, không chờ Dev xong mới bắt đầu.</p>
+        </div>
+        <div class="p-8">
+          <div class="flex flex-wrap items-center gap-0 mb-8 overflow-x-auto">
+            <div class="wf-node wf-node-doc">
+              <span class="material-symbols-outlined text-[14px]">description</span>
+              <span class="wf-node-label">/ba:spec</span>
+              <span class="wf-node-sub">Input</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-cmd" style="--nc:59,130,246">
+              <span class="wf-node-cmd-text">/qa:testplan</span>
+              <span class="wf-node-label">QA</span>
+              <span class="wf-node-sub">test-plan.md</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-gate">
+              <span class="material-symbols-outlined text-[16px] mb-1">play_circle</span>
+              <span class="wf-node-label">Testing</span>
+              <span class="wf-node-sub">Execute</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-cmd" style="--nc:59,130,246">
+              <span class="wf-node-cmd-text">/qa:bug</span>
+              <span class="wf-node-label">QA</span>
+              <span class="wf-node-sub">Bug report</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-cmd" style="--nc:16,185,129">
+              <span class="wf-node-cmd-text">/dev:debug</span>
+              <span class="wf-node-label">Dev</span>
+              <span class="wf-node-sub">Fix</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-gate">
+              <span class="material-symbols-outlined text-[16px] mb-1">refresh</span>
+              <span class="wf-node-label">Retest</span>
+              <span class="wf-node-sub">Loop if fail</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="blueprint-line flex-1"></div>
+            <span class="font-label-mono text-[11px] text-on-surface-variant uppercase tracking-wider">Pre-release</span>
+            <div class="blueprint-line flex-1"></div>
+          </div>
+          <div class="flex flex-wrap items-center gap-0">
+            <div class="wf-node wf-node-doc">
+              <span class="material-symbols-outlined text-[14px]">merge_type</span>
+              <span class="wf-node-label">PRs merged</span>
+              <span class="wf-node-sub">Sprint end</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-cmd" style="--nc:59,130,246">
+              <span class="wf-node-cmd-text">/qa:regression</span>
+              <span class="wf-node-label">QA</span>
+              <span class="wf-node-sub">Sign-off</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node wf-node-cmd" style="--nc:249,115,22">
+              <span class="wf-node-cmd-text">/ops:deploy</span>
+              <span class="wf-node-label">DevOps</span>
+              <span class="wf-node-sub">Production</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Architecture -->
+      <div class="wf-panel hidden" id="wf-arch">
+        <div class="px-8 pt-8 pb-4 border-b border-outline-variant/20">
+          <div class="flex items-center gap-3 mb-1">
+            <span class="material-symbols-outlined" style="color:#f59e0b">architecture</span>
+            <h3 class="font-headline-md text-headline-md text-white">Architecture — Xuyên suốt sprint</h3>
+          </div>
+          <p class="font-body-md text-body-md text-on-surface-variant">Không phải 1 giai đoạn riêng — chạy bất cứ khi nào có quyết định kỹ thuật lớn.</p>
+        </div>
+        <div class="p-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="p-6 rounded-2xl border" style="border-color:rgba(245,158,11,0.25);background:rgba(245,158,11,0.04)">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="material-symbols-outlined" style="color:#f59e0b">rate_review</span>
+                <span class="font-label-mono text-label-mono" style="color:#f59e0b">/arch:review</span>
+              </div>
+              <p class="font-body-md text-[14px] text-on-surface-variant mb-4">Design decision review với trade-off analysis. Trigger khi:</p>
+              <ul class="space-y-2 font-body-md text-[13px] text-on-surface-variant">
+                <li class="flex items-center gap-2"><span class="text-primary-container">→</span> Planning có design phức tạp</li>
+                <li class="flex items-center gap-2"><span class="text-primary-container">→</span> /dev:implement gặp quyết định lớn</li>
+                <li class="flex items-center gap-2"><span class="text-primary-container">→</span> PR có breaking change</li>
+              </ul>
+            </div>
+            <div class="p-6 rounded-2xl border" style="border-color:rgba(245,158,11,0.25);background:rgba(245,158,11,0.04)">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="material-symbols-outlined" style="color:#f59e0b">article</span>
+                <span class="font-label-mono text-label-mono" style="color:#f59e0b">/arch:adr</span>
+              </div>
+              <p class="font-body-md text-[14px] text-on-surface-variant mb-4">Tạo Architecture Decision Record. Output:</p>
+              <div class="font-label-mono text-[12px] p-3 rounded-lg bg-surface-container-lowest border border-outline-variant/20" style="color:#f59e0b">
+                docs/decisions/ADR-NNN.md
+              </div>
+              <p class="font-body-md text-[13px] text-on-surface-variant mt-3">Sau khi có ADR → /arch:review update design nếu cần (bidirectional loop)</p>
+            </div>
+          </div>
+          <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20 flex items-start gap-3">
+            <span class="material-symbols-outlined" style="color:#f59e0b;font-size:20px">sync_alt</span>
+            <p class="font-body-md text-[13px] text-on-surface-variant"><span style="color:#f59e0b" class="font-label-mono">/arch:review ↔ /arch:adr</span> — bidirectional. Review dẫn đến ADR, ADR có thể update design dẫn đến review mới.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sprint Ops -->
+      <div class="wf-panel hidden" id="wf-sprint">
+        <div class="px-8 pt-8 pb-4 border-b border-outline-variant/20">
+          <div class="flex items-center gap-3 mb-1">
+            <span class="material-symbols-outlined" style="color:#ec4899">loop</span>
+            <h3 class="font-headline-md text-headline-md text-white">Sprint Ops — Scrum Rituals</h3>
+          </div>
+          <p class="font-body-md text-body-md text-on-surface-variant">Chạy lặp lại song song với Dev/QA suốt sprint.</p>
+        </div>
+        <div class="p-8">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="p-6 rounded-2xl border" style="border-color:rgba(236,72,153,0.25);background:rgba(236,72,153,0.04)">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="material-symbols-outlined" style="color:#ec4899">record_voice_over</span>
+                <span class="font-label-mono text-label-mono" style="color:#ec4899">/sm:standup</span>
+              </div>
+              <p class="font-body-md text-[14px] text-on-surface-variant mb-2">Daily — mỗi ngày</p>
+              <p class="font-body-md text-[13px] text-on-surface-variant">Tóm tắt standup cho team. Trigger: mỗi sáng hoặc khi cần báo cáo nhanh.</p>
+            </div>
+            <div class="p-6 rounded-2xl border" style="border-color:rgba(168,85,247,0.25);background:rgba(168,85,247,0.04)">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="material-symbols-outlined" style="color:#a855f7">bar_chart</span>
+                <span class="font-label-mono text-label-mono" style="color:#a855f7">/pm:status</span>
+              </div>
+              <p class="font-body-md text-[14px] text-on-surface-variant mb-2">Weekly / on-demand</p>
+              <p class="font-body-md text-[13px] text-on-surface-variant">Sprint status report cho stakeholders. Trigger từ /sm:standup hoặc khi có milestone.</p>
+            </div>
+            <div class="p-6 rounded-2xl border" style="border-color:rgba(236,72,153,0.25);background:rgba(236,72,153,0.04)">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="material-symbols-outlined" style="color:#ec4899">forum</span>
+                <span class="font-label-mono text-label-mono" style="color:#ec4899">/sm:retro</span>
+              </div>
+              <p class="font-body-md text-[14px] text-on-surface-variant mb-2">Sprint end</p>
+              <p class="font-body-md text-[13px] text-on-surface-variant">Retrospective có cấu trúc. Trigger cuối sprint từ /sm:standup.</p>
+            </div>
+          </div>
+          <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20 font-label-mono text-[13px]">
+            <span class="text-primary-container">FLOW:</span>
+            <span class="text-on-surface-variant ml-2">/sm:standup (daily) → /sm:retro (sprint end) · /sm:standup → /pm:status (weekly)</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end glass panel -->
+
+    <!-- Gate dependencies table -->
+    <div class="mt-8 fade-up">
+      <button class="flex items-center gap-2 font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors mb-4" onclick="toggleGates(this)">
+        <span class="material-symbols-outlined text-[18px]">expand_more</span>
+        Gate Dependencies — điều kiện tiên quyết cho mỗi skill
+      </button>
+      <div id="gates-table" class="hidden overflow-x-auto">
+        <table class="w-full glass-panel rounded-2xl border border-outline-variant/30 overflow-hidden">
+          <thead>
+            <tr class="border-b border-outline-variant/20">
+              <th class="text-left px-6 py-4 font-label-mono text-label-mono text-on-surface-variant">SKILL</th>
+              <th class="text-left px-4 py-4 font-label-mono text-label-mono text-on-surface-variant">YÊU CẦU TRƯỚC</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
+              <td class="px-6 py-3 font-label-mono text-label-mono text-primary-container">/ba:user-story</td>
+              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant">/ba:spec đã done</td>
+            </tr>
+            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
+              <td class="px-6 py-3 font-label-mono text-label-mono text-primary-container">/pm:breakdown</td>
+              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant">/ba:user-story hoặc User Stories đã có</td>
+            </tr>
+            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
+              <td class="px-6 py-3 font-label-mono text-label-mono text-primary-container">/dev:analyze</td>
+              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant">Risk Classifier đã chạy + Issue/task rõ ràng (AC defined)</td>
+            </tr>
+            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
+              <td class="px-6 py-3 font-label-mono text-label-mono text-primary-container">/dev:implement</td>
+              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant">docs/tasks/[ID]/analysis.md đã tồn tại</td>
+            </tr>
+            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
+              <td class="px-6 py-3 font-label-mono text-label-mono text-primary-container">/dev:review</td>
+              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant">/dev:implement Bước 5 done + verification.md saved + Harness Delta check done</td>
+            </tr>
+            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
+              <td class="px-6 py-3 font-label-mono text-label-mono text-primary-container">/dev:pr</td>
+              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant">/dev:review Approve + không có blocking issues</td>
+            </tr>
+            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
+              <td class="px-6 py-3 font-label-mono text-label-mono text-primary-container">/docs:update</td>
+              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant">PR đã merge</td>
+            </tr>
+            <tr class="border-b border-outline-variant/10 hover:bg-surface-container/30 transition-colors">
+              <td class="px-6 py-3 font-label-mono text-label-mono text-primary-container">/qa:regression</td>
+              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant">Tất cả PR của sprint đã merge</td>
+            </tr>
+            <tr class="hover:bg-surface-container/30 transition-colors">
+              <td class="px-6 py-3 font-label-mono text-label-mono text-primary-container">/ops:deploy</td>
+              <td class="px-4 py-3 font-body-md text-[14px] text-on-surface-variant">/qa:regression đã sign-off</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -886,6 +1444,28 @@
 </footer>
 
 <script>
+  // ── Workflow tab switching ──
+  function switchWf(btn, id) {
+    document.querySelectorAll('.wf-tab').forEach(t => {
+      t.classList.remove('active', 'bg-primary-container/15', 'border-primary-container/40', 'text-primary-container');
+      t.classList.add('border-outline-variant/30', 'text-on-surface-variant');
+      t.setAttribute('aria-selected', 'false');
+    });
+    btn.classList.add('active', 'bg-primary-container/15', 'border-primary-container/40', 'text-primary-container');
+    btn.classList.remove('border-outline-variant/30', 'text-on-surface-variant');
+    btn.setAttribute('aria-selected', 'true');
+    document.querySelectorAll('.wf-panel').forEach(p => p.classList.add('hidden'));
+    document.getElementById('wf-' + id).classList.remove('hidden');
+  }
+
+  // ── Gate toggle ──
+  function toggleGates(btn) {
+    const table = document.getElementById('gates-table');
+    const icon = btn.querySelector('.material-symbols-outlined');
+    table.classList.toggle('hidden');
+    icon.textContent = table.classList.contains('hidden') ? 'expand_more' : 'expand_less';
+  }
+
   // ── Command filter ──
   function filterCmds(btn, cat) {
     // update pill states
