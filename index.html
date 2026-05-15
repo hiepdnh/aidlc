@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>ADLC | Agentic Development Lifecycle</title>
-<meta name="description" content="32 slash commands covering the full SDLC — for teams building software with AI assistance. A Claude Code skill pack by VTI Software."/>
+<meta name="description" content="32 slash commands covering the full SDLC — for Claude Code, OpenCode, Cursor &amp; Antigravity. An AI skill pack for engineering teams by VTI Software."/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -377,7 +377,7 @@
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-container to-secondary" data-i18n="hero.h1b">Think in agents.</span>
       </h1>
       <p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl" data-i18n="hero.desc">
-        32 slash commands for Claude Code &amp; OpenCode — 10 SDLC roles, 8 AI subagents, and structured role-based flows from discovery to deploy.
+        32 slash commands for Claude Code, OpenCode, Cursor &amp; Antigravity — 10 SDLC roles, 8 AI subagents, and structured role-based flows from discovery to deploy.
       </p>
 
       <!-- Stats -->
@@ -1623,13 +1623,13 @@
           <p>[1/4] Resolving packages...</p>
           <p>[2/4] Fetching orchestration blueprints...</p>
           <p>[3/4] Initializing Claude Code environment...</p>
-          <p class="text-primary-container">✔ ADLC v1.1.3 successfully initialized.</p>
+          <p class="text-primary-container">✔ ADLC v1.3.0 successfully initialized.</p>
           <p class="text-on-surface-variant/50">    .claude/commands/ — 32 skill files ready</p>
           <p class="text-on-surface-variant/50">    agents/ — 8 subagent definitions loaded</p>
           <p class="text-on-surface-variant/50">    templates/, docs/workflows/ — scaffolded</p>
         </div>
         <!-- Install options -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
             <p class="text-primary-container mb-2 text-[11px] uppercase tracking-wider" data-i18n="install.tab.unix">macOS / Linux</p>
             <code class="text-secondary-fixed-dim break-all">npx agentic-development-lifecycle --yes</code>
@@ -1641,6 +1641,14 @@
           <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
             <p class="text-primary-container mb-2 text-[11px] uppercase tracking-wider" data-i18n="install.tab.opencode">OpenCode</p>
             <code class="text-secondary-fixed-dim break-all">npx agentic-development-lifecycle --yes --opencode</code>
+          </div>
+          <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
+            <p class="text-primary-container mb-2 text-[11px] uppercase tracking-wider" data-i18n="install.tab.cursor">Cursor</p>
+            <code class="text-secondary-fixed-dim break-all">npx agentic-development-lifecycle --yes --cursor</code>
+          </div>
+          <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
+            <p class="text-primary-container mb-2 text-[11px] uppercase tracking-wider" data-i18n="install.tab.antigravity">Antigravity</p>
+            <code class="text-secondary-fixed-dim break-all">npx agentic-development-lifecycle --yes --antigravity</code>
           </div>
           <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
             <p class="text-secondary mb-2 text-[11px] uppercase tracking-wider" data-i18n="install.tab.lite">Developer Lite</p>
@@ -1675,7 +1683,7 @@
       <div class="flex items-center gap-3">
         <span class="font-headline-md text-headline-md text-primary font-bold">ADLC</span>
         <span class="text-on-surface-variant opacity-30">|</span>
-        <span class="font-label-mono text-label-mono text-on-surface-variant">v1.1.3</span>
+        <span class="font-label-mono text-label-mono text-on-surface-variant">v1.3.0</span>
       </div>
       <p class="font-body-md text-body-md text-tertiary-fixed-dim max-w-xs text-center md:text-left opacity-80" data-i18n="footer.tagline">
         Agentic Development Lifecycle — built for AI-native engineering teams.
@@ -1720,7 +1728,7 @@
       'hero.badge': 'Agentic Development Lifecycle',
       'hero.h1a': 'Ship faster.',
       'hero.h1b': 'Think in agents.',
-      'hero.desc': '32 slash commands for Claude Code & OpenCode — 10 SDLC roles, 8 AI subagents, and structured role-based flows from discovery to deploy.',
+      'hero.desc': '32 slash commands for Claude Code, OpenCode, Cursor & Antigravity — 10 SDLC roles, 8 AI subagents, and structured role-based flows from discovery to deploy.',
       'hero.cta.primary': 'Deploy Agent',
       'hero.cta.secondary': 'View on GitHub',
       'hero.active_agent': 'ACTIVE AGENT',
@@ -1918,6 +1926,8 @@
       'cmd.pm_maintain.desc': 'Maintenance phase workflow: triage → fix → monthly report (月次保守報告書)',
       'cmd.install.desc': 'Install VTI SDLC framework into current project — copy commands, agents, templates, workflows',
       'install.tab.opencode': 'OpenCode',
+      'install.tab.cursor': 'Cursor',
+      'install.tab.antigravity': 'Antigravity',
       'cmd.dev_analyze.desc': 'Task → 2-3 implementation options with trade-offs → analysis.md',
       'cmd.dev_implement.desc': 'Implement file-by-file with human gates + verification + harness delta check',
       'cmd.dev_review.desc': 'Holistic review: code quality + architecture + security in one run',
@@ -1968,7 +1978,7 @@
       'hero.badge': 'Vòng Đời Phát Triển Agentic',
       'hero.h1a': 'Ship nhanh hơn.',
       'hero.h1b': 'Tư duy theo agents.',
-      'hero.desc': '32 lệnh slash cho Claude Code & OpenCode — 10 vai trò SDLC, 8 AI subagent, và luồng theo vai trò có cấu trúc từ khám phá đến triển khai.',
+      'hero.desc': '32 lệnh slash cho Claude Code, OpenCode, Cursor & Antigravity — 10 vai trò SDLC, 8 AI subagent, và luồng theo vai trò có cấu trúc từ khám phá đến triển khai.',
       'hero.cta.primary': 'Triển Khai Agent',
       'hero.cta.secondary': 'Xem trên GitHub',
       'hero.active_agent': 'AGENT ĐANG HOẠT ĐỘNG',
@@ -2166,6 +2176,8 @@
       'cmd.pm_maintain.desc': 'Workflow giai đoạn bảo trì: triage → fix → báo cáo hàng tháng (月次保守報告書)',
       'cmd.install.desc': 'Cài framework VTI SDLC vào dự án hiện tại — copy commands, agents, templates, workflows',
       'install.tab.opencode': 'OpenCode',
+      'install.tab.cursor': 'Cursor',
+      'install.tab.antigravity': 'Antigravity',
       'cmd.dev_analyze.desc': 'Task → 2-3 phương án triển khai với trade-off → analysis.md',
       'cmd.dev_implement.desc': 'Triển khai file theo file với human gates + xác minh + kiểm tra harness delta',
       'cmd.dev_review.desc': 'Review toàn diện: chất lượng code + kiến trúc + bảo mật trong một lần chạy',
