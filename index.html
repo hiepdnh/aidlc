@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>ADLC | Agentic Development Lifecycle</title>
-<meta name="description" content="26 slash commands covering the full SDLC — for teams building software with AI assistance. A Claude Code skill pack by VTI Software."/>
+<meta name="description" content="32 slash commands covering the full SDLC — for teams building software with AI assistance. A Claude Code skill pack by VTI Software."/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -377,21 +377,21 @@
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-container to-secondary" data-i18n="hero.h1b">Think in agents.</span>
       </h1>
       <p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl" data-i18n="hero.desc">
-        A structured Claude workflow system for software teams. 26 slash commands, 7 AI subagents, and role-based flows — from discovery to deploy.
+        32 slash commands for Claude Code &amp; OpenCode — 10 SDLC roles, 8 AI subagents, and structured role-based flows from discovery to deploy.
       </p>
 
       <!-- Stats -->
       <div class="flex flex-wrap gap-4 items-center mb-12">
         <div class="flex flex-col border-r border-outline-variant/30 pr-8">
-          <span class="font-headline-md text-headline-md text-primary">26</span>
+          <span class="font-headline-md text-headline-md text-primary">32</span>
           <span class="font-label-mono text-label-mono text-on-surface-variant" data-i18n="stat.cmd_label">Slash Commands</span>
         </div>
         <div class="flex flex-col border-r border-outline-variant/30 px-8">
-          <span class="font-headline-md text-headline-md text-primary">9</span>
+          <span class="font-headline-md text-headline-md text-primary">10</span>
           <span class="font-label-mono text-label-mono text-on-surface-variant" data-i18n="stat.roles_label">SDLC Roles</span>
         </div>
         <div class="flex flex-col border-r border-outline-variant/30 px-8">
-          <span class="font-headline-md text-headline-md text-primary">7</span>
+          <span class="font-headline-md text-headline-md text-primary">8</span>
           <span class="font-label-mono text-label-mono text-on-surface-variant" data-i18n="stat.agents_label">Subagents</span>
         </div>
         <div class="flex flex-col px-8">
@@ -494,7 +494,7 @@
       </div>
       <h2 class="font-headline-lg text-headline-lg text-primary mb-4" data-i18n="workflows.title">Every role has a dedicated flow</h2>
       <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl" data-i18n="workflows.intro">
-        26 skills chained into proven flows — from Discovery to Deploy. Select your role to see the corresponding workflow.
+        32 skills chained into proven flows — from Discovery to Deploy. Select your role to see the corresponding workflow.
       </p>
     </div>
 
@@ -1106,7 +1106,7 @@
     <div class="mb-12 fade-up">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/10 border border-primary-container/20 mb-4">
         <span class="material-symbols-outlined text-[16px] text-primary-container">terminal</span>
-        <span class="font-label-mono text-label-mono text-primary-container" data-i18n="commands.badge">26 COMMANDS</span>
+        <span class="font-label-mono text-label-mono text-primary-container" data-i18n="commands.badge">32 COMMANDS</span>
       </div>
       <h2 class="font-headline-lg text-headline-lg text-primary mb-4" data-i18n="commands.title">Every phase. Every role.</h2>
       <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl" data-i18n="commands.desc">
@@ -1115,7 +1115,7 @@
 
       <!-- Filter pills -->
       <div class="flex flex-wrap gap-2 mt-6" role="group" aria-label="Filter commands by category">
-        <button class="cat-pill-all active font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'all')" aria-pressed="true" data-i18n="commands.cat.all">All (26)</button>
+        <button class="cat-pill-all active font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'all')" aria-pressed="true" data-i18n="commands.cat.all">All (32)</button>
         <button class="cat-pill cat-ba font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'ba')" aria-pressed="false" data-i18n="commands.cat.ba">Business Analysis</button>
         <button class="cat-pill cat-pm font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'pm')" aria-pressed="false" data-i18n="commands.cat.pm">Project Mgmt</button>
         <button class="cat-pill cat-dev font-label-mono text-[12px] px-4 py-1.5 rounded-full" onclick="filterCmds(this,'dev')" aria-pressed="false" data-i18n="commands.cat.dev">Development</button>
@@ -1169,6 +1169,20 @@
           <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.be_bridge.desc">Translate JP requirements, create bilingual JP-VN deliverables</p>
         </div>
       </div>
+      <div class="cmd-card cat-be p-5 rounded-2xl flex items-start gap-4 fade-up delay-1" data-cat="be">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">change_circle</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/be:changerequest</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.be_changerequest.desc">変更依頼 — impact analysis, approval trail, version control spec changes</p>
+        </div>
+      </div>
+      <div class="cmd-card cat-be p-5 rounded-2xl flex items-start gap-4 fade-up delay-2" data-cat="be">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">menu_book</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/be:glossary</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.be_glossary.desc">Maintain JP↔VN↔EN glossary — add terms, resolve translation conflicts</p>
+        </div>
+      </div>
 
       <!-- PM -->
       <div class="cmd-card cat-pm p-5 rounded-2xl flex items-start gap-4 fade-up delay-1" data-cat="pm">
@@ -1190,6 +1204,34 @@
         <div>
           <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/pm:dashboard</span>
           <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.pm_dashboard.desc">Static HTML sprint dashboard with kanban + health + backlog</p>
+        </div>
+      </div>
+      <div class="cmd-card cat-pm p-5 rounded-2xl flex items-start gap-4 fade-up" data-cat="pm">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">rocket_launch</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/pm:kickoff</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.pm_kickoff.desc">Bootstrap greenfield project: tech stack → ADRs → docs structure → sprint 0 checklist</p>
+        </div>
+      </div>
+      <div class="cmd-card cat-pm p-5 rounded-2xl flex items-start gap-4 fade-up delay-1" data-cat="pm">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">new_releases</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/pm:release</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.pm_release.desc">Generate Release Notes / リリースノート from merged PRs + closed issues</p>
+        </div>
+      </div>
+      <div class="cmd-card cat-pm p-5 rounded-2xl flex items-start gap-4 fade-up delay-2" data-cat="pm">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">handshake</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/pm:handover</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.pm_handover.desc">Create project handover package (引き継ぎ) — codebase map + decisions + contact matrix</p>
+        </div>
+      </div>
+      <div class="cmd-card cat-pm p-5 rounded-2xl flex items-start gap-4 fade-up delay-3" data-cat="pm">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">build_circle</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/pm:maintain</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.pm_maintain.desc">Maintenance phase workflow: triage → fix → monthly report (月次保守報告書)</p>
         </div>
       </div>
 
@@ -1326,6 +1368,15 @@
         </div>
       </div>
 
+      <!-- Install utility -->
+      <div class="cmd-card cat-dev p-5 rounded-2xl flex items-start gap-4 fade-up delay-1" data-cat="dev">
+        <span class="material-symbols-outlined cmd-icon text-[20px] mt-0.5 flex-shrink-0">download</span>
+        <div>
+          <span class="cmd-badge font-label-mono text-[11px] px-2 py-0.5 rounded inline-block mb-2">/install</span>
+          <p class="font-body-md text-[14px] text-on-surface-variant" data-i18n="cmd.install.desc">Install VTI SDLC framework into current project — copy commands, agents, templates, workflows</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1437,6 +1488,20 @@
         <div class="mt-auto flex flex-wrap gap-2 justify-center">
           <span class="bg-secondary/10 text-secondary border border-secondary/20 font-label-mono text-[11px] px-2.5 py-1 rounded-full">sonnet</span>
           <span class="bg-surface-container-high text-on-surface-variant font-label-mono text-[11px] px-2.5 py-1 rounded-full">/docs:update</span>
+        </div>
+      </div>
+
+      <!-- pr-resolver -->
+      <div class="agent-card glass-panel rounded-2xl border border-outline-variant/30 p-6 flex flex-col items-center text-center group hover:border-primary-container/40 transition-all duration-300 relative overflow-hidden" style="--ac:0,229,255">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-container/40 to-transparent"></div>
+        <div class="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-primary-container/20 group-hover:ring-primary-container/50 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.25)]">
+          <img src="agents/pr-resolver.png" alt="PR Resolver agent" class="w-full h-full object-cover" loading="lazy" decoding="async" width="96" height="96">
+        </div>
+        <h3 class="font-label-mono text-label-mono text-primary-container mb-1">pr-resolver</h3>
+        <p class="font-body-md text-[13px] text-on-surface-variant mb-4 leading-relaxed" data-i18n="agent.pr_resolver.desc">Read PR review comments and propose concrete fixes per comment</p>
+        <div class="mt-auto flex flex-wrap gap-2 justify-center">
+          <span class="bg-primary-container/10 text-primary-container border border-primary-container/20 font-label-mono text-[11px] px-2.5 py-1 rounded-full">sonnet</span>
+          <span class="bg-surface-container-high text-on-surface-variant font-label-mono text-[11px] px-2.5 py-1 rounded-full">/dev:pr</span>
         </div>
       </div>
 
@@ -1552,26 +1617,30 @@
         <div class="mb-4">
           <span class="text-primary">➜</span>
           <span class="text-secondary"> ~ </span>
-          <span class="text-white">npx github:hiepdnh/Agentic-Development-Lifecycle --yes</span>
+          <span class="text-white">npx agentic-development-lifecycle --yes</span>
         </div>
         <div class="text-on-surface-variant space-y-1 mb-6">
           <p>[1/4] Resolving packages...</p>
           <p>[2/4] Fetching orchestration blueprints...</p>
           <p>[3/4] Initializing Claude Code environment...</p>
-          <p class="text-primary-container">✔ ADLC v1.0.4 successfully initialized.</p>
-          <p class="text-on-surface-variant/50">    .claude/commands/ — 26 skill files ready</p>
-          <p class="text-on-surface-variant/50">    agents/ — 7 subagent definitions loaded</p>
+          <p class="text-primary-container">✔ ADLC v1.1.3 successfully initialized.</p>
+          <p class="text-on-surface-variant/50">    .claude/commands/ — 32 skill files ready</p>
+          <p class="text-on-surface-variant/50">    agents/ — 8 subagent definitions loaded</p>
           <p class="text-on-surface-variant/50">    templates/, docs/workflows/ — scaffolded</p>
         </div>
         <!-- Install options -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
             <p class="text-primary-container mb-2 text-[11px] uppercase tracking-wider" data-i18n="install.tab.unix">macOS / Linux</p>
-            <code class="text-secondary-fixed-dim break-all">npx github:hiepdnh/Agentic-Development-Lifecycle --yes</code>
+            <code class="text-secondary-fixed-dim break-all">npx agentic-development-lifecycle --yes</code>
           </div>
           <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
             <p class="text-primary-container mb-2 text-[11px] uppercase tracking-wider" data-i18n="install.tab.windows">Windows</p>
-            <code class="text-secondary-fixed-dim break-all">$tmp="$env:TEMP\vti"; mkdir $tmp; cd $tmp; npx ... --yes</code>
+            <code class="text-secondary-fixed-dim break-all">npx agentic-development-lifecycle --yes</code>
+          </div>
+          <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
+            <p class="text-primary-container mb-2 text-[11px] uppercase tracking-wider" data-i18n="install.tab.opencode">OpenCode</p>
+            <code class="text-secondary-fixed-dim break-all">npx agentic-development-lifecycle --yes --opencode</code>
           </div>
           <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/20">
             <p class="text-secondary mb-2 text-[11px] uppercase tracking-wider" data-i18n="install.tab.lite">Developer Lite</p>
@@ -1606,7 +1675,7 @@
       <div class="flex items-center gap-3">
         <span class="font-headline-md text-headline-md text-primary font-bold">ADLC</span>
         <span class="text-on-surface-variant opacity-30">|</span>
-        <span class="font-label-mono text-label-mono text-on-surface-variant">v1.0.4-agentic</span>
+        <span class="font-label-mono text-label-mono text-on-surface-variant">v1.1.3</span>
       </div>
       <p class="font-body-md text-body-md text-tertiary-fixed-dim max-w-xs text-center md:text-left opacity-80" data-i18n="footer.tagline">
         Agentic Development Lifecycle — built for AI-native engineering teams.
@@ -1635,7 +1704,7 @@
   </div>
   <div class="max-w-container-max mx-auto px-gutter mt-12 pt-8 border-t border-outline-variant/10 text-center">
     <p class="font-label-mono text-[12px] text-on-surface-variant/50 uppercase tracking-widest">
-      <span data-i18n="footer.copyright">© 2025 ADLC · VTI SOFTWARE · MIT LICENSE · POWERED BY CLAUDE CODE</span>
+      <span data-i18n="footer.copyright">© 2026 ADLC · VTI SOFTWARE · MIT LICENSE · POWERED BY CLAUDE CODE</span>
     </p>
   </div>
 </footer>
@@ -1651,7 +1720,7 @@
       'hero.badge': 'Agentic Development Lifecycle',
       'hero.h1a': 'Ship faster.',
       'hero.h1b': 'Think in agents.',
-      'hero.desc': 'A structured Claude workflow system for software teams. 26 slash commands, 7 AI subagents, and role-based flows — from discovery to deploy.',
+      'hero.desc': '32 slash commands for Claude Code & OpenCode — 10 SDLC roles, 8 AI subagents, and structured role-based flows from discovery to deploy.',
       'hero.cta.primary': 'Deploy Agent',
       'hero.cta.secondary': 'View on GitHub',
       'hero.active_agent': 'ACTIVE AGENT',
@@ -1672,7 +1741,7 @@
       'flow.sprint.name': 'Sprint Ops', 'flow.sprint.desc': 'Standups, reports & retrospectives',
       'workflows.badge': 'ROLE WORKFLOWS',
       'workflows.title': 'Every role has a dedicated flow',
-      'workflows.intro': '26 skills chained into proven flows — from Discovery to Deploy. Select your role to see the corresponding workflow.',
+      'workflows.intro': '32 skills chained into proven flows — from Discovery to Deploy. Select your role to see the corresponding workflow.',
       'workflows.tab.bridge': 'Bridge Engineer',
       'workflows.tab.brownfield': 'Brownfield',
       'workflows.tab.pmba': 'PM / BA',
@@ -1819,10 +1888,10 @@
       'features.sec.desc': 'Built-in OWASP Top 10 security review with Always/Ask/Never classification. Security is part of the workflow, not bolted on.',
       'features.sdlc.title': 'Full SDLC Coverage',
       'features.sdlc.desc': 'From ideation to deployment — BA, PM, Dev, Arch, QA, DevOps, Security, Docs, and Scrum roles all covered in one cohesive framework.',
-      'commands.badge': '26 COMMANDS',
+      'commands.badge': '32 COMMANDS',
       'commands.title': 'Every phase. Every role.',
       'commands.desc': 'Structured, role-aware commands covering every sprint lifecycle phase. Filter by category.',
-      'commands.cat.all': 'All (26)',
+      'commands.cat.all': 'All (32)',
       'commands.cat.ba': 'Business Analysis',
       'commands.cat.pm': 'Project Mgmt',
       'commands.cat.dev': 'Development',
@@ -1838,9 +1907,17 @@
       'cmd.ba_user_story.desc': 'Spec → User Stories with Acceptance Criteria',
       'cmd.ba_reverse.desc': 'Reverse engineer legacy codebase → baseline docs',
       'cmd.be_bridge.desc': 'Translate JP requirements, create bilingual JP-VN deliverables',
+      'cmd.be_changerequest.desc': '変更依頼 — impact analysis, approval trail, version control spec changes',
+      'cmd.be_glossary.desc': 'Maintain JP↔VN↔EN glossary — add terms, resolve translation conflicts',
       'cmd.pm_breakdown.desc': 'Epic/Stories → Tasks with estimates + GitHub/GitLab Issues',
       'cmd.pm_status.desc': 'Sprint status report for stakeholders',
       'cmd.pm_dashboard.desc': 'Static HTML sprint dashboard with kanban + health + backlog',
+      'cmd.pm_kickoff.desc': 'Bootstrap greenfield project: tech stack → ADRs → docs structure → sprint 0 checklist',
+      'cmd.pm_release.desc': 'Generate Release Notes / リリースノート from merged PRs + closed issues',
+      'cmd.pm_handover.desc': 'Create project handover package (引き継ぎ) — codebase map + decisions + contact matrix',
+      'cmd.pm_maintain.desc': 'Maintenance phase workflow: triage → fix → monthly report (月次保守報告書)',
+      'cmd.install.desc': 'Install VTI SDLC framework into current project — copy commands, agents, templates, workflows',
+      'install.tab.opencode': 'OpenCode',
       'cmd.dev_analyze.desc': 'Task → 2-3 implementation options with trade-offs → analysis.md',
       'cmd.dev_implement.desc': 'Implement file-by-file with human gates + verification + harness delta check',
       'cmd.dev_review.desc': 'Holistic review: code quality + architecture + security in one run',
@@ -1865,6 +1942,7 @@
       'agent.review_reader.desc': 'Parse PR diff and extract actionable review signals',
       'agent.test_gen.desc': 'Generate structured test cases from specification',
       'agent.doc_updater.desc': 'Update baseline documentation after code changes',
+      'agent.pr_resolver.desc': 'Read PR review comments and propose concrete fixes per comment',
       'vti.be.desc': 'Translates JP client requirements → VN team spec using /be:bridge',
       'vti.ba.desc': 'From clarified requirements using /ba:spec',
       'vti.dev.desc': 'Code comments in English, structured via /dev:implement',
@@ -1880,7 +1958,7 @@
       'footer.link.api': 'API Docs',
       'footer.link.license': 'MIT License',
       'footer.link.github': 'GitHub',
-      'footer.copyright': '© 2025 ADLC · VTI SOFTWARE · MIT LICENSE · POWERED BY CLAUDE CODE',
+      'footer.copyright': '© 2026 ADLC · VTI SOFTWARE · MIT LICENSE · POWERED BY CLAUDE CODE',
     },
     vi: {
       'nav.workflow': 'Luồng Làm Việc',
@@ -1890,7 +1968,7 @@
       'hero.badge': 'Vòng Đời Phát Triển Agentic',
       'hero.h1a': 'Ship nhanh hơn.',
       'hero.h1b': 'Tư duy theo agents.',
-      'hero.desc': 'Hệ thống workflow Claude có cấu trúc cho các team phần mềm. 26 lệnh slash, 7 AI subagent, và luồng theo vai trò — từ khám phá đến triển khai.',
+      'hero.desc': '32 lệnh slash cho Claude Code & OpenCode — 10 vai trò SDLC, 8 AI subagent, và luồng theo vai trò có cấu trúc từ khám phá đến triển khai.',
       'hero.cta.primary': 'Triển Khai Agent',
       'hero.cta.secondary': 'Xem trên GitHub',
       'hero.active_agent': 'AGENT ĐANG HOẠT ĐỘNG',
@@ -1911,7 +1989,7 @@
       'flow.sprint.name': 'Vận Hành Sprint', 'flow.sprint.desc': 'Standup, báo cáo & retrospective',
       'workflows.badge': 'LUỒNG THEO VAI TRÒ',
       'workflows.title': 'Mỗi vai trò có luồng riêng',
-      'workflows.intro': '26 skill được kết nối thành luồng đã được kiểm chứng — từ Discovery đến Deploy. Chọn vai trò để xem luồng tương ứng.',
+      'workflows.intro': '32 skill được kết nối thành luồng đã được kiểm chứng — từ Discovery đến Deploy. Chọn vai trò để xem luồng tương ứng.',
       'workflows.tab.bridge': 'Bridge Engineer',
       'workflows.tab.brownfield': 'Brownfield',
       'workflows.tab.pmba': 'PM / BA',
@@ -2058,10 +2136,10 @@
       'features.sec.desc': 'Review OWASP Top 10 tích hợp sẵn vào mọi lệnh dev.',
       'features.sdlc.title': 'Bao Phủ Toàn Bộ SDLC',
       'features.sdlc.desc': 'Từ ideation đến deployment — không bỏ sót giai đoạn nào.',
-      'commands.badge': '26 LỆNH',
+      'commands.badge': '32 LỆNH',
       'commands.title': 'Mọi giai đoạn. Mọi vai trò.',
       'commands.desc': 'Lệnh có cấu trúc, nhận biết vai trò, bao phủ mọi giai đoạn vòng đời sprint. Lọc theo danh mục.',
-      'commands.cat.all': 'Tất cả (26)',
+      'commands.cat.all': 'Tất cả (32)',
       'commands.cat.ba': 'Business Analysis',
       'commands.cat.pm': 'Quản lý Dự Án',
       'commands.cat.dev': 'Phát Triển',
@@ -2077,9 +2155,17 @@
       'cmd.ba_user_story.desc': 'Spec → User Stories với Acceptance Criteria',
       'cmd.ba_reverse.desc': 'Reverse engineer codebase cũ → baseline docs',
       'cmd.be_bridge.desc': 'Dịch yêu cầu JP, tạo tài liệu giao hàng song ngữ JP-VN',
+      'cmd.be_changerequest.desc': '変更依頼 — phân tích tác động, lịch sử phê duyệt, kiểm soát phiên bản spec',
+      'cmd.be_glossary.desc': 'Duy trì bảng thuật ngữ JP↔VN↔EN — thêm thuật ngữ, giải quyết xung đột dịch',
       'cmd.pm_breakdown.desc': 'Epic/Stories → Tasks với ước tính + GitHub/GitLab Issues',
       'cmd.pm_status.desc': 'Báo cáo sprint status cho stakeholders',
       'cmd.pm_dashboard.desc': 'Dashboard sprint HTML tĩnh với kanban + health + backlog',
+      'cmd.pm_kickoff.desc': 'Khởi động dự án mới: tech stack → ADRs → cấu trúc docs → sprint 0 checklist',
+      'cmd.pm_release.desc': 'Tạo Release Notes / リリースノート từ merged PRs + closed issues',
+      'cmd.pm_handover.desc': 'Tạo gói bàn giao dự án (引き継ぎ) — codebase map + quyết định + contact matrix',
+      'cmd.pm_maintain.desc': 'Workflow giai đoạn bảo trì: triage → fix → báo cáo hàng tháng (月次保守報告書)',
+      'cmd.install.desc': 'Cài framework VTI SDLC vào dự án hiện tại — copy commands, agents, templates, workflows',
+      'install.tab.opencode': 'OpenCode',
       'cmd.dev_analyze.desc': 'Task → 2-3 phương án triển khai với trade-off → analysis.md',
       'cmd.dev_implement.desc': 'Triển khai file theo file với human gates + xác minh + kiểm tra harness delta',
       'cmd.dev_review.desc': 'Review toàn diện: chất lượng code + kiến trúc + bảo mật trong một lần chạy',
@@ -2104,6 +2190,7 @@
       'agent.review_reader.desc': 'Phân tích PR diff và trích xuất tín hiệu review có thể thực hiện',
       'agent.test_gen.desc': 'Tạo test case có cấu trúc từ specification',
       'agent.doc_updater.desc': 'Cập nhật baseline documentation sau khi thay đổi code',
+      'agent.pr_resolver.desc': 'Đọc PR review comments và đề xuất fix cụ thể cho từng comment',
       'vti.be.desc': 'Dịch yêu cầu khách JP → spec team VN bằng /be:bridge',
       'vti.ba.desc': 'Từ yêu cầu đã làm rõ bằng /ba:spec',
       'vti.dev.desc': 'Code comment bằng tiếng Anh, có cấu trúc qua /dev:implement',
@@ -2119,11 +2206,11 @@
       'footer.link.api': 'Tài Liệu API',
       'footer.link.license': 'MIT License',
       'footer.link.github': 'GitHub',
-      'footer.copyright': '© 2025 ADLC · VTI SOFTWARE · MIT LICENSE · POWERED BY CLAUDE CODE',
+      'footer.copyright': '© 2026 ADLC · VTI SOFTWARE · MIT LICENSE · POWERED BY CLAUDE CODE',
     }
   };
 
-  let currentLang = localStorage.getItem('adlc_lang') || (navigator.language.startsWith('vi') ? 'vi' : 'en');
+  let currentLang = localStorage.getItem('adlc_lang') || 'en';
 
   function applyLang(lang) {
     currentLang = lang;
